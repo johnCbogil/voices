@@ -8,7 +8,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Congressman.h"
 
-@interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate>
+@interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 @end
 
 @implementation ViewController {
@@ -18,14 +18,14 @@
     CLPlacemark *placemark;
 }
 
+
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    
     self.searchBar.hidden = YES;
     self.navigationBar.hidden = YES;
+    self.tableView.hidden = YES;
 
-	
     manager = [[CLLocationManager alloc] init];
     
     geocoder = [[CLGeocoder alloc] init];
@@ -37,15 +37,30 @@
     [super didReceiveMemoryWarning];
 }
 
+-(IBAction)goToSearch:(id)sender{
+    
+    self.tableView.hidden = NO;
+    self.searchBar.hidden = NO;
+    [self.searchBar becomeFirstResponder];
+
+}
+
 - (IBAction)buttonPressed:(id)sender{
     
-    [manager requestAlwaysAuthorization];
+    // Hide the search bar
+    self.tableView.hidden = NO;
+    self.searchBar.hidden = NO;
+
+    CGRect newBounds = [[self tableView] bounds];
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+    [[self tableView] setBounds:newBounds];
+    
+    [manager requestWhenInUseAuthorization];
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
     [manager startUpdatingLocation];
     
 }
-
 
 #pragma mark - UITableView Methods
 
@@ -57,13 +72,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
-    
     
     // Assign data to cells
     NSString *firstName = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]firstName];
@@ -72,8 +85,6 @@
     NSString *termEnd = [(Congressman*) [self.listOfMembers objectAtIndex:indexPath.row]termEnd];
     NSString *ctitle = [(Congressman*) [self.listOfMembers objectAtIndex:indexPath.row]ctitle];
     
-
-  
     if(cell.textLabel.text == nil)
         {
             cell.textLabel.text = @"";
@@ -85,33 +96,29 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", party, termEnd];
     }
     
-    
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
     // Assign phone numbers to cells
-    NSString *phone = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]phone];
-    NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-    NSLog(@"Dialed %@",phoneNumber);
+        NSString *phone = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]phone];
+    if(phone != nil) {
+        NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+        NSLog(@"Dialed %@",phoneNumber);
+    }
     
 }
 
-
 #pragma mark - CLLocationManagerDelegate Methods
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
 }
 
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     
     CLLocation *currentLocation = newLocation;
     NSLog(@"Latitude: %.8f, Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
@@ -135,8 +142,6 @@
 
 }
 
-
-
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -147,8 +152,7 @@
     [_responseData appendData:data];
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
     return nil;
 }
 
@@ -210,23 +214,7 @@
     [self.tableView reloadData];
 }
 
-
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
 
-
-
-- (IBAction)toggleSearch:(id)sender {
-    
-    self.searchBar.hidden = NO;
-    UINavigationController *navigationBar = [[UINavigationController alloc]init];
-    [navigationBar setNavigationBarHidden: NO animated:YES];
-//    self.navigationBar.hidden = NO;
-    [self.searchBar resignFirstResponder];
-
-    
-    
-    
-
-}
 @end

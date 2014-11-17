@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController 
+@interface ViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -16,10 +16,13 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfMembers;
 
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
-- (IBAction)toggleSearch:(id)sender;
+@property IBOutlet UISearchBar *searchBar;
+
+-(IBAction)goToSearch:(id)sender;
+
+
 
 
 @end
