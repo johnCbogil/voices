@@ -18,8 +18,8 @@
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
--(IBAction)buttonPressed:(id)sender;
 
+-(IBAction)buttonPressed:(id)sender;
 
 
 

@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *termEnd;
 @property (strong, nonatomic) NSString *ctitle;
+@property (strong, nonatomic) NSString *bioGuide;
+
+
 
 
 

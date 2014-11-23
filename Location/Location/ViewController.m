@@ -7,6 +7,7 @@
 #import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "Congressman.h"
+#import "CustomTableViewCell.h"
 
 @interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 @end
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
     self.tableView.hidden = YES;
-
+    
     manager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
 }
@@ -38,7 +39,7 @@
 - (IBAction)buttonPressed:(id)sender{
     
     self.tableView.hidden = NO;
-
+    
     [manager requestWhenInUseAuthorization];
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -55,12 +56,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *simpleTableIdentifier = @"SimpleTableCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    static NSString *simpleTableIdentifier = @"CustomCell";
+    CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
+    
+
     
     // Assign data to cells
     NSString *firstName = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]firstName];
@@ -70,23 +74,24 @@
     NSString *ctitle = [(Congressman*) [self.listOfMembers objectAtIndex:indexPath.row]ctitle];
     
     if(cell.textLabel.text == nil)
-        {
-            cell.textLabel.text = @"";
-            cell.detailTextLabel.text = @"";
-        }
+    {
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"";
+    }
     else {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@. %@ %@" ,ctitle, firstName, lastName];
+        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,ctitle, firstName, lastName];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", party, termEnd];
+        
     }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+    
     // Assign phone numbers to cells
-        NSString *phone = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]phone];
+    NSString *phone = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]phone];
     if(phone != nil) {
         NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
@@ -151,7 +156,7 @@
     
     // Stop updating location bc we only need it once
     [manager stopUpdatingLocation];
-   
+    
     // Create Congressmen objects
     Congressman *senatorA = [[Congressman alloc]init];
     Congressman *senatorB = [[Congressman alloc]init];
@@ -168,6 +173,14 @@
     NSMutableArray *phone = [results valueForKey:@"phone"];
     NSMutableArray *termEnd = [results valueForKey:@"term_end"];
     NSMutableArray *ctitle = [results valueForKey:@"title"];
+    NSMutableArray *headShots = [[NSMutableArray alloc]init];
+    NSMutableArray *bioGuide = [results valueForKey:@"bioguide_id"];
+    
+    [self downloadHeadshots:bioGuide[0]];
+    [self downloadHeadshots:bioGuide[1]];
+    [self downloadHeadshots:bioGuide[2]];
+    
+    NSLog(@"%@", bioGuide[1]);
     NSLog(@"SF Data Recieved");
     
     // Assign the data to properties
@@ -208,6 +221,26 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
 
+-(void)downloadHeadshots:(NSMutableArray*)bioGuide{
+    
+    
+    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
 
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [UIImage imageWithData:data];
+            [self.headShots addObject:image];
+            NSLog(@"%@", image);
+            
+        });
+    });
+    
+    
+}
 
 @end

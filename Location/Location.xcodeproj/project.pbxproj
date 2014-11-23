@@ -23,6 +23,8 @@
 		7800F5EA186377C9005D4946 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7800F5E8186377C9005D4946 /* InfoPlist.strings */; };
 		7800F5EC186377C9005D4946 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800F5EB186377C9005D4946 /* LocationTests.m */; };
 		7800F5F618637F25005D4946 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5F518637F25005D4946 /* CoreLocation.framework */; };
+		AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFABC591A227AB90028214D /* CustomCell.xib */; };
+		AAFABC5D1A227C000028214D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFABC5C1A227C000028214D /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		7800F5E9186377C9005D4946 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7800F5EB186377C9005D4946 /* LocationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
 		7800F5F518637F25005D4946 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AAFABC591A227AB90028214D /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		AAFABC5B1A227C000028214D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		AAFABC5C1A227C000028214D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +131,9 @@
 				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
 				7800F5D5186377C8005D4946 /* ViewController.h */,
 				7800F5D6186377C8005D4946 /* ViewController.m */,
+				AAFABC591A227AB90028214D /* CustomCell.xib */,
+				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
+				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
 				7800F5C7186377C8005D4946 /* Supporting Files */,
 			);
@@ -242,6 +250,7 @@
 			files = (
 				7800F5D9186377C8005D4946 /* Images.xcassets in Resources */,
 				7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */,
+				AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */,
 				7800F5D4186377C8005D4946 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +273,7 @@
 				52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */,
 				7800F5D7186377C8005D4946 /* ViewController.m in Sources */,
 				7800F5D1186377C8005D4946 /* AppDelegate.m in Sources */,
+				AAFABC5D1A227C000028214D /* CustomTableViewCell.m in Sources */,
 				7800F5CD186377C8005D4946 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
