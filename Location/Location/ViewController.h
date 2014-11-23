@@ -18,9 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
-@property IBOutlet UISearchBar *searchBar;
-
--(IBAction)goToSearch:(id)sender;
+-(IBAction)buttonPressed:(id)sender;
 
 
 

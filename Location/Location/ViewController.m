@@ -22,39 +22,23 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    self.searchBar.hidden = YES;
     self.navigationBar.hidden = YES;
     self.tableView.hidden = YES;
 
     manager = [[CLLocationManager alloc] init];
-    
     geocoder = [[CLGeocoder alloc] init];
 }
 
-
 - (void)didReceiveMemoryWarning{
-    
     [super didReceiveMemoryWarning];
 }
 
--(IBAction)goToSearch:(id)sender{
-    
-    self.tableView.hidden = NO;
-    self.searchBar.hidden = NO;
-    [self.searchBar becomeFirstResponder];
 
-}
 
 - (IBAction)buttonPressed:(id)sender{
     
-    // Hide the search bar
     self.tableView.hidden = NO;
-    self.searchBar.hidden = NO;
 
-    CGRect newBounds = [[self tableView] bounds];
-    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
-    [[self tableView] setBounds:newBounds];
-    
     [manager requestWhenInUseAuthorization];
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -123,9 +107,16 @@
     CLLocation *currentLocation = newLocation;
     NSLog(@"Latitude: %.8f, Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
+    [self sunlightFoundationRequest:currentLocation.coordinate.latitude coordinates:currentLocation.coordinate.longitude];
+}
+
+
+#pragma mark - Sunlight Foundation method
+
+-(void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
     
     // Create the request
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
     
     
@@ -139,7 +130,7 @@
     // Create URL connection and fire request
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     conn = nil;
-
+    
 }
 
 #pragma mark NSURLConnection Delegate Methods
@@ -216,5 +207,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
+
+
 
 @end
