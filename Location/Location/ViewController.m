@@ -80,7 +80,6 @@
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
-        cell.photo = cell.congressman.photo;
     }
 
     return cell;
@@ -181,37 +180,6 @@
     NSMutableArray *twitterIDs = [results valueForKey:@"twitter_id"];
     NSMutableArray *facebookIDs = [results valueForKey:@"facebook_id"];
     
-//    [self downloadPhotos:bioGuide[0]];
-//    [self downloadPhotos:bioGuide[1]];
-//    [self downloadPhotos:bioGuide[2]];
-    
-    
-
-    
-    Congressman *congressman = [[Congressman alloc]init];
-    congressman.photos = [[NSMutableArray alloc]init];
-    
-    
-    
-    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide[0]];
-    
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
-        
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-        
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage *image = [UIImage imageWithData:data];
-            [congressman.photos addObject:image];
-            
-            //NSLog(@"%@", image);
-            
-        });
-    });
-    
-
-    
     
     //NSLog(@"%@", congressman.photos);
     NSLog(@"%@", bioGuide[1]);
@@ -280,31 +248,31 @@
 
 
 
--(void)downloadPhotos:(NSMutableArray*)bioGuide{
-    
-    Congressman *congressman = [[Congressman alloc]init];
-    congressman.photos = [[NSMutableArray alloc]init];
-        
-    
-    
-    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
-    
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
-        
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage *image = [UIImage imageWithData:data];
-            [congressman.photos addObject:image];
-            //NSLog(@"%@", image);
-            
-        });
-    });
-    
-    
-    
-}
+//-(void)downloadPhotos:(NSMutableArray*)bioGuide{
+//    
+//    Congressman *congressman = [[Congressman alloc]init];
+//    congressman.photos = [[NSMutableArray alloc]init];
+//        
+//    
+//    
+//    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
+//    
+//    dispatch_async(dispatch_get_global_queue(0,0), ^{
+//        
+//        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
+//
+//        if ( data == nil )
+//            return;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            UIImage *image = [UIImage imageWithData:data];
+//            [congressman.photos addObject:image];
+//            //NSLog(@"%@", image);
+//            
+//        });
+//    });
+//    
+//    
+//    
+//}
 
 @end
