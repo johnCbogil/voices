@@ -18,6 +18,16 @@
 @property (strong, nonatomic) NSString *termEnd;
 @property (strong, nonatomic) NSString *ctitle;
 @property (strong, nonatomic) NSString *bioGuide;
+@property (strong, nonatomic) NSString *facebookID;
+@property (strong, nonatomic) NSString *twitterID;
+@property (strong, nonatomic) UIImageView *photo;
+
+
+
+@property (strong, nonatomic) NSMutableArray *photos;
+
+
+
 
 
 

@@ -39,7 +39,6 @@
 - (IBAction)buttonPressed:(id)sender{
     
     self.tableView.hidden = NO;
-    
     [manager requestWhenInUseAuthorization];
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -56,8 +55,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    cell.delegate = self;
     
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
@@ -67,11 +69,7 @@
 
     
     // Assign data to cells
-    NSString *firstName = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]firstName];
-    NSString *lastName = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]lastName];
-    NSString *party = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]party];
-    NSString *termEnd = [(Congressman*) [self.listOfMembers objectAtIndex:indexPath.row]termEnd];
-    NSString *ctitle = [(Congressman*) [self.listOfMembers objectAtIndex:indexPath.row]ctitle];
+    cell.congressman = [self.listOfMembers objectAtIndex:indexPath.row];
     
     if(cell.textLabel.text == nil)
     {
@@ -79,12 +77,12 @@
         cell.detailTextLabel.text = @"";
     }
     else {
-        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,ctitle, firstName, lastName];
+        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", party, termEnd];
-        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
+        cell.photo = cell.congressman.photo;
     }
-    
+
     return cell;
 }
 
@@ -100,6 +98,12 @@
     
 }
 
+// This is a callback method of the PassTwitterObjectProtocol
+-(void)passTwitterObject:(UIViewController*)controller{
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 #pragma mark - CLLocationManagerDelegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -110,7 +114,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     
     CLLocation *currentLocation = newLocation;
-    NSLog(@"Latitude: %.8f, Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    NSLog(@"Current Location is Latitude: %.8f, Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self sunlightFoundationRequest:currentLocation.coordinate.latitude coordinates:currentLocation.coordinate.longitude];
 }
@@ -173,13 +177,43 @@
     NSMutableArray *phone = [results valueForKey:@"phone"];
     NSMutableArray *termEnd = [results valueForKey:@"term_end"];
     NSMutableArray *ctitle = [results valueForKey:@"title"];
-    NSMutableArray *headShots = [[NSMutableArray alloc]init];
     NSMutableArray *bioGuide = [results valueForKey:@"bioguide_id"];
+    NSMutableArray *twitterIDs = [results valueForKey:@"twitter_id"];
+    NSMutableArray *facebookIDs = [results valueForKey:@"facebook_id"];
     
-    [self downloadHeadshots:bioGuide[0]];
-    [self downloadHeadshots:bioGuide[1]];
-    [self downloadHeadshots:bioGuide[2]];
+//    [self downloadPhotos:bioGuide[0]];
+//    [self downloadPhotos:bioGuide[1]];
+//    [self downloadPhotos:bioGuide[2]];
     
+    
+
+    
+    Congressman *congressman = [[Congressman alloc]init];
+    congressman.photos = [[NSMutableArray alloc]init];
+    
+    
+    
+    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide[0]];
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
+        
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [UIImage imageWithData:data];
+            [congressman.photos addObject:image];
+            
+            //NSLog(@"%@", image);
+            
+        });
+    });
+    
+
+    
+    
+    //NSLog(@"%@", congressman.photos);
     NSLog(@"%@", bioGuide[1]);
     NSLog(@"SF Data Recieved");
     
@@ -208,6 +242,24 @@
     senatorA.ctitle = ctitle[1];
     senatorB.ctitle = ctitle[2];
     
+    representative.twitterID = twitterIDs[0];
+    senatorA.twitterID = twitterIDs[1];
+    senatorB.twitterID = twitterIDs[2];
+    
+    representative.facebookID = facebookIDs[0];
+    senatorA.facebookID = facebookIDs[1];
+    senatorB.facebookID = facebookIDs[2];
+    
+//   representative.photo = congressman.photos[0];
+//    senatorA.photo = congressman.photos[1];
+//    senatorB.photo = congressman.photos[2];
+    
+
+    
+    
+    
+    
+    
     // Add Congressmen to an array for later use
     self.listOfMembers = [[NSMutableArray alloc]init];
     [self.listOfMembers addObject:representative];
@@ -221,7 +273,18 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
 
--(void)downloadHeadshots:(NSMutableArray*)bioGuide{
+
+
+
+    
+
+
+
+-(void)downloadPhotos:(NSMutableArray*)bioGuide{
+    
+    Congressman *congressman = [[Congressman alloc]init];
+    congressman.photos = [[NSMutableArray alloc]init];
+        
     
     
     NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
@@ -234,11 +297,12 @@
             return;
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:data];
-            [self.headShots addObject:image];
-            NSLog(@"%@", image);
+            [congressman.photos addObject:image];
+            //NSLog(@"%@", image);
             
         });
     });
+    
     
     
 }

@@ -7,11 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
+#import "PassTwitterObject.h"
+#import "Congressman.h"
 
 @interface CustomTableViewCell : UITableViewCell
 
-
+@property (nonatomic, weak) Congressman * congressman;
 @property (nonatomic, weak) IBOutlet UILabel *name;
-@property (nonatomic, weak) IBOutlet UIImageView *headShot;
+@property (strong, nonatomic) IBOutlet UIImageView *photo;
+
+- (IBAction)tweetButtonPressed:(id)sender;
+
+
+@property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;
+
+
+
+
 
 @end
+
+

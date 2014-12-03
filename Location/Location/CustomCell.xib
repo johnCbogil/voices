@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -25,6 +25,15 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH">
+                        <rect key="frame" x="94" y="56" width="59" height="38"/>
+                        <state key="normal" title="Tweet">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="rzQ-OL-4za"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="zrg-MY-f1o" secondAttribute="trailing" constant="8" id="AA3-2v-Jht"/>
@@ -44,10 +53,11 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="headShot" destination="zrg-MY-f1o" id="FEd-kS-TWt"/>
+                <outlet property="imageView" destination="zrg-MY-f1o" id="GY5-J3-NZ1"/>
                 <outlet property="name" destination="vz4-27-hty" id="2WC-zV-VXW"/>
+                <outlet property="photo" destination="zrg-MY-f1o" id="zOV-iw-e77"/>
             </connections>
-            <point key="canvasLocation" x="487" y="443"/>
+            <point key="canvasLocation" x="487" y="442"/>
         </tableViewCell>
     </objects>
 </document>

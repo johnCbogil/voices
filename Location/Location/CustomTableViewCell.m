@@ -7,11 +7,14 @@
 //
 
 #import "CustomTableViewCell.h"
+#import "Congressman.h"
 
 @implementation CustomTableViewCell
 
 @synthesize name = _name;
-@synthesize headShot = _headShot;
+@synthesize delegate = _delegate;
+
+
 
     
 
@@ -26,4 +29,21 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)tweetButtonPressed:(id)sender {
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheetOBJ = [SLComposeViewController
+                                                  composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        NSString *name = [NSString stringWithFormat:@"@%@", self.congressman.twitterID ];
+        [tweetSheetOBJ setInitialText:name];        
+        [self.delegate passTwitterObject:tweetSheetOBJ];
+
+    }
+    
+    
+    
+    
+}
 @end

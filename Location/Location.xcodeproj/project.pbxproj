@@ -60,6 +60,7 @@
 		7800F5E9186377C9005D4946 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7800F5EB186377C9005D4946 /* LocationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
 		7800F5F518637F25005D4946 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AACE5FD11A2E78B800DE45EF /* PassTwitterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassTwitterObject.h; sourceTree = "<group>"; };
 		AAFABC591A227AB90028214D /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AAFABC5B1A227C000028214D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		AAFABC5C1A227C000028214D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
@@ -124,14 +125,13 @@
 		7800F5C6186377C8005D4946 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				7800F5CF186377C8005D4946 /* AppDelegate.h */,
-				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				7800F5D2186377C8005D4946 /* Main.storyboard */,
 				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
 				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
 				7800F5D5186377C8005D4946 /* ViewController.h */,
 				7800F5D6186377C8005D4946 /* ViewController.m */,
 				AAFABC591A227AB90028214D /* CustomCell.xib */,
+				AACE5FD11A2E78B800DE45EF /* PassTwitterObject.h */,
 				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
 				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
@@ -143,6 +143,8 @@
 		7800F5C7186377C8005D4946 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7800F5CF186377C8005D4946 /* AppDelegate.h */,
+				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				7800F5C8186377C8005D4946 /* Location-Info.plist */,
 				7800F5C9186377C8005D4946 /* InfoPlist.strings */,
 				7800F5CC186377C8005D4946 /* main.m */,
