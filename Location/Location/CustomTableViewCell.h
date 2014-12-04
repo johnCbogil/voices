@@ -15,7 +15,9 @@
 
 @property (nonatomic, weak) Congressman * congressman;
 @property (nonatomic, weak) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UIImageView *photo;
+@property (strong, nonatomic) IBOutlet UILabel *detail;
+
+@property (strong, nonatomic)  UIImageView *photo;
 
 - (IBAction)tweetButtonPressed:(id)sender;
 

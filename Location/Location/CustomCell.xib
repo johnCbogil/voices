@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -13,9 +13,6 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qY-hP-qps" id="H4f-Qn-H4F">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zrg-MY-f1o">
-                        <rect key="frame" x="8" y="11" width="78" height="79"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
                         <rect key="frame" x="94" y="14" width="218" height="35"/>
                         <constraints>
@@ -36,13 +33,8 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="zrg-MY-f1o" secondAttribute="trailing" constant="8" id="AA3-2v-Jht"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vz4-27-hty" secondAttribute="bottom" constant="62" id="ADV-IV-mWM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="zrg-MY-f1o" secondAttribute="bottom" constant="21" id="Gu8-sd-i63"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="zrg-MY-f1o" secondAttribute="trailing" constant="8" symbolic="YES" id="HNl-5N-I9o"/>
-                    <constraint firstItem="zrg-MY-f1o" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="2" id="P8J-9P-0RU"/>
                     <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" id="cy1-Ug-cIc"/>
-                    <constraint firstItem="zrg-MY-f1o" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" id="dbE-J9-seS"/>
                     <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" constant="8" id="rWr-rH-ZkO"/>
                     <constraint firstItem="vz4-27-hty" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="5" id="x3C-bD-n5B"/>
                 </constraints>
@@ -53,9 +45,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imageView" destination="zrg-MY-f1o" id="GY5-J3-NZ1"/>
                 <outlet property="name" destination="vz4-27-hty" id="2WC-zV-VXW"/>
-                <outlet property="photo" destination="zrg-MY-f1o" id="zOV-iw-e77"/>
             </connections>
             <point key="canvasLocation" x="487" y="442"/>
         </tableViewCell>

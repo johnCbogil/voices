@@ -11,8 +11,10 @@
 
 @implementation CustomTableViewCell
 
+
 @synthesize name = _name;
 @synthesize delegate = _delegate;
+
 
 
 
@@ -26,10 +28,18 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 75, 75)];
+    [photo.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [photo.layer setBorderWidth: 1.0];
+    
+    [self addSubview:photo];
 }
 
+
+// Make sure twitter account is logged into settings
 - (IBAction)tweetButtonPressed:(id)sender {
+    
+    NSLog(@"Tweet button pressed");
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
@@ -37,7 +47,8 @@
                                                   composeViewControllerForServiceType:SLServiceTypeTwitter];
         
         NSString *name = [NSString stringWithFormat:@"@%@", self.congressman.twitterID ];
-        [tweetSheetOBJ setInitialText:name];        
+        [tweetSheetOBJ setInitialText:name];
+        
         [self.delegate passTwitterObject:tweetSheetOBJ];
 
     }

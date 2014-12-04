@@ -11,12 +11,11 @@
 @interface ViewController : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) NSMutableData *responseData;
-
 @property (strong, nonatomic) NSMutableArray *listOfMembers;
-
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+
+@property (strong, nonatomic) NSMutableArray *photos;
 
 
 

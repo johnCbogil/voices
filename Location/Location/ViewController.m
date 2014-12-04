@@ -28,6 +28,8 @@
     
     manager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
+    
+
 }
 
 - (void)didReceiveMemoryWarning{
@@ -79,7 +81,11 @@
     else {
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
+        cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
+        cell.photo.image = cell.congressman.photo;
+        
+        
+        NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
     }
 
     return cell;
@@ -101,6 +107,7 @@
 -(void)passTwitterObject:(UIViewController*)controller{
     
     [self presentViewController:controller animated:YES completion:nil];
+    NSLog(@"Presented twitter view controller");
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
@@ -113,7 +120,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
     
     CLLocation *currentLocation = newLocation;
-    NSLog(@"Current Location is Latitude: %.8f, Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self sunlightFoundationRequest:currentLocation.coordinate.latitude coordinates:currentLocation.coordinate.longitude];
 }
@@ -164,6 +171,7 @@
     Congressman *senatorA = [[Congressman alloc]init];
     Congressman *senatorB = [[Congressman alloc]init];
     Congressman *representative = [[Congressman alloc]init];
+    NSLog(@"Created Congressmen objects");
     
     // Decode data
     NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
@@ -179,11 +187,14 @@
     NSMutableArray *bioGuide = [results valueForKey:@"bioguide_id"];
     NSMutableArray *twitterIDs = [results valueForKey:@"twitter_id"];
     NSMutableArray *facebookIDs = [results valueForKey:@"facebook_id"];
+    NSLog(@"Parsed data from SF request");
     
     
-    //NSLog(@"%@", congressman.photos);
-    NSLog(@"%@", bioGuide[1]);
-    NSLog(@"SF Data Recieved");
+    [self downloadPhotos:bioGuide[0] congressman:representative];
+    [self downloadPhotos:bioGuide[1] congressman:senatorA];
+    [self downloadPhotos:bioGuide[2] congressman:senatorB];
+    NSLog(@"Sent all three bioguides to the photoDownload method");
+
     
     // Assign the data to properties
     representative.firstName = firstName[0];
@@ -217,15 +228,7 @@
     representative.facebookID = facebookIDs[0];
     senatorA.facebookID = facebookIDs[1];
     senatorB.facebookID = facebookIDs[2];
-    
-//   representative.photo = congressman.photos[0];
-//    senatorA.photo = congressman.photos[1];
-//    senatorB.photo = congressman.photos[2];
-    
-
-    
-    
-    
+    NSLog(@"Assigned appropriate attribute to each Congressman");
     
     
     // Add Congressmen to an array for later use
@@ -233,46 +236,42 @@
     [self.listOfMembers addObject:representative];
     [self.listOfMembers addObject:senatorA];
     [self.listOfMembers addObject:senatorB];
+    NSLog(@"Added congressmen to listOfMembers");
     
-    
-    [self.tableView reloadData];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
 
 
-
-
+-(void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
     
+    congressman.photo = [[UIImage alloc]init];
+    
+    
+    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
+
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [UIImage imageWithData:data];
+            
+            congressman.photo = image;
+            NSLog(@"Assigned photo to congressman");
+            [self.tableView reloadData];
 
 
+            
+        });
 
-//-(void)downloadPhotos:(NSMutableArray*)bioGuide{
-//    
-//    Congressman *congressman = [[Congressman alloc]init];
-//    congressman.photos = [[NSMutableArray alloc]init];
-//        
-//    
-//    
-//    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
-//    
-//    dispatch_async(dispatch_get_global_queue(0,0), ^{
-//        
-//        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-//
-//        if ( data == nil )
-//            return;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            UIImage *image = [UIImage imageWithData:data];
-//            [congressman.photos addObject:image];
-//            //NSLog(@"%@", image);
-//            
-//        });
-//    });
-//    
-//    
-//    
-//}
+    });
+    
+    
+    }
+                   
 
 @end

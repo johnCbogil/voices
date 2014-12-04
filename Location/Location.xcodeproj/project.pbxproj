@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC657619E0F0D7004BF6B3 /* Congressman.m */; };
 		7800F5C1186377C8005D4946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C0186377C8005D4946 /* Foundation.framework */; };
-		7800F5C3186377C8005D4946 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C2186377C8005D4946 /* CoreGraphics.framework */; };
 		7800F5C5186377C8005D4946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C4186377C8005D4946 /* UIKit.framework */; };
 		7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7800F5C9186377C8005D4946 /* InfoPlist.strings */; };
 		7800F5CD186377C8005D4946 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800F5CC186377C8005D4946 /* main.m */; };
@@ -72,7 +71,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7800F5F618637F25005D4946 /* CoreLocation.framework in Frameworks */,
-				7800F5C3186377C8005D4946 /* CoreGraphics.framework in Frameworks */,
 				7800F5C5186377C8005D4946 /* UIKit.framework in Frameworks */,
 				7800F5C1186377C8005D4946 /* Foundation.framework in Frameworks */,
 			);
@@ -131,9 +129,9 @@
 				7800F5D5186377C8005D4946 /* ViewController.h */,
 				7800F5D6186377C8005D4946 /* ViewController.m */,
 				AAFABC591A227AB90028214D /* CustomCell.xib */,
-				AACE5FD11A2E78B800DE45EF /* PassTwitterObject.h */,
 				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
 				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
+				AACE5FD11A2E78B800DE45EF /* PassTwitterObject.h */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
 				7800F5C7186377C8005D4946 /* Supporting Files */,
 			);
