@@ -23,14 +23,4 @@
 @property (strong, nonatomic) UIImage *photo;
 
 
-
-@property (strong, nonatomic) NSMutableArray *photos;
-
-
-
-
-
-
-
-
 @end

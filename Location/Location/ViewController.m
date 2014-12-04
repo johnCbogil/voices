@@ -9,7 +9,7 @@
 #import "Congressman.h"
 #import "CustomTableViewCell.h"
 
-@interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, loadTwitterViewProtocol>
 @end
 
 @implementation ViewController {
@@ -79,16 +79,15 @@
         cell.detailTextLabel.text = @"";
     }
     else {
-        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" ,cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
+        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
-        cell.photo.image = cell.congressman.photo;
-        
+        cell.photoView.image = cell.congressman.photo;
         
         NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
     }
-
     return cell;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,7 +99,6 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
         NSLog(@"Dialed %@",phoneNumber);
     }
-    
 }
 
 // This is a callback method of the PassTwitterObjectProtocol
@@ -133,7 +131,6 @@
     // Create the request
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
-    
     
     // Specify that the request will be a GET
     getRequest.HTTPMethod = @"GET";
@@ -248,7 +245,6 @@
     
     congressman.photo = [[UIImage alloc]init];
     
-    
     NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
@@ -263,9 +259,6 @@
             congressman.photo = image;
             NSLog(@"Assigned photo to congressman");
             [self.tableView reloadData];
-
-
-            
         });
 
     });

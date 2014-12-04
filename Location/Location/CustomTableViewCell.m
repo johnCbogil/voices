@@ -17,22 +17,22 @@
 
 
 
-
     
 
 
 - (void)awakeFromNib {
     // Initialization code
+    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 75, 75)];
+    [self.photoView.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [self.photoView.layer setBorderWidth: 1.0];
+    //
+    [self addSubview:self.photoView];
+    NSLog(@"Added imageView to cell");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 75, 75)];
-    [photo.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [photo.layer setBorderWidth: 1.0];
-    
-    [self addSubview:photo];
 }
 
 
@@ -43,8 +43,7 @@
     
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
-        SLComposeViewController *tweetSheetOBJ = [SLComposeViewController
-                                                  composeViewControllerForServiceType:SLServiceTypeTwitter];
+        SLComposeViewController *tweetSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         
         NSString *name = [NSString stringWithFormat:@"@%@", self.congressman.twitterID ];
         [tweetSheetOBJ setInitialText:name];
@@ -52,9 +51,5 @@
         [self.delegate passTwitterObject:tweetSheetOBJ];
 
     }
-    
-    
-    
-    
 }
 @end

@@ -13,11 +13,11 @@
 
 @interface CustomTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) Congressman * congressman;
+@property (nonatomic, weak) Congressman *congressman;
 @property (nonatomic, weak) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *detail;
 
-@property (strong, nonatomic)  UIImageView *photo;
+@property (strong, nonatomic)  UIImageView *photoView;
 
 - (IBAction)tweetButtonPressed:(id)sender;
 
