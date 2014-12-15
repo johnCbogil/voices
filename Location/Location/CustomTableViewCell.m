@@ -21,17 +21,32 @@
 
 
 - (void)awakeFromNib {
-    // Initialization code
-    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 70, 84)];
-    [self.photoView.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    [self.photoView.layer setBorderWidth: 1.0];
-//    self.photoView.layer.cornerRadius = self.photoView.bounds.size.width/2;
-//    self.photoView.layer.masksToBounds = YES;
-    
+
+    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 85, 85)];
+
+    self.photoView.layer.cornerRadius = self.photoView.frame.size.width / 2;
+    self.photoView.clipsToBounds = YES;
+    //[self.circleView setBackgroundColor:[UIColor clearColor]];
     
     [self addSubview:self.photoView];
+
+    
+
     NSLog(@"Added imageView to cell");
 }
+
+
+
+
+
+-(void)drawRect:(CGRect)rect{
+    
+
+    
+    
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

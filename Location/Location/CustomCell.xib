@@ -13,27 +13,27 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qY-hP-qps" id="H4f-Qn-H4F">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
+                        <rect key="frame" x="139" y="8" width="218" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="218" id="DIU-rv-9DE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH">
-                        <rect key="frame" x="85" y="55" width="59" height="38"/>
-                        <state key="normal" title="Tweet">
+                        <rect key="frame" x="98" y="55" width="59" height="38"/>
+                        <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
                             <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="rzQ-OL-4za"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-NF-d7u">
-                        <rect key="frame" x="94" y="41" width="218" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-NF-d7u">
+                        <rect key="frame" x="107" y="41" width="218" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
-                        <rect key="frame" x="94" y="8" width="218" height="35"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="218" id="DIU-rv-9DE"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,8 +53,9 @@
             <connections>
                 <outlet property="detail" destination="HHl-NF-d7u" id="6SR-uj-vY9"/>
                 <outlet property="name" destination="vz4-27-hty" id="2WC-zV-VXW"/>
+                <outlet property="tweetButton" destination="Ku9-p5-MdH" id="a26-ex-bS4"/>
             </connections>
-            <point key="canvasLocation" x="487" y="441"/>
+            <point key="canvasLocation" x="487" y="440"/>
         </tableViewCell>
     </objects>
 </document>

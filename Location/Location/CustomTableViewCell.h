@@ -10,6 +10,8 @@
 #import <Social/Social.h>
 #import "PassTwitterObject.h"
 #import "Congressman.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface CustomTableViewCell : UITableViewCell
 
@@ -18,8 +20,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *detail;
 
 @property (strong, nonatomic)  UIImageView *photoView;
+@property (strong, nonatomic) UIImageView *circleView;
+@property (strong, nonatomic) UIImageView *whiteView;
 
 - (IBAction)tweetButtonPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *tweetButton;
 
 
 @property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;

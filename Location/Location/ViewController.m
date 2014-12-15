@@ -5,11 +5,9 @@
 
 
 #import "ViewController.h"
-#import <CoreLocation/CoreLocation.h>
-#import "Congressman.h"
-#import "CustomTableViewCell.h"
 
-@interface ViewController () <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, loadTwitterViewProtocol>
+
+@interface ViewController ()
 @end
 
 @implementation ViewController {
@@ -40,7 +38,7 @@
 
 - (IBAction)buttonPressed:(id)sender{
     
-    self.tableView.hidden = NO;
+    //self.tableView.hidden = NO;
     [manager requestWhenInUseAuthorization];
     manager.delegate = self;
     manager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -56,6 +54,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // Could load different cell if there is no information in congressmanbut idt that sovlves the problem
+    
+    
     
     
     static NSString *simpleTableIdentifier = @"CustomCell";
@@ -73,19 +75,27 @@
     // Assign data to cells
     cell.congressman = [self.listOfMembers objectAtIndex:indexPath.row];
     
-    if(cell.textLabel.text == nil)
-    {
-        cell.textLabel.text = @"";
-        cell.detailTextLabel.text = @"";
+    
+    if (cell.congressman == nil) {
+        
+        
+        self.tableView.hidden = YES;
+
     }
-    else {
+    else{
+
+
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeueLight" size:6];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         cell.photoView.image = cell.congressman.photo;
+        [cell.tweetButton setTitle:@"Tweet" forState:UIControlStateNormal];
+        
+        
         
         NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
+        
     }
+
     return cell;
 
 }
@@ -161,6 +171,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
+
+    
     // Stop updating location bc we only need it once
     [manager stopUpdatingLocation];
     
@@ -234,6 +246,9 @@
     [self.listOfMembers addObject:senatorA];
     [self.listOfMembers addObject:senatorB];
     NSLog(@"Added congressmen to listOfMembers");
+    
+    self.tableView.hidden = NO;
+
     
 }
 
