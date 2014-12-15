@@ -5,6 +5,9 @@
 
 
 #import "ViewController.h"
+#import "FBShimmering.h"
+#import "FBShimmeringView.h"
+
 
 
 @interface ViewController ()
@@ -26,6 +29,23 @@
     
     manager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
+    
+    
+    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
+    [self.voicesLabel addSubview:shimmeringView];
+    
+    self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    self.voicesLabel.textAlignment = NSTextAlignmentCenter;
+    self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
+    [self.voicesLabel setFont:[UIFont fontWithName:@"Arial" size:36]];
+
+    shimmeringView.contentView = self.voicesLabel;
+    
+    // Start shimmering.
+    shimmeringView.shimmering = YES;
+
+
+    
     
 
 }
@@ -88,6 +108,7 @@
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         cell.photoView.image = cell.congressman.photo;
+        
         [cell.tweetButton setTitle:@"Tweet" forState:UIControlStateNormal];
         
         
@@ -260,6 +281,7 @@
     
     congressman.photo = [[UIImage alloc]init];
     
+    
     NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
@@ -271,6 +293,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:data];
             
+            
+
             congressman.photo = image;
             NSLog(@"Assigned photo to congressman");
             [self.tableView reloadData];

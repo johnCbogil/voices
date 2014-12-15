@@ -29,6 +29,7 @@
 
 @property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;
 
+@property (strong, nonatomic) IBOutlet UIImageView *congressmanView;
 
 
 

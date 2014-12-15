@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Congressman.h"
 #import "CustomTableViewCell.h"
+#import "FBShimmering.h"
+#import "FBShimmeringView.h"
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, loadTwitterViewProtocol>
 
@@ -19,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *voicesLabel;
 
 
 -(IBAction)buttonPressed:(id)sender;

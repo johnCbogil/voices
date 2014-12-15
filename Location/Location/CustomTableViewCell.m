@@ -9,6 +9,10 @@
 #import "CustomTableViewCell.h"
 #import "Congressman.h"
 
+#define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+
 @implementation CustomTableViewCell
 
 
@@ -21,30 +25,18 @@
 
 
 - (void)awakeFromNib {
-
-    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 85, 85)];
-
+    
+    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 80, 80)];
+    self.photoView.contentMode = UIViewContentModeScaleAspectFill;
     self.photoView.layer.cornerRadius = self.photoView.frame.size.width / 2;
     self.photoView.clipsToBounds = YES;
-    //[self.circleView setBackgroundColor:[UIColor clearColor]];
-    
+    //[self.photoView setBackgroundColor: RGB(105, 141, 157)];
+
     [self addSubview:self.photoView];
-
-    
-
-    NSLog(@"Added imageView to cell");
-}
-
-
-
-
-
--(void)drawRect:(CGRect)rect{
-    
-
     
     
 }
+
 
 
 
