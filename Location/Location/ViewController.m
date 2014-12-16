@@ -30,6 +30,16 @@
     manager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
     
+    [self applyShimmer];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)applyShimmer{
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     [self.voicesLabel addSubview:shimmeringView];
@@ -38,16 +48,13 @@
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
     [self.voicesLabel setFont:[UIFont fontWithName:@"Arial" size:36]];
-
+    
     shimmeringView.contentView = self.voicesLabel;
     
     // Start shimmering.
     shimmeringView.shimmering = YES;
-
-
     
     
-
 }
 
 - (void)didReceiveMemoryWarning{
@@ -60,9 +67,30 @@
     
     //self.tableView.hidden = NO;
     [manager requestWhenInUseAuthorization];
-    manager.delegate = self;
-    manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [manager startUpdatingLocation];
+    
+    // Check for location services
+    if([CLLocationManager locationServicesEnabled] &&
+       [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
+    {
+        manager.delegate = self;
+        manager.desiredAccuracy = kCLLocationAccuracyBest;
+        [manager startUpdatingLocation];
+    }
+    
+    else{
+        
+        [self locationServicesUnavailable];
+    }
+    
+    // Check for internet connection
+    
+}
+
+
+-(void)locationServicesUnavailable{
+    
+    UIAlertView *noLocationServices = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We weren't able to figure out your location, check to make sure that location services are enabled and try again"delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [noLocationServices show];
     
 }
 
@@ -90,7 +118,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-
+    
     
     // Assign data to cells
     cell.congressman = [self.listOfMembers objectAtIndex:indexPath.row];
@@ -100,11 +128,11 @@
         
         
         self.tableView.hidden = YES;
-
+        
     }
     else{
-
-
+        
+        
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         cell.photoView.image = cell.congressman.photo;
@@ -116,9 +144,9 @@
         NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
         
     }
-
+    
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -144,6 +172,10 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
+    [self locationServicesUnavailable];
+
+    
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
@@ -192,7 +224,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-
+    
     
     // Stop updating location bc we only need it once
     [manager stopUpdatingLocation];
@@ -224,7 +256,7 @@
     [self downloadPhotos:bioGuide[1] congressman:senatorA];
     [self downloadPhotos:bioGuide[2] congressman:senatorB];
     NSLog(@"Sent all three bioguides to the photoDownload method");
-
+    
     
     // Assign the data to properties
     representative.firstName = firstName[0];
@@ -269,7 +301,7 @@
     NSLog(@"Added congressmen to listOfMembers");
     
     self.tableView.hidden = NO;
-
+    
     
 }
 
@@ -285,25 +317,25 @@
     NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
-
+        
         NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-
+        
         if ( data == nil )
             return;
         dispatch_async(dispatch_get_main_queue(), ^{
             UIImage *image = [UIImage imageWithData:data];
             
             
-
+            
             congressman.photo = image;
             NSLog(@"Assigned photo to congressman");
             [self.tableView reloadData];
         });
-
+        
     });
     
     
-    }
-                   
+}
+
 
 @end
