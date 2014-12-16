@@ -20,11 +20,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *detail;
 
 @property (strong, nonatomic)  UIImageView *photoView;
-@property (strong, nonatomic) UIImageView *circleView;
-@property (strong, nonatomic) UIImageView *whiteView;
+@property (strong, nonatomic) UIImageView *shadowView;
 
 - (IBAction)tweetButtonPressed:(id)sender;
+- (IBAction)facebookButtonPressed:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *tweetButton;
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+
 
 
 @property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;

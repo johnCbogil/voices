@@ -13,23 +13,24 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qY-hP-qps" id="H4f-Qn-H4F">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
-                        <rect key="frame" x="96" y="12" width="218" height="35"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
+                        <rect key="frame" x="94" y="12" width="218" height="35"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-NF-d7u">
-                        <rect key="frame" x="96" y="40" width="218" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-NF-d7u">
+                        <rect key="frame" x="99" y="42" width="218" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="218" id="ppc-gr-ECU"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH">
-                        <rect key="frame" x="88" y="55" width="59" height="38"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH">
+                        <rect key="frame" x="90" y="59" width="70" height="38"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -37,38 +38,45 @@
                             <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="rzQ-OL-4za"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cwr-5p-Ua2">
-                        <rect key="frame" x="8" y="9" width="80" height="80"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cwr-5p-Ua2">
+                        <rect key="frame" x="8" y="10" width="80" height="80"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-Bc-sGk">
+                        <rect key="frame" x="156" y="56" width="88" height="38"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="facebookButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="8g2-90-rKg"/>
+                            <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="Gif-je-3tc"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="32" id="0So-N7-5q6"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="34" id="0So-N7-5q6"/>
                     <constraint firstItem="Ku9-p5-MdH" firstAttribute="height" secondItem="vz4-27-hty" secondAttribute="height" constant="3" id="20k-5Z-8UY"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="cwr-5p-Ua2" secondAttribute="trailing" constant="8" symbolic="YES" id="3xH-ku-lM1"/>
                     <constraint firstItem="Ku9-p5-MdH" firstAttribute="height" secondItem="HHl-NF-d7u" secondAttribute="height" constant="17" id="41C-Ns-0Ts"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="vz4-27-hty" secondAttribute="bottom" constant="8" symbolic="YES" id="GR5-sq-QYL"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="cwr-5p-Ua2" secondAttribute="bottom" constant="4" id="MBD-ov-t8C"/>
-                    <constraint firstItem="cwr-5p-Ua2" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="1" id="NZp-cQ-kAj"/>
+                    <constraint firstAttribute="centerY" secondItem="Hf9-Bc-sGk" secondAttribute="centerY" constant="-24" id="BsD-CY-lYg"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="vz4-27-hty" secondAttribute="bottom" constant="12" id="GR5-sq-QYL"/>
                     <constraint firstItem="vz4-27-hty" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="4" id="QmF-v8-w9O"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="cwr-5p-Ua2" secondAttribute="trailing" constant="8" id="Tt5-Lh-OMj"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="cwr-5p-Ua2" secondAttribute="trailing" constant="8" symbolic="YES" id="dO2-dJ-W03"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="width" secondItem="vz4-27-hty" secondAttribute="width" constant="-159" id="fJN-Pp-1i0"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="vz4-27-hty" secondAttribute="leading" id="jQ6-ZL-DC4"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="centerY" secondItem="H4f-Qn-H4F" secondAttribute="centerY" id="jwN-6R-rXQ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="HHl-NF-d7u" secondAttribute="trailing" constant="-2" id="kIW-pi-RPy"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="cwr-5p-Ua2" secondAttribute="trailing" constant="8" id="mHH-Aw-2km"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="width" secondItem="HHl-NF-d7u" secondAttribute="width" constant="-159" id="mVh-N1-zbG"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="Ku9-p5-MdH" secondAttribute="leading" constant="8" id="pLm-YH-NoZ"/>
-                    <constraint firstItem="cwr-5p-Ua2" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" id="xce-si-dow"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="width" secondItem="vz4-27-hty" secondAttribute="width" constant="-148" id="fJN-Pp-1i0"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="vz4-27-hty" secondAttribute="leading" constant="5" id="jQ6-ZL-DC4"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="centerY" secondItem="H4f-Qn-H4F" secondAttribute="centerY" constant="1" id="jwN-6R-rXQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HHl-NF-d7u" secondAttribute="trailing" constant="-5" id="kIW-pi-RPy"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="width" secondItem="HHl-NF-d7u" secondAttribute="width" constant="-148" id="mVh-N1-zbG"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="Ku9-p5-MdH" secondAttribute="leading" constant="9" id="pLm-YH-NoZ"/>
+                    <constraint firstAttribute="centerX" secondItem="Hf9-Bc-sGk" secondAttribute="centerX" constant="-40" id="z8c-bj-iBR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="congressmanView" destination="cwr-5p-Ua2" id="sqM-Vc-eCc"/>
                 <outlet property="detail" destination="HHl-NF-d7u" id="6SR-uj-vY9"/>
+                <outlet property="facebookButton" destination="Hf9-Bc-sGk" id="JdV-7Y-PBK"/>
                 <outlet property="name" destination="vz4-27-hty" id="2WC-zV-VXW"/>
                 <outlet property="tweetButton" destination="Ku9-p5-MdH" id="a26-ex-bS4"/>
             </connections>
-            <point key="canvasLocation" x="487" y="438"/>
+            <point key="canvasLocation" x="487" y="435"/>
         </tableViewCell>
     </objects>
 </document>

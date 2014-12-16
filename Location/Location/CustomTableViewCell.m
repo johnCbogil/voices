@@ -26,12 +26,26 @@
 
 - (void)awakeFromNib {
     
-    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 80, 80)];
+    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
+    self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
+    
+    [self.shadowView setBackgroundColor:[UIColor whiteColor]];
+    
     self.photoView.contentMode = UIViewContentModeScaleAspectFill;
     self.photoView.layer.cornerRadius = self.photoView.frame.size.width / 2;
+    self.shadowView.layer.cornerRadius = self.shadowView.frame.size.width / 2;
+    
     self.photoView.clipsToBounds = YES;
-    //[self.photoView setBackgroundColor: RGB(105, 141, 157)];
+    self.shadowView.clipsToBounds = NO;
+    
+    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.shadowView.layer.shadowOffset = CGSizeMake(3, -3);
+    self.shadowView.layer.shadowOpacity = .2;
+    self.shadowView.layer.shadowRadius = 3;
 
+    self.shadowView.layer.shouldRasterize = YES;
+    
+    [self addSubview:self.shadowView];
     [self addSubview:self.photoView];
     
     
@@ -46,7 +60,7 @@
 }
 
 
-// Make sure twitter account is logged into settings
+// Make sure twitter account is logged into settings when testing
 - (IBAction)tweetButtonPressed:(id)sender {
     
     NSLog(@"Tweet button pressed");
@@ -61,5 +75,7 @@
         [self.delegate passTwitterObject:tweetSheetOBJ];
 
     }
+}
+- (IBAction)facebookButtonPressed:(id)sender {
 }
 @end

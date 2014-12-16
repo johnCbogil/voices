@@ -5,8 +5,7 @@
 
 
 #import "ViewController.h"
-#import "FBShimmering.h"
-#import "FBShimmeringView.h"
+
 
 
 
@@ -30,7 +29,7 @@
     manager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
     
-    [self applyShimmer];
+    [self createVoicesLabel];
     
     
     
@@ -39,7 +38,7 @@
     
 }
 
--(void)applyShimmer{
+-(void)createVoicesLabel{
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     [self.voicesLabel addSubview:shimmeringView];
@@ -47,7 +46,7 @@
     self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
-    [self.voicesLabel setFont:[UIFont fontWithName:@"Arial" size:36]];
+    [self.voicesLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:64]];
     
     shimmeringView.contentView = self.voicesLabel;
     
@@ -137,7 +136,8 @@
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         cell.photoView.image = cell.congressman.photo;
         
-        [cell.tweetButton setTitle:@"Tweet" forState:UIControlStateNormal];
+        [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
+        [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
         
         
         
