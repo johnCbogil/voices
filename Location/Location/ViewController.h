@@ -12,6 +12,7 @@
 #import "CustomTableViewCell.h"
 #import "FBShimmering.h"
 #import "FBShimmeringView.h"
+#import "Reachability.h"
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, loadTwitterViewProtocol>
 

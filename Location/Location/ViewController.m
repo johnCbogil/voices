@@ -64,7 +64,6 @@
 
 - (IBAction)buttonPressed:(id)sender{
     
-    //self.tableView.hidden = NO;
     [manager requestWhenInUseAuthorization];
     
     // Check for location services
@@ -82,7 +81,13 @@
     }
     
     // Check for internet connection
-    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        UIAlertView *noInternetConnection = [[UIAlertView alloc]initWithTitle:@"No Internet Connection" message:@"Please check your network connection and try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [noInternetConnection show];
+        
+    }
 }
 
 
@@ -101,9 +106,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    // Could load different cell if there is no information in congressmanbut idt that sovlves the problem
-    
     
     
     
@@ -134,8 +136,10 @@
         
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
-        cell.photoView.image = cell.congressman.photo;
         
+              cell.photoView.image = cell.congressman.photo;
+
+
         [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
         [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
         
@@ -323,13 +327,12 @@
         if ( data == nil )
             return;
         dispatch_async(dispatch_get_main_queue(), ^{
+            
             UIImage *image = [UIImage imageWithData:data];
-            
-            
-            
             congressman.photo = image;
             NSLog(@"Assigned photo to congressman");
             [self.tableView reloadData];
+            
         });
         
     });
