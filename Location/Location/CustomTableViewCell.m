@@ -66,7 +66,7 @@
 - (IBAction)tweetButtonPressed:(id)sender {
     
     NSLog(@"Tweet button pressed");
-    NSLog(@"%@", self.congressman.twitterID);
+    
 //    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
 //    {
 //        SLComposeViewController *tweetSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -100,69 +100,25 @@
 - (IBAction)facebookButtonPressed:(id)sender {
     
     
-    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://graph.facebook.com/%@", self.congressman.facebookID];
-
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
+    NSLog(@"Facebook button pressed");
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
         
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-        
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if(![self.congressman.facebookID isEqual:[NSNull null]]){
             
-            // Decode data
-            NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",self.congressman.facebookID];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
             
-            // Extract only the officials from the dict
-            NSString *fbid = [decodedData valueForKey:@"id"];
-            NSLog(@"%@", fbid);
+        }
+        else{
             
-            
-            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
-                
-                
-                
-                NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",fbid];
-                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
-                NSLog(@"%@", facebookID);
-            }
-        });
-    });
 
-    
-    
-    
-    
-    
-//    
-//    // will be YES if the string only has number characters in it
-//    if([self.congressman.facebookID rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound){
-//        
-//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
-//            
-//            
-//            
-//            NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",self.congressman.facebookID];
-//            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
-//            NSLog(@"%@", facebookID);
-//            
-//        }
-//        
-//        
-//    }
-//    else{
-//        
-//        NSString *facebookID = [NSString stringWithFormat:@"https://m.facebook.com/%@", self.congressman.facebookID];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:facebookID]];
-//
-//        NSLog(@"open webview or safari");
-//    }
-//    
-//    
-//    NSLog(@"Facebook button pressed");
-//    
-//
-//}
+                
+            
+
+        }
 }
+}
+
 
 @end
