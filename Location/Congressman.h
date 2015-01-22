@@ -16,11 +16,14 @@
 @property (strong, nonatomic) NSString *party;
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *termEnd;
-@property (strong, nonatomic) NSString *ctitle;
+@property (strong, nonatomic) NSString *officeTitle;
 @property (strong, nonatomic) NSString *bioGuide;
 @property (strong, nonatomic) NSString *facebookID;
 @property (strong, nonatomic) NSString *twitterID;
 @property (strong, nonatomic) UIImage *photo;
+
+
+
 
 
 @end

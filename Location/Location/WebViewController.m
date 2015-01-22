@@ -1,25 +1,29 @@
 //
-//  Congressman.m
+//  WebViewController.m
 //  Location
 //
-//  Created by John Bogil on 10/4/14.
-//  Copyright (c) 2014 John Bogil. All rights reserved.
+//  Created by John Bogil on 1/4/15.
+//  Copyright (c) 2015 PJ Vea. All rights reserved.
 //
 
-#import "Congressman.h"
+#import "WebViewController.h"
 
-@interface Congressman ()
+@interface WebViewController ()
 
 @end
 
-@implementation Congressman
+@implementation WebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*

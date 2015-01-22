@@ -13,12 +13,20 @@
 #import "FBShimmering.h"
 #import "FBShimmeringView.h"
 #import "Reachability.h"
+
+#import "MarqueeLabel.h"
 #import "MarqueeLabel.h"
 
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, loadTwitterViewProtocol>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
+@property (strong, nonatomic) IBOutlet UILabel *voicesLabel;
+
+
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
@@ -31,11 +39,17 @@
 -(IBAction)buttonPressed:(id)sender;
 
 
+
 @property (strong, nonatomic) NSMutableData *responseData;
 @property (strong, nonatomic) NSMutableArray *listOfMembers;
 @property long long totalFileSize;
 @property long long receivedDataBytes;
 
+
+
+
+
+-(IBAction)buttonPressed:(id)sender;
 
 
 

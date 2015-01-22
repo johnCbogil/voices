@@ -23,14 +23,23 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
+
     self.navigationBar.hidden = YES;
     self.tableView.hidden = YES;
     
     manager = [[CLLocationManager alloc] init];
+
     geocoder = [[CLGeocoder alloc] init];
     
     [self createVoicesLabel];
     
+
+
+    
+}
+
+
+
     
     
     
@@ -65,6 +74,16 @@
     
     [manager requestWhenInUseAuthorization];
     
+
+    [self checkForInternetAndLocationServices];
+    
+
+    
+}
+
+-(void)checkForInternetAndLocationServices{
+    
+
     // Check for location services
     if([CLLocationManager locationServicesEnabled] &&
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
@@ -87,6 +106,17 @@
         [noInternetConnection show];
         
     }
+
+    
+    if(self.progressView.progress == 0){
+        
+        [self.progressView setProgress:0 animated:YES];
+    }
+    else{
+        [self.progressView setProgress:0 animated:NO];
+    }
+    
+
 }
 
 -(void)locationServicesUnavailable{
@@ -105,8 +135,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
+
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
@@ -117,21 +146,21 @@
         cell = [nib objectAtIndex:0];
     }
     
-    
-    
+
     // Assign data to cells
     cell.congressman = [self.listOfMembers objectAtIndex:indexPath.row];
     
     
     if (cell.congressman == nil) {
-        
-        
+
         self.tableView.hidden = YES;
         
     }
     else{
         
-        
+
+        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
+        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.ctitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         
@@ -217,17 +246,33 @@
     self.totalFileSize = response.expectedContentLength;
     _responseData = [[NSMutableData alloc] init];
 
-
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     self.receivedDataBytes += [data length];
+
+    
+    [self.progressView setProgress:0 animated:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Animate on the next run loop so the animation starts from 0.
+        [self.progressView setProgress:0.1 animated:YES];
+        self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
+
+    });
+    
+    
+    [_responseData appendData:data];
+    
+}
+
+
     self.progressView.progress = self.receivedDataBytes / (float)self.totalFileSize;
     [_responseData appendData:data];
 
 
     
 }
+
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
     return nil;
@@ -256,6 +301,8 @@
     NSMutableArray *party = [results valueForKey:@"party"];
     NSMutableArray *phone = [results valueForKey:@"phone"];
     NSMutableArray *termEnd = [results valueForKey:@"term_end"];
+    NSMutableArray *officeTitle = [results valueForKey:@"title"];
+    NSMutableArray *ctitle = [results valueForKey:@"title"];
     NSMutableArray *ctitle = [results valueForKey:@"title"];
     NSMutableArray *bioGuide = [results valueForKey:@"bioguide_id"];
     NSMutableArray *twitterIDs = [results valueForKey:@"twitter_id"];
@@ -290,6 +337,12 @@
     senatorA.termEnd = termEnd[1];
     senatorB.termEnd = termEnd[2];
     
+    representative.officeTitle = officeTitle[0];
+    senatorA.officeTitle = officeTitle[1];
+    senatorB.officeTitle = officeTitle[2];
+    representative.ctitle = ctitle[0];
+    senatorA.ctitle = ctitle[1];
+    senatorB.ctitle = ctitle[2];
     representative.ctitle = ctitle[0];
     senatorA.ctitle = ctitle[1];
     senatorB.ctitle = ctitle[2];

@@ -11,29 +11,31 @@
 #import "PassTwitterObject.h"
 #import "Congressman.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "ViewController.h"
 
 @interface CustomTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) Congressman *congressman;
-@property (nonatomic, weak) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UILabel *detail;
 
-@property (strong, nonatomic)  UIImageView *photoView;
-@property (strong, nonatomic) UIImageView *shadowView;
-
+// Actions
 - (IBAction)tweetButtonPressed:(id)sender;
 - (IBAction)facebookButtonPressed:(id)sender;
 
+
+// UI Objects
 @property (strong, nonatomic) IBOutlet UIButton *tweetButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
-
-
-
-@property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;
-
+@property (nonatomic, strong) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *detail;
+@property (strong, nonatomic)  UIImageView *photoView;
+@property (strong, nonatomic) UIImageView *shadowView;
 @property (strong, nonatomic) IBOutlet UIImageView *congressmanView;
 
+
+
+
+@property (nonatomic, weak) Congressman *congressman;
+
+@property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;
 
 
 

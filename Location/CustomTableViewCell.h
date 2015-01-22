@@ -11,6 +11,8 @@
 #import "PassTwitterObject.h"
 #import "Congressman.h"
 #import <QuartzCore/QuartzCore.h>
+
+#import "MarqueeLabel.h"
 #import "MarqueeLabel.h"
 
 @interface CustomTableViewCell : UITableViewCell

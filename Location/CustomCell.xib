@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -49,7 +61,14 @@
                         </state>
                         <connections>
                             <action selector="facebookButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="8g2-90-rKg"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
                             <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="Gif-je-3tc"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
+=======
+                            <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="Gif-je-3tc"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
                         </connections>
                     </button>
                 </subviews>

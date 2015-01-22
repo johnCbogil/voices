@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -72,6 +84,26 @@
             </objects>
             <point key="canvasLocation" x="418" y="342"/>
         </scene>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <!--View Controller-->
+        <scene sceneID="Xbl-xg-vrJ">
+            <objects>
+                <viewController id="Sc2-dt-5Lf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LJE-ME-I1Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D33-dX-cYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="342"/>
+        </scene>
+=======
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
+=======
+>>>>>>> c0048edd4314670ce0ec41269ef1666ee5e9c99f
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

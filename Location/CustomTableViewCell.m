@@ -21,12 +21,20 @@
 
 
 
-    
+
 
 
 - (void)awakeFromNib {
     
     
+
+    
+
+    
+    self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
+    [self.shadowView setBackgroundColor:[UIColor whiteColor]];
+    self.shadowView.layer.cornerRadius = self.shadowView.frame.size.width / 2;
+
     self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
     self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
     
@@ -37,6 +45,7 @@
     self.shadowView.layer.cornerRadius = self.shadowView.frame.size.width / 2;
     
     self.photoView.clipsToBounds = YES;
+
     self.shadowView.clipsToBounds = NO;
     
     self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -44,16 +53,39 @@
     self.shadowView.layer.shadowOpacity = .2;
     self.shadowView.layer.shadowRadius = 3;
 
+    
+    self.shadowView.layer.shouldRasterize = YES;
+    
+    
+    [self addSubview:self.shadowView];
+    
+    self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
+    
+    
+    self.photoView.contentMode = UIViewContentModeScaleAspectFill;
+    self.photoView.layer.cornerRadius = self.photoView.frame.size.width / 2;
+    
+    self.photoView.clipsToBounds = YES;
+    
+    [self addSubview:self.photoView];
+    
+    
+    
+    
+    
+
+
     self.shadowView.layer.shouldRasterize = YES;
     
     [self addSubview:self.shadowView];
     [self addSubview:self.photoView];
     
     
-}
-
-
-
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -75,8 +107,31 @@
         
         [self.delegate passTwitterObject:tweetSheetOBJ];
 
+        
     }
 }
 - (IBAction)facebookButtonPressed:(id)sender {
+    
+    
+    NSLog(@"Facebook button pressed");
+    
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] ){
+        
+        SLComposeViewController *facebookSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        NSString *name = [NSString stringWithFormat:@"%@", self.congressman.facebookID ];
+        [facebookSheetOBJ setInitialText:name];
+        //[self presentViewController: facebookSheetOBJ  animated:YES completion:nil];
+        [self.delegate passTwitterObject:facebookSheetOBJ];
+        
+
+
+
+    }
+
+
+    }
+}
+- (IBAction)facebookButtonPressed:(id)sender {
+
 }
 @end

@@ -142,11 +142,9 @@
 		7800F5C6186377C8005D4946 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				AA7A302F1A42550A0043910D /* FBShimmer */,
 				7800F5D2186377C8005D4946 /* Main.storyboard */,
 				AAFABC591A227AB90028214D /* CustomCell.xib */,
-				AA7A302F1A42550A0043910D /* FBShimmer */,
-				AA7A30321A425D060043910D /* Reachability.h */,
-				AA7A30331A425D060043910D /* Reachability.m */,
 				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
 				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
 				7800F5D5186377C8005D4946 /* ViewController.h */,
@@ -163,6 +161,8 @@
 		7800F5C7186377C8005D4946 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA7A30321A425D060043910D /* Reachability.h */,
+				AA7A30331A425D060043910D /* Reachability.m */,
 				7800F5CF186377C8005D4946 /* AppDelegate.h */,
 				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				7800F5C8186377C8005D4946 /* Location-Info.plist */,
@@ -248,7 +248,7 @@
 		7800F5B5186377C8005D4946 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "PJ Vea";
 				TargetAttributes = {
 					7800F5BC186377C8005D4946 = {
@@ -366,7 +366,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -405,7 +404,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -465,7 +463,6 @@
 		7800F5F3186377C9005D4946 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Location.app/Location";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -488,7 +485,6 @@
 		7800F5F4186377C9005D4946 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Location.app/Location";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
