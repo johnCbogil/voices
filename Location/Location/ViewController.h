@@ -27,13 +27,27 @@
 
 
 // Data Properties
+
+@property (strong, nonatomic) NSMutableData *googleResponseData;
 @property (strong, nonatomic) NSMutableData *responseData;
+@property (strong, nonatomic) NSURLConnection *googleConn;
+
+@property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) CLPlacemark *placemark;
+@property (strong, nonatomic) CLLocationManager *manager;
+
+@property (strong, nonatomic) NSMutableArray *cleanedPhones;
+
 @property (strong, nonatomic) NSMutableArray *listOfMembers;
 @property long long totalFileSize;
 @property long long receivedDataBytes;
 
 // Actions
 -(IBAction)buttonPressed:(id)sender;
+
+
+@property (strong, nonatomic) NSMutableArray *sfCongressmen;
+@property (strong, nonatomic) NSMutableArray *googCongressmen;
 
 
 

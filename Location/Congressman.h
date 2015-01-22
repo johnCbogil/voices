@@ -23,4 +23,7 @@
 @property (strong, nonatomic) UIImage *photo;
 
 
+
+
+
 @end
