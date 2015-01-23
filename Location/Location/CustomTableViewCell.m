@@ -13,10 +13,6 @@
 
 
 @synthesize name = _name;
-@synthesize delegate = _delegate;
-
-
-
 
 
 
@@ -48,12 +44,12 @@
         
         [self addSubview:self.photoView];
     });
-                   
-
-
     
- 
-
+    
+    
+    
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -65,104 +61,101 @@
 // Make sure twitter account is logged into settings when testing
 - (IBAction)tweetButtonPressed:(id)sender {
     
+    
+    
+    
     NSLog(@"Tweet button pressed");
     NSLog(@"%@", self.congressman.twitterID);
-//    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
-//    {
-//        SLComposeViewController *tweetSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-//        
-//        NSString *name = [NSString stringWithFormat:@"@%@", self.congressman.twitterID ];
-//        [tweetSheetOBJ setInitialText:name];
-//        
-//        [self.delegate passTwitterObject:tweetSheetOBJ];
-//        
-//    }
     
+    // Check if the user has twitter installed
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
         
+        // Check if the twitterID is null
         if(![self.congressman.twitterID isEqual: [NSNull null]]){
             
+            // If its !null, use the ID to open twitter
             NSString *twitterID = [NSString stringWithFormat:@"twitter://user?screen_name=%@", self.congressman.twitterID ];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterID]];
         }
         else{
-           
+            
+            // If it is null, open twitter with a search of the congressman's name
             NSString *twitterID = [NSString stringWithFormat:@"twitter://search?query=%@%@", self.congressman.firstName, self.congressman.lastName ];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterID]];
         }
     }
+    // If the user doesnt have twitter installed
     else{
-
+        
+        // Check if the twitter id is null
+        if(![self.congressman.twitterID isEqual: [NSNull null]]){
+            
+            // If its !null, use the id in safari
+            NSString *twitterID = [NSString stringWithFormat:@"https://twitter.com/%@", self.congressman.twitterID ];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterID]];
+        }
+        
+        // If its null, perform a twitter search in safari
+        else{
+            
+            NSString *twitterID = [NSString stringWithFormat:@"https://twitter.com/search?q=%@%@%@", self.congressman.firstName, @" ", self.congressman.lastName ];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterID]];
+            
+        }
     }
-
-
+    
+    
+    
+    
+    
 }
 - (IBAction)facebookButtonPressed:(id)sender {
     
+    UIAlertView *noFacebookAcct = [[UIAlertView alloc]initWithTitle:@"No Facebook Account" message:@"This Congressman hasn't added their Facebook account to Google's database. Try tweeting at them or giving them a call instead" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
-    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://graph.facebook.com/%@", self.congressman.facebookID];
-
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
+    
+    // Check if the facebook is null
+    if(![self.congressman.facebookID isEqual: [NSNull null]]){
         
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
+        NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://graph.facebook.com/%@", self.congressman.facebookID];
         
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
+        dispatch_async(dispatch_get_global_queue(0,0), ^{
             
-            // Decode data
-            NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
             
-            // Extract only the officials from the dict
-            NSString *fbid = [decodedData valueForKey:@"id"];
-            NSLog(@"%@", fbid);
-            
-            
-            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
+            if ( data == nil )
+                return;
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
+                // Decode data
+                NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
+                // Extract only the officials from the dict
+                NSString *fbid = [decodedData valueForKey:@"id"];
+                NSLog(@"%@", fbid);
                 
-                NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",fbid];
-                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
-                NSLog(@"%@", facebookID);
-            }
+                // Check if the user has the fb app installed
+                if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
+                    
+                    NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",fbid];
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
+                    NSLog(@"%@", facebookID);
+                    
+                }
+                // If fb app is not installed, use safari
+                else{
+                    
+                    NSString *facebookID = [NSString stringWithFormat:@"https://www.facebook.com/%@",fbid];
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
+                    NSLog(@"%@", facebookID);                }
+            });
         });
-    });
-
-    
-    
-    
-    
-    
-//    
-//    // will be YES if the string only has number characters in it
-//    if([self.congressman.facebookID rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location == NSNotFound){
-//        
-//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
-//            
-//            
-//            
-//            NSString *facebookID = [NSString stringWithFormat:@"fb://profile/%@",self.congressman.facebookID];
-//            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
-//            NSLog(@"%@", facebookID);
-//            
-//        }
-//        
-//        
-//    }
-//    else{
-//        
-//        NSString *facebookID = [NSString stringWithFormat:@"https://m.facebook.com/%@", self.congressman.facebookID];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:facebookID]];
-//
-//        NSLog(@"open webview or safari");
-//    }
-//    
-//    
-//    NSLog(@"Facebook button pressed");
-//    
-//
-//}
+    }
+    else{
+        
+        [noFacebookAcct show];
+    }
 }
 
 @end

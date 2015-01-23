@@ -22,7 +22,8 @@
     self.tableView.hidden = YES;
     
     self.manager = [[CLLocationManager alloc] init];
-    self.googCongressmen = [[NSMutableArray alloc]init];
+    
+    
     
     self.geocoder = [[CLGeocoder alloc] init];
     
@@ -30,8 +31,17 @@
     
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [self.tableView reloadData];
+}
 
--(void)createVoicesLabel{
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [self.tableView reloadData];
+}
+
+- (void)createVoicesLabel{
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     [self.voicesLabel addSubview:shimmeringView];
@@ -39,7 +49,7 @@
     self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
-    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:64]];
+    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:70]];
     
     shimmeringView.contentView = self.voicesLabel;
     shimmeringView.shimmering = YES;
@@ -59,7 +69,7 @@
     
 }
 
--(void)checkForInternetAndLocationServices{
+- (void)checkForInternetAndLocationServices{
     
     // Check for location services
     if([CLLocationManager locationServicesEnabled] &&
@@ -95,7 +105,7 @@
     
 }
 
--(void)locationServicesUnavailable{
+- (void)locationServicesUnavailable{
     
     UIAlertView *noLocationServices = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We weren't able to figure out your location, check to make sure that location services are enabled and try again"delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [noLocationServices show];
@@ -114,7 +124,6 @@
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    cell.delegate = self;
     
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
@@ -169,7 +178,7 @@
 }
 
 // This is a callback method of the PassTwitterObjectProtocol
--(void)passTwitterObject:(UIViewController*)controller{
+- (void)passTwitterObject:(UIViewController*)controller{
     
     [self presentViewController:controller animated:YES completion:nil];
     NSLog(@"Presented twitter view controller");
@@ -197,7 +206,7 @@
 //
 //}
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     [self.manager stopUpdatingLocation];
     
     CLLocation *currentLocation = locations[0];
@@ -210,7 +219,7 @@
 }
 
 
--(void)googleRequest:(CLLocation*)currentLocation{
+- (void)googleRequest:(CLLocation*)currentLocation{
     
     [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         
@@ -236,7 +245,7 @@
 
 #pragma mark - Sunlight Foundation method
 
--(void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
+- (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
     
     // Create the request
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
@@ -273,15 +282,19 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    self.receivedDataBytes += [data length];
     
-    [self.progressView setProgress:0 animated:NO];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Animate on the next run loop so the animation starts from 0.
-        [self.progressView setProgress:0.1 animated:YES];
-        self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
+    if (connection == self.googleConn) {
+        self.receivedDataBytes += [data length];
         
-    });
+        [self.progressView setProgress:0 animated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Animate on the next run loop so the animation starts from 0.
+            [self.progressView setProgress:0.1 animated:YES];
+            self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
+            
+        });
+    }
+
     
     if(connection == self.googleConn){
         
@@ -295,8 +308,6 @@
     
 }
 
-
-
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
     return nil;
 }
@@ -304,6 +315,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     if (connection == self.googleConn) {
+        
+        self.googCongressmen = [[NSMutableArray alloc]init];
 
         // Decode the json data
         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleResponseData options:0 error:nil];
@@ -343,123 +356,54 @@
         }
         
         // Match googCongressmen to sfCongressman
-        [self assignData];
+        [self matchData];
         
  
     }
     else{
         
+        self.listOfMembers = [[NSMutableArray alloc]init];
         
         // Stop updating location bc we only need it once
         [self.manager stopUpdatingLocation];
         
-        // Create Congressmen objects
-        Congressman *sfSenatorA = [[Congressman alloc]init];
-        Congressman *sfSenatorB = [[Congressman alloc]init];
-        Congressman *sfRepresentative = [[Congressman alloc]init];
-        NSLog(@"Created sfCongressmen objects");
-        
         // Decode data
         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
         NSMutableDictionary *results = [decodedData valueForKey:@"results"];
+
         
-        // Parse the data
-        NSMutableArray *firstName = [results valueForKey:@"first_name"];
-        NSMutableArray *lastName = [results valueForKey:@"last_name"];
-        NSMutableArray *party = [results valueForKey:@"party"];
-        
-        NSArray *phoneNumbers = [results valueForKey:@"phone"];
-        
-        NSMutableArray *phone = [[NSMutableArray alloc]init];
-        
-        [phone addObjectsFromArray:phoneNumbers];
-        
-        NSMutableArray *termEnd = [results valueForKey:@"term_end"];
-        NSMutableArray *officeTitle = [results valueForKey:@"title"];
-        NSMutableArray *bioGuide = [results valueForKey:@"bioguide_id"];
-        NSMutableArray *twitterIDs = [results valueForKey:@"twitter_id"];
-        NSMutableArray *facebookIDs = [results valueForKey:@"facebook_id"];
-        NSLog(@"Parsed data from SF request");
-        
-        
-        [self downloadPhotos:bioGuide[0] congressman:sfRepresentative];
-        [self downloadPhotos:bioGuide[1] congressman:sfSenatorA];
-        [self downloadPhotos:bioGuide[2] congressman:sfSenatorB];
-        NSLog(@"Sent all three bioguides to the photoDownload method");
-        
-        [self formatTermDates:termEnd[0] congressman:sfRepresentative];
-        [self formatTermDates:termEnd[1] congressman:sfSenatorA];
-        [self formatTermDates:termEnd[2] congressman:sfSenatorB];
-        NSLog(@"Formatted the dates properly");
-        
-        // Strip the SF phone numbers
-        for(int i=0; i < phone.count; i++){
+        for(int i = 0; i < [results count]; i++){
             
-            NSString *phoneNumber = [phone objectAtIndex:i];
-            phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-"
-                                                                 withString:@""];
-            NSLog(@"%@", phone[i]);
-            [phone replaceObjectAtIndex:i withObject:phoneNumber];
+            Congressman *sfDude = [[Congressman alloc]init];
+            sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
+            [self downloadPhotos:sfDude.bioGuide congressman:sfDude];
+            sfDude.firstName = [results valueForKey:@"first_name"][i];
+            sfDude.lastName = [results valueForKey:@"last_name"][i];
+            sfDude.party = [results valueForKey:@"party"][i];
+            sfDude.termEnd = [results valueForKey:@"term_end"][i];
+            [self formatTermDates:sfDude.termEnd congressman:sfDude];
+            sfDude.officeTitle = [results valueForKey:@"title"][i];
+            sfDude.twitterID = [results valueForKey:@"twitter_id"][i];
+            sfDude.facebookID = [results valueForKey:@"facebook_id"][i];
+            sfDude.phone = [results valueForKey:@"phone"][i];
+            sfDude.phone = [sfDude.phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
             
+            [self.listOfMembers addObject:sfDude];
             
         }
-        
-        
-        // Assign the data to properties
-        sfRepresentative.firstName = firstName[0];
-        sfSenatorA.firstName = firstName[1];
-        sfSenatorB.firstName = firstName[2];
-        
-        sfRepresentative.lastName = lastName[0];
-        sfSenatorA.lastName = lastName[1];
-        sfSenatorB.lastName = lastName[2];
-        
-        sfRepresentative.phone = phone[0];
-        sfSenatorA.phone = phone[1];
-        sfSenatorB.phone = phone[2];
-        
-        sfRepresentative.party = party[0];
-        sfSenatorA.party = party[1];
-        sfSenatorB.party = party[2];
-        
-        sfRepresentative.officeTitle = officeTitle[0];
-        sfSenatorA.officeTitle = officeTitle[1];
-        sfSenatorB.officeTitle = officeTitle[2];
-        
-        sfRepresentative.twitterID = twitterIDs[0];
-        sfSenatorA.twitterID = twitterIDs[1];
-        sfSenatorB.twitterID = twitterIDs[2];
-        
-        sfRepresentative.facebookID = facebookIDs[0];
-        sfSenatorA.facebookID = facebookIDs[1];
-        sfSenatorB.facebookID = facebookIDs[2];
-        NSLog(@"Assigned appropriate attribute to each Congressman");
-        
-        
-        self.sfCongressmen = [[NSMutableArray alloc]init];
-        [self.sfCongressmen addObject:sfRepresentative];
-        [self.sfCongressmen addObject:sfSenatorA];
-        [self.sfCongressmen addObject:sfSenatorB];
-        
-        
-        // Add Congressmen to an array for later use
-        self.listOfMembers = [[NSMutableArray alloc]init];
-        [self.listOfMembers addObject:sfRepresentative];
-        [self.listOfMembers addObject:sfSenatorA];
-        [self.listOfMembers addObject:sfSenatorB];
-        NSLog(@"Added congressmen to listOfMembers");
     }
 }
 
--(void)assignData{
+- (void)matchData{
     
     
-    for (int i=0; i < [self.sfCongressmen count]; i++){
+    for (int i=0; i < [self.listOfMembers count]; i++){
         for(int j = 0; j < [self.googCongressmen count]; j++){
             
-            if([[self.sfCongressmen[i] phone] isEqualToString:[self.googCongressmen[j] phone]] ){
-                [self.sfCongressmen[i] setTwitterID:[self.googCongressmen[j] twitterID]];
-                [self.sfCongressmen[i] setFacebookID:[self.googCongressmen[j] facebookID]];
+            if([[self.listOfMembers[i] phone] isEqualToString:[self.googCongressmen[j] phone]] ){
+                [self.listOfMembers[i] setTwitterID:[self.googCongressmen[j] twitterID]];
+                [self.listOfMembers[i] setFacebookID:[self.googCongressmen[j] facebookID]];
                 
             }
         }
@@ -482,9 +426,6 @@
     cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@" "
                                                                        withString:@""];
     
-    
-    
-    
     return cleanedPhoneNumber;
     
 }
@@ -493,7 +434,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 }
 
--(void)formatTermDates:(NSString*)termDate congressman:(Congressman*)congressman{
+- (void)formatTermDates:(NSString*)termDate congressman:(Congressman*)congressman{
     
     congressman.termEnd = [[NSString alloc]init];
     
@@ -508,7 +449,7 @@
 }
 
 
--(void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
+- (void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
     
     congressman.photo = [[UIImage alloc]init];
     

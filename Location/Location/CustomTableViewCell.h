@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Social/Social.h>
-#import "PassTwitterObject.h"
-#import "Congressman.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ViewController.h"
+#import "Congressman.h"
 
 @interface CustomTableViewCell : UITableViewCell
 
@@ -35,7 +32,6 @@
 
 @property (nonatomic, weak) Congressman *congressman;
 
-@property (nonatomic, retain) id<loadTwitterViewProtocol> delegate;
 
 
 
