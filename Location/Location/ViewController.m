@@ -22,37 +22,78 @@
     self.tableView.hidden = YES;
     
     self.manager = [[CLLocationManager alloc] init];
-    
-    
-    
     self.geocoder = [[CLGeocoder alloc] init];
+    
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     
     [self createVoicesLabel];
     
+    self.photoRequestCounter = 0;
+    
+    
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    
-    [self.tableView reloadData];
-}
 
-- (void)viewDidAppear:(BOOL)animated{
-    
-    [self.tableView reloadData];
-}
 
 - (void)createVoicesLabel{
     
+    // Add parallax effect to voices label
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-8);
+    verticalMotionEffect.maximumRelativeValue = @(8);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-8);
+    horizontalMotionEffect.maximumRelativeValue = @(8);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self.tableView addMotionEffect:group];
+    [self.voicesLabel addMotionEffect:group];
+    [self.buttonLable addMotionEffect:group];
+    [self.aboutLabel addMotionEffect:group];
+    
+    
+    
+    
+    
+    // Add shimmer effect
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
+    FBShimmeringView *shimmeringView2 = [[FBShimmeringView alloc]initWithFrame:self.aboutTitle.bounds];
+    
     [self.voicesLabel addSubview:shimmeringView];
+    [self.aboutTitle addSubview:shimmeringView2];
     
     self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    self.aboutTitle = [[UILabel alloc]initWithFrame:shimmeringView2.bounds];
+    
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
+    self.aboutTitle.textAlignment = NSTextAlignmentCenter;
+    
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
-    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir-Light" size:70]];
+    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:70]];
+    
+    self.aboutTitle.text = NSLocalizedString(@"About", nil);
+    [self.aboutTitle setFont:[UIFont fontWithName:@"Avenir" size:70]];
+    
     
     shimmeringView.contentView = self.voicesLabel;
+    shimmeringView2.contentView = self.aboutTitle;
+    
+    
     shimmeringView.shimmering = YES;
+    shimmeringView2.shimmering = YES;
     
     
 }
@@ -114,6 +155,14 @@
 
 #pragma mark - UITableView Methods
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 3;
@@ -132,7 +181,7 @@
     
     
     // Assign data to cells
-    cell.congressman = [self.listOfMembers objectAtIndex:indexPath.row];
+    cell.congressman = [self.sfCongressmen objectAtIndex:indexPath.row];
     
     
     if (cell.congressman == nil) {
@@ -142,7 +191,8 @@
     }
     else{
         
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+
         cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
         cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
         
@@ -156,6 +206,7 @@
         
         self.tableView.hidden = NO;
         
+        });
         
     }
     
@@ -166,7 +217,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     // Assign phone numbers to cells
-    NSString *phone = [(Congressman*)[self.listOfMembers objectAtIndex:indexPath.row]phone];
+    NSString *phone = [(Congressman*)[self.sfCongressmen objectAtIndex:indexPath.row]phone];
+    
     if(phone != nil) {
         NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
@@ -177,12 +229,7 @@
     
 }
 
-// This is a callback method of the PassTwitterObjectProtocol
-- (void)passTwitterObject:(UIViewController*)controller{
-    
-    [self presentViewController:controller animated:YES completion:nil];
-    NSLog(@"Presented twitter view controller");
-}
+
 
 #pragma mark - CLLocationManagerDelegate Methods
 
@@ -193,30 +240,21 @@
     
 }
 
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-//
-//    [self.manager stopUpdatingLocation];
-//
-//    CLLocation *currentLocation = newLocation;
-//    NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-//
-//    [self sunlightFoundationRequest:currentLocation.coordinate.latitude coordinates:currentLocation.coordinate.longitude];
-//
-//    [self googleRequest:(CLLocation*)currentLocation];
-//
-//}
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     [self.manager stopUpdatingLocation];
     
-    CLLocation *currentLocation = locations[0];
-    NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    self.currentLocation = locations[0];
+    NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
     
-    [self sunlightFoundationRequest:currentLocation.coordinate.latitude coordinates:currentLocation.coordinate.longitude];
+    [self sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
     
-    [self googleRequest:(CLLocation*)currentLocation];
+    [self googleRequest:(CLLocation*)self.currentLocation];
+
+  
     
 }
+
+#pragma mark - API Requests
 
 
 - (void)googleRequest:(CLLocation*)currentLocation{
@@ -228,8 +266,9 @@
         NSString * address = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.administrativeArea, self.placemark.country];
         NSString *formattedAddress = [address stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         
-        //NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress]];
+        
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ]];
+        
         NSLog(@"%@",url);
         
         
@@ -241,12 +280,9 @@
 }
 
 
-
-
-#pragma mark - Sunlight Foundation method
-
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
     
+
     // Create the request
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
@@ -259,8 +295,29 @@
     [getRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
     // Create URL connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
-    conn = nil;
+    self.sfConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+    
+}
+
+- (void)photoRequset:(NSString*)bioGuide{
+    
+    
+    // Create the request
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide]];
+    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    // Specify that the request will be a GET
+    getRequest.HTTPMethod = @"GET";
+    
+    // Set the header fields
+    [getRequest setValue:@"image/jpg" forHTTPHeaderField:@"Accept"];
+    
+    // Create URL connection and fire request
+    self.photoConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
+    
     
 }
 
@@ -268,42 +325,53 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
-    self.totalFileSize = response.expectedContentLength;
     
     if(connection == self.googleConn){
+        self.totalFileSize = response.expectedContentLength;
+        
         
         self.googleResponseData = [[NSMutableData alloc]init];
     }
-    else{
+    else if(connection == self.sfConnection){
         
-        _responseData = [[NSMutableData alloc] init];
+        self.sfResponseData = [[NSMutableData alloc] init];
+        
+    }
+    
+    else if (connection == self.photoConnection){
+        
+        self.photoResponseData = [[NSMutableData alloc]init];
         
     }
 }
 
+
+// UIProgressView updates happen here
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     
-    if (connection == self.googleConn) {
-        self.receivedDataBytes += [data length];
-        
-        [self.progressView setProgress:0 animated:NO];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Animate on the next run loop so the animation starts from 0.
-            [self.progressView setProgress:0.1 animated:YES];
-            self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
-            
-        });
-    }
-
     
     if(connection == self.googleConn){
         
         [self.googleResponseData appendData:data];
         
     }
-    else{
+    else if(connection == self.sfConnection){
         
-        [_responseData appendData:data];
+        [self.sfResponseData appendData:data];
+    }
+    
+    else if(connection == self.photoConnection){
+        
+        self.receivedDataBytes += [data length];
+        
+        [self.progressView setProgress:0 animated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Animate on the next run loop so the animation starts from 0.
+            [self.progressView setProgress:0.0 animated:YES];
+            self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
+            
+        });
+        [self.photoResponseData appendData:data];
     }
     
 }
@@ -317,7 +385,7 @@
     if (connection == self.googleConn) {
         
         self.googCongressmen = [[NSMutableArray alloc]init];
-
+        
         // Decode the json data
         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleResponseData options:0 error:nil];
         
@@ -344,9 +412,10 @@
                     
                     // Assign the twitter handle
                     googDude.twitterID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
-                    
-                    // Repeat for facebook
-                } else if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Facebook"]) {
+                }
+                
+                // Repeat for facebook
+                else if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Facebook"]) {
                     googDude.facebookID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
                 }
                 
@@ -358,52 +427,89 @@
         // Match googCongressmen to sfCongressman
         [self matchData];
         
- 
-    }
-    else{
         
-        self.listOfMembers = [[NSMutableArray alloc]init];
+    }
+    else if(connection == self.sfConnection){
+        
+        
+        self.sfCongressmen = [[NSMutableArray alloc]init];
         
         // Stop updating location bc we only need it once
         [self.manager stopUpdatingLocation];
         
         // Decode data
-        NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
+        NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.sfResponseData options:0 error:nil];
         NSMutableDictionary *results = [decodedData valueForKey:@"results"];
-
+        
+        
+        self.congressmenPhotos = [[NSMutableArray alloc]init];
+        self.bioGuides = [[NSMutableArray alloc]init];
+        
         
         for(int i = 0; i < [results count]; i++){
             
-            Congressman *sfDude = [[Congressman alloc]init];
-            sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
-            [self downloadPhotos:sfDude.bioGuide congressman:sfDude];
-            sfDude.firstName = [results valueForKey:@"first_name"][i];
-            sfDude.lastName = [results valueForKey:@"last_name"][i];
-            sfDude.party = [results valueForKey:@"party"][i];
-            sfDude.termEnd = [results valueForKey:@"term_end"][i];
-            [self formatTermDates:sfDude.termEnd congressman:sfDude];
-            sfDude.officeTitle = [results valueForKey:@"title"][i];
-            sfDude.twitterID = [results valueForKey:@"twitter_id"][i];
-            sfDude.facebookID = [results valueForKey:@"facebook_id"][i];
-            sfDude.phone = [results valueForKey:@"phone"][i];
-            sfDude.phone = [sfDude.phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
-
+            self.sfDude = [[Congressman alloc]init];
+            self.sfDude.firstName = [results valueForKey:@"first_name"][i];
+            self.sfDude.lastName = [results valueForKey:@"last_name"][i];
+            self.sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
+            [self.bioGuides addObject:self.sfDude.bioGuide];
+            //[self downloadPhotos:self.sfDude.bioGuide congressman:self.sfDude];
+            self.sfDude.party = [results valueForKey:@"party"][i];
+            self.sfDude.termEnd = [results valueForKey:@"term_end"][i];
+            [self formatTermDates:self.sfDude.termEnd congressman:self.sfDude];
+            self.sfDude.officeTitle = [results valueForKey:@"title"][i];
+            self.sfDude.twitterID = [results valueForKey:@"twitter_id"][i];
+            self.sfDude.facebookID = [results valueForKey:@"facebook_id"][i];
+            self.sfDude.phone = [results valueForKey:@"phone"][i];
+            self.sfDude.phone = [self.sfDude.phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
             
-            [self.listOfMembers addObject:sfDude];
+            
+            [self.sfCongressmen addObject:self.sfDude];
+            
+        }
+        [self photoRequset:self.bioGuides[0]];
+        
+        
+    }
+    else if (connection == self.photoConnection){
+        self.photoRequestCounter++;
+        [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
+        
+        if (self.photoRequestCounter == 1) {
+            [self photoRequset:self.bioGuides[1]];
+            
+        }
+        else if (self.photoRequestCounter == 2){
+            [self photoRequset:self.bioGuides[2]];
+            
+        }
+        
+        if([self.sfCongressmen count] == 3 && [self.congressmenPhotos count] == 3){
+            
+            for(int i=0; i < [self.sfCongressmen count]; i++){
+                
+                [(Congressman *)[self.sfCongressmen objectAtIndex:i]setPhoto:self.congressmenPhotos[i]];
+                
+            }
+            self.photoRequestCounter = 0;
             
         }
     }
+    [self.tableView reloadData];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+    
 }
 
 - (void)matchData{
     
     
-    for (int i=0; i < [self.listOfMembers count]; i++){
+    for (int i=0; i < [self.sfCongressmen count]; i++){
         for(int j = 0; j < [self.googCongressmen count]; j++){
             
-            if([[self.listOfMembers[i] phone] isEqualToString:[self.googCongressmen[j] phone]] ){
-                [self.listOfMembers[i] setTwitterID:[self.googCongressmen[j] twitterID]];
-                [self.listOfMembers[i] setFacebookID:[self.googCongressmen[j] facebookID]];
+            if([[self.sfCongressmen[i] phone] isEqualToString:[self.googCongressmen[j] phone]] ){
+                [self.sfCongressmen[i] setTwitterID:[self.googCongressmen[j] twitterID]];
+                [self.sfCongressmen[i] setFacebookID:[self.googCongressmen[j] facebookID]];
                 
             }
         }
@@ -449,26 +555,26 @@
 }
 
 
-- (void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
-    
-    congressman.photo = [[UIImage alloc]init];
-    
-    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
-    
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
-        
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-        
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            UIImage *image = [UIImage imageWithData:data];
-            congressman.photo = image;
-            NSLog(@"Assigned photo to congressman");
-            [self.tableView reloadData];
-        });
-    });
-}
+//- (void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
+//
+//    congressman.photo = [[UIImage alloc]init];
+//
+//    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
+//
+//    dispatch_async(dispatch_get_global_queue(0,0), ^{
+//
+//        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
+//
+//        if ( data == nil )
+//            return;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//
+//            UIImage *image = [UIImage imageWithData:data];
+//            congressman.photo = image;
+//            NSLog(@"Assigned photo to congressman");
+//            [self.tableView reloadData];
+//        });
+//    });
+//}
 
 @end

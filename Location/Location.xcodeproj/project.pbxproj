@@ -28,6 +28,7 @@
 		AA7A30341A425D060043910D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A30331A425D060043910D /* Reachability.m */; };
 		AA9D46441A3F951300FC4815 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D46411A3F951300FC4815 /* FBShimmeringLayer.m */; };
 		AA9D46451A3F951300FC4815 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D46431A3F951300FC4815 /* FBShimmeringView.m */; };
+		AAB5DF761A72FCF70079BD3E /* staticmap.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB5DF751A72FCF70079BD3E /* staticmap.png */; };
 		AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFABC591A227AB90028214D /* CustomCell.xib */; };
 		AAFABC5D1A227C000028214D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFABC5C1A227C000028214D /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		AA9D46411A3F951300FC4815 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
 		AA9D46421A3F951300FC4815 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
 		AA9D46431A3F951300FC4815 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		AAB5DF751A72FCF70079BD3E /* staticmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = staticmap.png; sourceTree = "<group>"; };
 		AAFABC591A227AB90028214D /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AAFABC5B1A227C000028214D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		AAFABC5C1A227C000028214D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				7800F5E5186377C9005D4946 /* LocationTests */,
 				7800F5BF186377C8005D4946 /* Frameworks */,
 				7800F5BE186377C8005D4946 /* Products */,
+				AAB5DF751A72FCF70079BD3E /* staticmap.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +292,7 @@
 				7800F5D9186377C8005D4946 /* Images.xcassets in Resources */,
 				7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */,
 				AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */,
+				AAB5DF761A72FCF70079BD3E /* staticmap.png in Resources */,
 				7800F5D4186377C8005D4946 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,10 +446,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Location/Location-Prefix.pch";
 				INFOPLIST_FILE = "Location/Location-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -456,10 +462,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Location/Location-Prefix.pch";
 				INFOPLIST_FILE = "Location/Location-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

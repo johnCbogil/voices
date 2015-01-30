@@ -1,4 +1,4 @@
-//
+
 //  CustomTableViewCell.m
 //  Location
 //
@@ -32,7 +32,7 @@
         self.shadowView.layer.shouldRasterize = YES;
         
         
-        [self addSubview:self.shadowView];
+        [self.contentView addSubview:self.shadowView];
         
         self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
         
@@ -42,26 +42,17 @@
         
         self.photoView.clipsToBounds = YES;
         
-        [self addSubview:self.photoView];
+        [self.contentView addSubview:self.photoView];
     });
-    
-    
-    
-    
-    
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
 }
 
 
 // Make sure twitter account is logged into settings when testing
 - (IBAction)tweetButtonPressed:(id)sender {
-    
-    
     
     
     NSLog(@"Tweet button pressed");
@@ -126,12 +117,13 @@
             
             if ( data == nil )
                 return;
-            dispatch_async(dispatch_get_main_queue(), ^{
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 
                 // Decode data
                 NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
-                // Extract only the officials from the dict
+                // Extract only the ids from the dict
                 NSString *fbid = [decodedData valueForKey:@"id"];
                 NSLog(@"%@", fbid);
                 

@@ -2,8 +2,8 @@
 //  CustomTableViewCell.h
 //  Location
 //
-//  Created by Aditya Narayan on 11/23/14.
-//  Copyright (c) 2014 PJ Vea. All rights reserved.
+//  Created by John Bogil on 11/23/14.
+//  Copyright (c) 2015 John Bogil. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
