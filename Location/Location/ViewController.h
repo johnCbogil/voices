@@ -52,6 +52,8 @@
 
 @property (strong, nonatomic) Congressman *sfDude;
 
+@property (strong, nonatomic) NSMutableDictionary *photoCache;
+
 
 
 

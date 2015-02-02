@@ -30,6 +30,9 @@
     
     self.photoRequestCounter = 0;
     
+    self.photoCache = [[NSMutableDictionary alloc]init];
+    
+    
     
 }
 
@@ -453,7 +456,6 @@
             self.sfDude.lastName = [results valueForKey:@"last_name"][i];
             self.sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
             [self.bioGuides addObject:self.sfDude.bioGuide];
-            //[self downloadPhotos:self.sfDude.bioGuide congressman:self.sfDude];
             self.sfDude.party = [results valueForKey:@"party"][i];
             self.sfDude.termEnd = [results valueForKey:@"term_end"][i];
             [self formatTermDates:self.sfDude.termEnd congressman:self.sfDude];
@@ -489,6 +491,11 @@
             for(int i=0; i < [self.sfCongressmen count]; i++){
                 
                 [(Congressman *)[self.sfCongressmen objectAtIndex:i]setPhoto:self.congressmenPhotos[i]];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+                NSString *photoTitle = [NSString stringWithFormat:@"Photo %d", i];
+                [self.photoCache setObject:self.congressmenPhotos[i] forKey:photoTitle];
+                
                 
             }
             self.photoRequestCounter = 0;
@@ -496,7 +503,6 @@
         }
     }
     [self.tableView reloadData];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
 
     
