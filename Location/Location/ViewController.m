@@ -195,20 +195,20 @@
     else{
         
         dispatch_async(dispatch_get_main_queue(), ^{
-
-        cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
-        cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
-        
-        cell.photoView.image = cell.congressman.photo;
-        
-        
-        [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
-        [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
-        
-        NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
-        
-        self.tableView.hidden = NO;
-        
+            
+            cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
+            cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
+            
+            cell.photoView.image = cell.congressman.photo;
+            
+            
+            [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
+            [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
+            
+            NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
+            
+            self.tableView.hidden = NO;
+            
         });
         
     }
@@ -252,8 +252,8 @@
     [self sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
     
     [self googleRequest:(CLLocation*)self.currentLocation];
-
-  
+    
+    
     
 }
 
@@ -285,7 +285,7 @@
 
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
     
-
+    
     // Create the request
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
@@ -301,7 +301,7 @@
     self.sfConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
+    
     
 }
 
@@ -469,7 +469,9 @@
             [self.sfCongressmen addObject:self.sfDude];
             
         }
+        
         [self photoRequset:self.bioGuides[0]];
+        
         
         
     }
@@ -478,33 +480,29 @@
         [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
         
         if (self.photoRequestCounter == 1) {
+            
+            [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
             [self photoRequset:self.bioGuides[1]];
             
         }
         else if (self.photoRequestCounter == 2){
+            
+            [[self.sfCongressmen objectAtIndex:1]setPhoto:self.congressmenPhotos[1]];
             [self photoRequset:self.bioGuides[2]];
             
         }
         
         if([self.sfCongressmen count] == 3 && [self.congressmenPhotos count] == 3){
             
-            for(int i=0; i < [self.sfCongressmen count]; i++){
-                
-                [(Congressman *)[self.sfCongressmen objectAtIndex:i]setPhoto:self.congressmenPhotos[i]];
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
-                NSString *photoTitle = [NSString stringWithFormat:@"Photo %d", i];
-                [self.photoCache setObject:self.congressmenPhotos[i] forKey:photoTitle];
-                
-                
-            }
+            [[self.sfCongressmen objectAtIndex:2]setPhoto:self.congressmenPhotos[2]];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.photoRequestCounter = 0;
             
         }
     }
     [self.tableView reloadData];
-
-
+    
+    
     
 }
 
