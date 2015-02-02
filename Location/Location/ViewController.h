@@ -14,7 +14,7 @@
 #import "Reachability.h"
 
 
-@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
+@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
 
 
 // UI Objects

@@ -498,6 +498,7 @@
     [self.tableView reloadData];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
+
     
 }
 
@@ -554,27 +555,5 @@
     
 }
 
-
-//- (void)downloadPhotos:(NSString*)bioGuide congressman:(Congressman*)congressman{
-//
-//    congressman.photo = [[UIImage alloc]init];
-//
-//    NSString *urlWithBioGuide = [NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide];
-//
-//    dispatch_async(dispatch_get_global_queue(0,0), ^{
-//
-//        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlWithBioGuide]];
-//
-//        if ( data == nil )
-//            return;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//
-//            UIImage *image = [UIImage imageWithData:data];
-//            congressman.photo = image;
-//            NSLog(@"Assigned photo to congressman");
-//            [self.tableView reloadData];
-//        });
-//    });
-//}
 
 @end
