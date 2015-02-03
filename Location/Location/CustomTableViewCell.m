@@ -150,4 +150,18 @@
     }
 }
 
+- (IBAction)callButtonPressed:(id)sender {
+    
+    NSString *phone = self.congressman.phone;
+    
+    if(phone != nil) {
+        NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+        NSLog(@"Dialed %@",phoneNumber);
+    }
+    
+    
+}
+
+
 @end

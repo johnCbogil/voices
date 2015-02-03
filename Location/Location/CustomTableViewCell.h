@@ -16,11 +16,13 @@
 // Actions
 - (IBAction)tweetButtonPressed:(id)sender;
 - (IBAction)facebookButtonPressed:(id)sender;
+- (IBAction)callButtonPressed:(id)sender;
 
 
 // UI Objects
 @property (strong, nonatomic) IBOutlet UIButton *tweetButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) IBOutlet UIButton *callButton;
 @property (nonatomic, strong) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *detail;
 @property (strong, nonatomic)  UIImageView *photoView;

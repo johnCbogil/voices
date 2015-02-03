@@ -30,9 +30,6 @@
     
     self.photoRequestCounter = 0;
     
-    self.photoCache = [[NSMutableDictionary alloc]init];
-    
-    
     
 }
 
@@ -204,6 +201,8 @@
             
             [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
             [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
+            [cell.callButton setTitle:@"Call" forState:UIControlStateNormal];
+            
             
             NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
             
@@ -220,13 +219,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     // Assign phone numbers to cells
-    NSString *phone = [(Congressman*)[self.sfCongressmen objectAtIndex:indexPath.row]phone];
-    
-    if(phone != nil) {
-        NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-        NSLog(@"Dialed %@",phoneNumber);
-    }
+//    NSString *phone = [(Congressman*)[self.sfCongressmen objectAtIndex:indexPath.row]phone];
+//    
+//    if(phone != nil) {
+//        NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+//        NSLog(@"Dialed %@",phoneNumber);
+//    }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -305,7 +304,7 @@
     
 }
 
-- (void)photoRequset:(NSString*)bioGuide{
+- (void)photoRequest:(NSString*)bioGuide{
     
     
     // Create the request
@@ -434,7 +433,6 @@
     }
     else if(connection == self.sfConnection){
         
-        
         self.sfCongressmen = [[NSMutableArray alloc]init];
         
         // Stop updating location bc we only need it once
@@ -470,40 +468,53 @@
             
         }
         
-        [self photoRequset:self.bioGuides[0]];
-        
-        
+        // Fire the first photo request
+        [self photoRequest:self.bioGuides[0]];
         
     }
     else if (connection == self.photoConnection){
+        
+        // Increase the counter by 1
         self.photoRequestCounter++;
+        
+        // Add the photo to an array
         [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
         
         if (self.photoRequestCounter == 1) {
             
+            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
-            [self photoRequset:self.bioGuides[1]];
+            
+            // Fire the next request
+            [self photoRequest:self.bioGuides[1]];
             
         }
         else if (self.photoRequestCounter == 2){
             
+            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:1]setPhoto:self.congressmenPhotos[1]];
-            [self photoRequset:self.bioGuides[2]];
+            
+            // Fire the next reqeust
+            [self photoRequest:self.bioGuides[2]];
             
         }
         
         if([self.sfCongressmen count] == 3 && [self.congressmenPhotos count] == 3){
             
+            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:2]setPhoto:self.congressmenPhotos[2]];
+            
+            // Turn off the networkActivityIndicator
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            // Reset the counter
             self.photoRequestCounter = 0;
             
         }
     }
     [self.tableView reloadData];
     
-    
-    
+   
 }
 
 - (void)matchData{
