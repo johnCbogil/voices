@@ -15,6 +15,8 @@
     
     UIViewController *firstVC;
     UIViewController *secondVC;
+    UIViewController *thirdVC;
+    UIViewController *fourthVC;
 }
 @end
 
@@ -30,7 +32,10 @@
     
     firstVC = [self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"];
     secondVC = [self.storyboard instantiateViewControllerWithIdentifier:@"secondViewController"];
-    
+    thirdVC = [self.storyboard instantiateViewControllerWithIdentifier:@"thirdViewController"];
+    fourthVC = [self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"];
+
+    // This sets the starting VC
     viewControllers = @[firstVC];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -49,15 +54,44 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    
     if (self.pageViewController.viewControllers[0] == secondVC)
+    {
         return firstVC;
-    return nil;
+    }
+    else if (self.pageViewController.viewControllers[0] == thirdVC){
+        
+        return secondVC;
+    }
+    else if (self.pageViewController.viewControllers[0] == fourthVC){
+        return thirdVC;
+    }
+
+
+return nil;
 }
+
+    
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    if (self.pageViewController.viewControllers[0] == firstVC)
+    if (self.pageViewController.viewControllers[0] == firstVC){
+        
         return secondVC;
+
+    }
+    else if (self.pageViewController.viewControllers[0] == secondVC){
+        return thirdVC;
+    }
+    else if (self.pageViewController.viewControllers[0] == thirdVC){
+        return fourthVC;
+    }
+    else if (self.pageViewController.viewControllers[0] == fourthVC){
+        return firstVC;
+    }
+
+
+    
     return nil;
 }
 

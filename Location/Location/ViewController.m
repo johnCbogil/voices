@@ -64,7 +64,6 @@
     [self.tableView addMotionEffect:group];
     [self.voicesLabel addMotionEffect:group];
     [self.buttonLable addMotionEffect:group];
-    [self.aboutLabel addMotionEffect:group];
     
     
     
@@ -72,30 +71,23 @@
     
     // Add shimmer effect
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
-    FBShimmeringView *shimmeringView2 = [[FBShimmeringView alloc]initWithFrame:self.aboutTitle.bounds];
     
     [self.voicesLabel addSubview:shimmeringView];
-    [self.aboutTitle addSubview:shimmeringView2];
     
     self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
-    self.aboutTitle = [[UILabel alloc]initWithFrame:shimmeringView2.bounds];
     
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
-    self.aboutTitle.textAlignment = NSTextAlignmentCenter;
     
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
     [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:70]];
     
-    self.aboutTitle.text = NSLocalizedString(@"About", nil);
-    [self.aboutTitle setFont:[UIFont fontWithName:@"Avenir" size:70]];
+
     
     
     shimmeringView.contentView = self.voicesLabel;
-    shimmeringView2.contentView = self.aboutTitle;
     
     
     shimmeringView.shimmering = YES;
-    shimmeringView2.shimmering = YES;
     
     
 }
