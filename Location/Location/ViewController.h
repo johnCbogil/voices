@@ -11,6 +11,7 @@
 #import "CustomTableViewCell.h"
 #import "FBShimmering.h"
 #import "FBShimmeringView.h"
+#import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
 
 

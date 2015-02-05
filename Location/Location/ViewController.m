@@ -28,6 +28,8 @@
     
     [self createVoicesLabel];
     
+
+    
     self.photoRequestCounter = 0;
     
     
