@@ -167,7 +167,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return [self.sfCongressmen count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -487,9 +487,17 @@
             // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
             
-            // Fire the next request
-            [self photoRequest:self.bioGuides[1]];
-            
+            // Washington, D.C. only has one representative
+            if([self.sfCongressmen count] > 1){
+                
+                // Fire the next request
+                [self photoRequest:self.bioGuides[1]];
+                
+            }
+            else{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+            }
         }
         else if (self.photoRequestCounter == 2){
             
@@ -515,8 +523,6 @@
         }
     }
     [self.tableView reloadData];
-    
-   
 }
 
 - (void)matchData{
