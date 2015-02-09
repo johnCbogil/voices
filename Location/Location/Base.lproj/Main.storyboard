@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -10,8 +10,8 @@
             <objects>
                 <viewController storyboardIdentifier="RootViewController" id="BdR-Kp-uhw" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="arb-4F-VnE"/>
-                        <viewControllerLayoutGuide type="bottom" id="CUs-US-EOc"/>
+                        <viewControllerLayoutGuide type="top" id="5tn-cM-IQA"/>
+                        <viewControllerLayoutGuide type="bottom" id="dhA-EF-Kv0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BfM-Ps-0Hb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -28,28 +28,13 @@
             <objects>
                 <viewController storyboardIdentifier="firstViewController" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t8L-Tt-pbN"/>
-                        <viewControllerLayoutGuide type="bottom" id="5ek-2z-MMc"/>
+                        <viewControllerLayoutGuide type="top" id="zbP-NO-P59"/>
+                        <viewControllerLayoutGuide type="bottom" id="xo3-30-aWn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhP-Pp-C3D">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="sOj-hF-2xL"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg">
-                                <rect key="frame" x="98" y="345" width="206" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="IkA-hr-9i2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,59 +45,66 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="v5s-1p-ffa"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
-                                <rect key="frame" x="182" y="427" width="122" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="3jY-jJ-UvR"/>
-                                    <constraint firstAttribute="height" constant="21" id="8uc-xB-sRj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ksS-Ur-KOz">
-                                <rect key="frame" x="0.0" y="564" width="320" height="2"/>
-                            </progressView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhP-Pp-C3D">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="sOj-hF-2xL"/>
+                                </items>
+                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-oh-jR2">
-                                <rect key="frame" x="4" y="505" width="312" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="ttO-k1-DlE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="27"/>
+                                <rect key="frame" x="43" y="508" width="235" height="40"/>
+                                <color key="backgroundColor" red="0.25490196078431371" green="0.37254901960784315" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Who Represents You?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d8M-po-Ocm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg">
+                                <rect key="frame" x="98" y="345" width="206" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Reo-Ou-FIy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
+                                <rect key="frame" x="182" y="427" width="122" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9hb-Nm-7QD"/>
+                                    <constraint firstAttribute="width" constant="122" id="uWV-tf-flb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="2EJ-S8-J3X"/>
-                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="top" secondItem="HWI-Nc-5EP" secondAttribute="top" id="5XP-TS-cbb"/>
-                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="leading" secondItem="ksS-Ur-KOz" secondAttribute="leading" id="7Eq-UR-9x3"/>
-                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="top" secondItem="t8L-Tt-pbN" secondAttribute="bottom" id="814-QT-09b"/>
-                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="trailing" secondItem="HWI-Nc-5EP" secondAttribute="trailing" id="8Eg-jf-W22"/>
-                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="82" id="ByQ-2i-L0q"/>
-                            <constraint firstItem="5ek-2z-MMc" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="bottom" constant="8" symbolic="YES" id="GPC-LH-JFr"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="centerX" secondItem="ksS-Ur-KOz" secondAttribute="centerX" id="MI3-df-aPm"/>
-                            <constraint firstItem="5ek-2z-MMc" firstAttribute="top" secondItem="ksS-Ur-KOz" secondAttribute="bottom" constant="2" id="MbH-rl-NOt"/>
-                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="trailing" secondItem="6DS-a3-MYA" secondAttribute="trailing" id="OGk-HK-RP9"/>
-                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="UJ7-Xd-TM6"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="6DS-a3-MYA" secondAttribute="bottom" constant="57" id="WmM-zj-Ga9"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="bottom" secondItem="5ek-2z-MMc" secondAttribute="top" id="Wsf-ZD-vPH"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="GhP-Pp-C3D" secondAttribute="leading" id="brU-Sa-gaA"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="top" secondItem="Vgz-zJ-tBg" secondAttribute="bottom" constant="2" id="coe-5q-4qI"/>
-                            <constraint firstItem="ksS-Ur-KOz" firstAttribute="trailing" secondItem="GhP-Pp-C3D" secondAttribute="trailing" id="csO-5b-eMM"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-12" id="enk-zp-8YG"/>
-                            <constraint firstAttribute="trailing" secondItem="ksS-Ur-KOz" secondAttribute="trailing" id="qvr-uq-G1F"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="27" id="0hI-jX-pxd"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0zp-Vp-tkb"/>
+                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="82" id="1yw-H4-QNe"/>
+                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="centerX" secondItem="1gE-oh-jR2" secondAttribute="centerX" id="8tf-s4-3hj"/>
+                            <constraint firstItem="6DS-a3-MYA" firstAttribute="top" secondItem="Vgz-zJ-tBg" secondAttribute="bottom" constant="2" id="JRa-Ob-63w"/>
+                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="KPh-yp-UbX"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="trailing" secondItem="GhP-Pp-C3D" secondAttribute="trailing" id="VjH-Kw-usa"/>
+                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="Vgz-zJ-tBg" secondAttribute="trailing" id="ZL3-h9-r5s"/>
+                            <constraint firstAttribute="trailing" secondItem="GhP-Pp-C3D" secondAttribute="trailing" id="bDq-CT-Dp9"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="GhP-Pp-C3D" secondAttribute="leading" id="c45-GN-RZo"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="bottom" secondItem="xo3-30-aWn" secondAttribute="top" id="gqW-2T-KSl"/>
+                            <constraint firstAttribute="bottom" secondItem="1gE-oh-jR2" secondAttribute="bottom" constant="20" symbolic="YES" id="hQl-7E-kC4"/>
+                            <constraint firstItem="GhP-Pp-C3D" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" id="lS9-q0-y09"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="6DS-a3-MYA" secondAttribute="bottom" constant="60" id="m5E-fQ-1VY"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="GhP-Pp-C3D" secondAttribute="top" id="xfT-gL-mTt"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aboutLabel" destination="6DS-a3-MYA" id="eeE-d7-YWC"/>
                         <outlet property="buttonLable" destination="1gE-oh-jR2" id="ERu-3B-bpL"/>
                         <outlet property="navigationBar" destination="GhP-Pp-C3D" id="6sX-HZ-Azp"/>
-                        <outlet property="progressView" destination="ksS-Ur-KOz" id="nvk-wj-9k5"/>
                         <outlet property="tableView" destination="HWI-Nc-5EP" id="MKQ-yN-bp9"/>
                         <outlet property="voicesLabel" destination="Vgz-zJ-tBg" id="EyP-U5-8Cc"/>
                     </connections>
@@ -124,33 +116,31 @@
         <!--View Controller-->
         <scene sceneID="Omw-G0-Lf7">
             <objects>
-                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xry-8v-bE4"/>
-                        <viewControllerLayoutGuide type="bottom" id="wMO-2S-aXl"/>
+                        <viewControllerLayoutGuide type="top" id="xin-9S-GsV"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Ui-q7-KG0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IUK-iQ-rmN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZm-nh-mZ1">
-                                <rect key="frame" x="16" y="20" width="199" height="79"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="70"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Voices?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYl-RE-DG7">
-                                <rect key="frame" x="65" y="248" width="191" height="71"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="27"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" text="Voices is a tool that helps make sure your Congressmen hear you" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIf-6z-0j8">
+                                <rect key="frame" x="16" y="220" width="288" height="156"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.19215686274509805" green="0.27843137254901962" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Voices?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doW-2s-H6t">
+                                <rect key="frame" x="16" y="157" width="288" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="40"/>
+                                <color key="textColor" red="0.19607843137254902" green="0.27843137254901962" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="aboutTitle" destination="uZm-nh-mZ1" id="4si-7h-ey0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGr-eq-Ntu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,21 +149,29 @@
         <!--View Controller-->
         <scene sceneID="mP9-t5-MOS">
             <objects>
-                <viewController storyboardIdentifier="thirdViewController" id="x5F-zk-kFb" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="thirdViewController" id="x5F-zk-kFb" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Emv-5H-YfJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="vEU-di-rlb"/>
+                        <viewControllerLayoutGuide type="top" id="iRw-Z3-Vv4"/>
+                        <viewControllerLayoutGuide type="bottom" id="a6o-vy-N5T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EVd-iY-4RS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voices is inspired by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huj-9B-AIo">
-                                <rect key="frame" x="38" y="248" width="244" height="71"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="27"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="But Congress only listens to rich lobbyists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
+                                <rect key="frame" x="0.0" y="148" width="322" height="88"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
+                                <color key="textColor" red="0.14509803921568629" green="0.19215686274509805" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
+                                <rect key="frame" x="40" y="244" width="240" height="222"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Not true! Did you know that on a single day in 2012, we generated more than 8 million phone calls to Congress to effectively kill legislation that would have "broken" the internet </string>
+                                <color key="textColor" red="0.19215686274509805" green="0.27450980392156865" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -185,19 +183,33 @@
         <!--View Controller-->
         <scene sceneID="4lT-X1-W21">
             <objects>
-                <viewController storyboardIdentifier="fourthViewController" id="NLV-i5-WYK" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fourthViewController" id="NLV-i5-WYK" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4eF-f5-C4K"/>
-                        <viewControllerLayoutGuide type="bottom" id="01Q-gH-LwB"/>
+                        <viewControllerLayoutGuide type="top" id="SdQ-gD-kBo"/>
+                        <viewControllerLayoutGuide type="bottom" id="6yT-Aj-Nla"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slv-Fk-FjU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What do I say?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sU-oW-s6f">
-                                <rect key="frame" x="66" y="248" width="189" height="71"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="27"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Its easy! Checkout our example script:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-Oh-tGL">
+                                <rect key="frame" x="40" y="248" width="240" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.14509803921568629" green="0.19215686274509805" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="&quot;Hello, my name is [your name] and I [support/oppose] [something you care about] and that I will be voting this November&quot;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-Q6-deL">
+                                <rect key="frame" x="40" y="304" width="240" height="163"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.17254901960784313" green="0.21568627450980393" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OK, I'll talk to my Congressman! But what do I say?!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAV-qs-vgC">
+                                <rect key="frame" x="16" y="136" width="288" height="104"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="25"/>
+                                <color key="textColor" red="0.10588235294117647" green="0.11372549019607843" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

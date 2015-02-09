@@ -19,6 +19,15 @@
 - (void)awakeFromNib {
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.tweetButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.facebookButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.callButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+
+        
+        
+        
+        
         self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
         [self.shadowView setBackgroundColor:[UIColor whiteColor]];
         self.shadowView.layer.cornerRadius = self.shadowView.frame.size.width / 2;
@@ -28,6 +37,8 @@
         self.shadowView.layer.shadowOffset = CGSizeMake(3, -3);
         self.shadowView.layer.shadowOpacity = .2;
         self.shadowView.layer.shadowRadius = 3;
+        
+
         
         self.shadowView.layer.shouldRasterize = YES;
         

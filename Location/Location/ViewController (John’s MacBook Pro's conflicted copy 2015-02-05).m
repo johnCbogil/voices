@@ -17,35 +17,21 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-
     
     self.navigationBar.hidden = YES;
     self.tableView.hidden = YES;
     
     self.manager = [[CLLocationManager alloc] init];
-    self.manager.distanceFilter = 200;
     self.geocoder = [[CLGeocoder alloc] init];
     
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     
     [self createVoicesLabel];
     
-    self.buttonLable.layer.cornerRadius = 5;
-
-
-    
     self.photoRequestCounter = 0;
     
     
-    
-
-
-    
-
-    
-    
 }
-
 
 
 
@@ -76,7 +62,7 @@
     [self.tableView addMotionEffect:group];
     [self.voicesLabel addMotionEffect:group];
     [self.buttonLable addMotionEffect:group];
-
+    [self.aboutLabel addMotionEffect:group];
     
     
     
@@ -84,27 +70,30 @@
     
     // Add shimmer effect
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
+    FBShimmeringView *shimmeringView2 = [[FBShimmeringView alloc]initWithFrame:self.aboutTitle.bounds];
     
     [self.voicesLabel addSubview:shimmeringView];
+    [self.aboutTitle addSubview:shimmeringView2];
     
     self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    self.aboutTitle = [[UILabel alloc]initWithFrame:shimmeringView2.bounds];
     
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
-    
-//    self.voicesLabel.textColor = [UIColor colorWithRed:44.0 green:62.0/255.0 blue:80.0 alpha:1.0];
-//    self.aboutLabel.textColor = [UIColor colorWithRed:44.0 green:62.0/255.0 blue:80.0 alpha:1.0];
-
+    self.aboutTitle.textAlignment = NSTextAlignmentCenter;
     
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
     [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:70]];
     
-
+    self.aboutTitle.text = NSLocalizedString(@"What is Voices?", nil);
+    [self.aboutTitle setFont:[UIFont fontWithName:@"Avenir" size:40]];
     
     
     shimmeringView.contentView = self.voicesLabel;
+    shimmeringView2.contentView = self.aboutTitle;
     
     
     shimmeringView.shimmering = YES;
+    shimmeringView2.shimmering = YES;
     
     
 }
@@ -115,14 +104,11 @@
 
 - (IBAction)buttonPressed:(id)sender{
     
-
     [self.manager requestWhenInUseAuthorization];
     
     [self checkForInternetAndLocationServices];
     
 }
-
-
 
 - (void)checkForInternetAndLocationServices{
     
@@ -148,6 +134,16 @@
         [noInternetConnection show];
         
     }
+    
+    if(self.progressView.progress == 0){
+        
+        [self.progressView setProgress:0 animated:YES];
+    }
+    else{
+        [self.progressView setProgress:0 animated:NO];
+    }
+    
+    
 }
 
 - (void)locationServicesUnavailable{
@@ -159,7 +155,6 @@
 
 #pragma mark - UITableView Methods
 
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
@@ -170,7 +165,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [self.sfCongressmen count];
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -368,7 +363,16 @@
     }
     
     else if(connection == self.photoConnection){
-
+        
+        self.receivedDataBytes += [data length];
+        
+        [self.progressView setProgress:0 animated:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Animate on the next run loop so the animation starts from 0.
+            [self.progressView setProgress:0.0 animated:YES];
+            self.progressView.progress = self.receivedDataBytes/ (float)self.totalFileSize;
+            
+        });
         [self.photoResponseData appendData:data];
     }
     
@@ -464,7 +468,6 @@
             
         }
         
-        
         // Fire the first photo request
         [self photoRequest:self.bioGuides[0]];
         
@@ -482,21 +485,9 @@
             // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
             
-            // Washington, D.C. only has one representative
-            if([self.sfCongressmen count] > 1){
-                
-                // Fire the next request
-                
-                [self photoRequest:self.bioGuides[1]];
-
-                
-            }
-            else
-            {
-                self.photoRequestCounter = 0;
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
-            }
+            // Fire the next request
+            [self photoRequest:self.bioGuides[1]];
+            
         }
         else if (self.photoRequestCounter == 2){
             
@@ -522,6 +513,8 @@
         }
     }
     [self.tableView reloadData];
+    
+   
 }
 
 - (void)matchData{

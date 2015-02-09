@@ -21,11 +21,11 @@
 // UI Objects
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UILabel *voicesLabel;
 @property (strong, nonatomic) IBOutlet UIButton *buttonLable;
 @property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
 @property (strong, nonatomic) IBOutlet UILabel *aboutTitle;
+
 
 
 // Data Properties
