@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *bioGuide;
 @property (strong, nonatomic) NSString *facebookID;
 @property (strong, nonatomic) NSString *twitterID;
+@property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) UIImage *photo;
 
 

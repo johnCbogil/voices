@@ -23,10 +23,6 @@
         [self.tweetButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
         [self.facebookButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
         [self.callButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-
-        
-        
-        
         
         self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
         [self.shadowView setBackgroundColor:[UIColor whiteColor]];
@@ -62,12 +58,8 @@
 }
 
 
-// Make sure twitter account is logged into settings when testing
 - (IBAction)tweetButtonPressed:(id)sender {
-    
-    
-    NSLog(@"Tweet button pressed");
-    NSLog(@"%@", self.congressman.twitterID);
+
     
     // Check if the user has twitter installed
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
@@ -136,7 +128,6 @@
                 
                 // Extract only the ids from the dict
                 NSString *fbid = [decodedData valueForKey:@"id"];
-                NSLog(@"%@", fbid);
                 
                 // Check if the user has the fb app installed
                 if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://"]]) {
@@ -151,7 +142,8 @@
                     
                     NSString *facebookID = [NSString stringWithFormat:@"https://www.facebook.com/%@",fbid];
                     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:facebookID]];
-                    NSLog(@"%@", facebookID);                }
+                   
+                }
             });
         });
     }
@@ -168,7 +160,6 @@
     if(phone != nil) {
         NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-        NSLog(@"Dialed %@",phoneNumber);
     }
     
     

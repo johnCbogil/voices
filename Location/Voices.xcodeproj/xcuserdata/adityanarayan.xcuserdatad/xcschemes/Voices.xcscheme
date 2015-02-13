@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,50 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7800F5BC186377C8005D4946"
-               BuildableName = "Location.app"
-               BlueprintName = "Location"
-               ReferencedContainer = "container:Location.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7800F5DD186377C8005D4946"
-               BuildableName = "LocationTests.xctest"
-               BlueprintName = "LocationTests"
-               ReferencedContainer = "container:Location.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7800F5BC186377C8005D4946"
                BuildableName = "Voices.app"
                BlueprintName = "Voices"
-               ReferencedContainer = "container:Voices.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7800F5DD186377C8005D4946"
-               BuildableName = "VoicesTests.xctest"
-               BlueprintName = "VoicesTests"
                ReferencedContainer = "container:Voices.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -70,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7800F5DD186377C8005D4946"
-               BuildableName = "LocationTests.xctest"
-               BlueprintName = "LocationTests"
-               ReferencedContainer = "container:Location.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7800F5BC186377C8005D4946"
-            BuildableName = "Location.app"
-            BlueprintName = "Location"
-            ReferencedContainer = "container:Location.xcodeproj">
+            BuildableName = "Voices.app"
+            BlueprintName = "Voices"
+            ReferencedContainer = "container:Voices.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -104,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7800F5BC186377C8005D4946"
-            BuildableName = "Location.app"
-            BlueprintName = "Location"
-            ReferencedContainer = "container:Location.xcodeproj">
+            BuildableName = "Voices.app"
+            BlueprintName = "Voices"
+            ReferencedContainer = "container:Voices.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -122,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7800F5BC186377C8005D4946"
-            BuildableName = "Location.app"
-            BlueprintName = "Location"
-            ReferencedContainer = "container:Location.xcodeproj">
+            BuildableName = "Voices.app"
+            BlueprintName = "Voices"
+            ReferencedContainer = "container:Voices.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

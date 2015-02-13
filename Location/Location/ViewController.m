@@ -1,12 +1,4 @@
-//
-//  ViewController.m
-//  Location with google
-//
-
-
 #import "ViewController.h"
-
-
 
 
 @interface ViewController ()
@@ -14,45 +6,31 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad{
+- (void)viewDidLoad
+{
     
     [super viewDidLoad];
 
     
-    self.navigationBar.hidden = YES;
     self.tableView.hidden = YES;
     
     self.manager = [[CLLocationManager alloc] init];
-    self.manager.distanceFilter = 200;
     self.geocoder = [[CLGeocoder alloc] init];
-    
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
     
     [self createVoicesLabel];
     
-    self.buttonLable.layer.cornerRadius = 5;
+    self.buttonLabel.layer.cornerRadius = 5;
 
-
-    
     self.photoRequestCounter = 0;
-    
-    
-    
 
-
-    
-
-    
-    
 }
 
 
 
 
-- (void)createVoicesLabel{
-    
-    // Add parallax effect to voices label
-    // Set vertical effect
+- (void)createVoicesLabel
+{
+
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.y"
@@ -60,7 +38,6 @@
     verticalMotionEffect.minimumRelativeValue = @(-8);
     verticalMotionEffect.maximumRelativeValue = @(8);
     
-    // Set horizontal effect
     UIInterpolatingMotionEffect *horizontalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
      initWithKeyPath:@"center.x"
@@ -68,21 +45,13 @@
     horizontalMotionEffect.minimumRelativeValue = @(-8);
     horizontalMotionEffect.maximumRelativeValue = @(8);
     
-    // Create group to combine both
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
     group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
     
-    // Add both effects to your view
     [self.tableView addMotionEffect:group];
     [self.voicesLabel addMotionEffect:group];
-    [self.buttonLable addMotionEffect:group];
-
+    [self.buttonLabel addMotionEffect:group];
     
-    
-    
-    
-    
-    // Add shimmer effect
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     
     [self.voicesLabel addSubview:shimmeringView];
@@ -91,48 +60,44 @@
     
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
     
-//    self.voicesLabel.textColor = [UIColor colorWithRed:44.0 green:62.0/255.0 blue:80.0 alpha:1.0];
-//    self.aboutLabel.textColor = [UIColor colorWithRed:44.0 green:62.0/255.0 blue:80.0 alpha:1.0];
-
-    
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
     [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:70]];
     
-
-    
     
     shimmeringView.contentView = self.voicesLabel;
-    
-    
     shimmeringView.shimmering = YES;
     
     
 }
 
-- (void)didReceiveMemoryWarning{
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)buttonPressed:(id)sender{
-    
+- (IBAction)buttonPressed:(id)sender
+{
+    NSLog(@"Button Pressed");
 
     [self.manager requestWhenInUseAuthorization];
     
-    [self checkForInternetAndLocationServices];
+    [self checkForLocationServices];
     
 }
 
 
 
-- (void)checkForInternetAndLocationServices{
-    
-    // Check for location services
+- (void)checkForLocationServices
+{
     if([CLLocationManager locationServicesEnabled] &&
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
     {
+        NSLog(@"Location services are enabled");
         self.manager.delegate = self;
+        self.manager.distanceFilter = 200;
         self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-        [self.manager startUpdatingLocation];
+        [self checkForInternetServices];
+
     }
     
     else{
@@ -140,7 +105,13 @@
         [self locationServicesUnavailable];
     }
     
-    // Check for internet connection
+   
+}
+
+
+-(void)checkForInternetServices
+{
+    
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
@@ -148,9 +119,17 @@
         [noInternetConnection show];
         
     }
+    else{
+        
+        [self.manager startUpdatingLocation];
+        
+    }
+    
+    
 }
 
-- (void)locationServicesUnavailable{
+- (void)locationServicesUnavailable
+{
     
     UIAlertView *noLocationServices = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We weren't able to figure out your location, check to make sure that location services are enabled and try again"delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [noLocationServices show];
@@ -160,20 +139,24 @@
 #pragma mark - UITableView Methods
 
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 100;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 100;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     
     return [self.sfCongressmen count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -185,7 +168,6 @@
     }
     
     
-    // Assign data to cells
     cell.congressman = [self.sfCongressmen objectAtIndex:indexPath.row];
     
     
@@ -209,7 +191,6 @@
             [cell.callButton setTitle:@"Call" forState:UIControlStateNormal];
             
             
-            NSLog(@"Assigned data to cell #%ld", (long)indexPath.row);
             
             self.tableView.hidden = NO;
             
@@ -221,17 +202,8 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    // Assign phone numbers to cells
-//    NSString *phone = [(Congressman*)[self.sfCongressmen objectAtIndex:indexPath.row]phone];
-//    
-//    if(phone != nil) {
-//        NSString *phoneNumber= [@"tel://" stringByAppendingString:phone];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-//        NSLog(@"Dialed %@",phoneNumber);
-//    }
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
@@ -240,31 +212,54 @@
 
 #pragma mark - CLLocationManagerDelegate Methods
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
     [self locationServicesUnavailable];
     
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
     [self.manager stopUpdatingLocation];
     
     self.currentLocation = locations[0];
     NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
     
+    NSLog(@"Firing SF Request");
     [self sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
     
+    NSLog(@"Firing Google Request");
     [self googleRequest:(CLLocation*)self.currentLocation];
-    
-    
+
     
 }
 
 #pragma mark - API Requests
 
+- (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude
+{
+    
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
+    NSLog(@"SF URL: %@", url);
+    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    getRequest.HTTPMethod = @"GET";
+    
+    [getRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [getRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    self.sfConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    
+}
 
-- (void)googleRequest:(CLLocation*)currentLocation{
+- (void)googleRequest:(CLLocation*)currentLocation
+{
     
     [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         
@@ -275,9 +270,7 @@
         
         
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ]];
-        
-        NSLog(@"%@",url);
-        
+        NSLog(@"Google URL: %@", url);
         
         NSMutableURLRequest *googleGetRequest = [NSMutableURLRequest requestWithURL:url];
         googleGetRequest.HTTPMethod = @"GET";
@@ -287,42 +280,19 @@
 }
 
 
-- (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude{
-    
-    
-    // Create the request
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
-    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    // Specify that the request will be a GET
-    getRequest.HTTPMethod = @"GET";
-    
-    // Set the header fields
-    [getRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [getRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    // Create URL connection and fire request
-    self.sfConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    
-}
 
-- (void)photoRequest:(NSString*)bioGuide{
+
+- (void)photoRequest:(NSString*)bioGuide
+{
     
-    
-    // Create the request
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide]];
+    NSLog(@"PhotoRequest URL: %@", url);
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
     
-    // Specify that the request will be a GET
     getRequest.HTTPMethod = @"GET";
     
-    // Set the header fields
     [getRequest setValue:@"image/jpg" forHTTPHeaderField:@"Accept"];
     
-    // Create URL connection and fire request
     self.photoConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     
     
@@ -330,12 +300,10 @@
 
 #pragma mark NSURLConnection Delegate Methods
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    
-    
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
     if(connection == self.googleConn){
         self.totalFileSize = response.expectedContentLength;
-        
         
         self.googleResponseData = [[NSMutableData alloc]init];
     }
@@ -353,10 +321,9 @@
 }
 
 
-// UIProgressView updates happen here
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    
-    
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+
     if(connection == self.googleConn){
         
         [self.googleResponseData appendData:data];
@@ -374,13 +341,55 @@
     
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse
+{
     return nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    if (connection == self.googleConn) {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    if (connection == self.sfConnection){
+        
+        self.sfCongressmen = [[NSMutableArray alloc]init];
+        
+        [self.manager stopUpdatingLocation];
+        
+        NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.sfResponseData options:0 error:nil];
+        NSMutableDictionary *results = [decodedData valueForKey:@"results"];
+        
+        
+        self.congressmenPhotos = [[NSMutableArray alloc]init];
+        self.bioGuides = [[NSMutableArray alloc]init];
+        
+        
+        for(int i = 0; i < [results count]; i++){
+            
+            self.sfDude = [[Congressman alloc]init];
+            self.sfDude.firstName = [results valueForKey:@"first_name"][i];
+            self.sfDude.lastName = [results valueForKey:@"last_name"][i];
+            self.sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
+            [self.bioGuides addObject:self.sfDude.bioGuide];
+            self.sfDude.party = [results valueForKey:@"party"][i];
+            self.sfDude.termEnd = [results valueForKey:@"term_end"][i];
+            [self formatTermDates:self.sfDude.termEnd congressman:self.sfDude];
+            self.sfDude.officeTitle = [results valueForKey:@"title"][i];
+            self.sfDude.twitterID = [results valueForKey:@"twitter_id"][i];
+            self.sfDude.facebookID = [results valueForKey:@"facebook_id"][i];
+            self.sfDude.phone = [results valueForKey:@"phone"][i];
+            self.sfDude.phone = [self.sfDude.phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            
+            
+            [self.sfCongressmen addObject:self.sfDude];
+            
+        }
+        
+        NSLog(@"Firing first photo request");
+        [self photoRequest:self.bioGuides[0]];
+        
+        
+    }
+
+    else if (connection == self.googleConn) {
         
         self.googCongressmen = [[NSMutableArray alloc]init];
         
@@ -427,69 +436,22 @@
         
         
     }
-    else if(connection == self.sfConnection){
+         else if (connection == self.photoConnection){
         
-        self.sfCongressmen = [[NSMutableArray alloc]init];
-        
-        // Stop updating location bc we only need it once
-        [self.manager stopUpdatingLocation];
-        
-        // Decode data
-        NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.sfResponseData options:0 error:nil];
-        NSMutableDictionary *results = [decodedData valueForKey:@"results"];
-        
-        
-        self.congressmenPhotos = [[NSMutableArray alloc]init];
-        self.bioGuides = [[NSMutableArray alloc]init];
-        
-        
-        for(int i = 0; i < [results count]; i++){
-            
-            self.sfDude = [[Congressman alloc]init];
-            self.sfDude.firstName = [results valueForKey:@"first_name"][i];
-            self.sfDude.lastName = [results valueForKey:@"last_name"][i];
-            self.sfDude.bioGuide = [results valueForKey:@"bioguide_id"][i];
-            [self.bioGuides addObject:self.sfDude.bioGuide];
-            self.sfDude.party = [results valueForKey:@"party"][i];
-            self.sfDude.termEnd = [results valueForKey:@"term_end"][i];
-            [self formatTermDates:self.sfDude.termEnd congressman:self.sfDude];
-            self.sfDude.officeTitle = [results valueForKey:@"title"][i];
-            self.sfDude.twitterID = [results valueForKey:@"twitter_id"][i];
-            self.sfDude.facebookID = [results valueForKey:@"facebook_id"][i];
-            self.sfDude.phone = [results valueForKey:@"phone"][i];
-            self.sfDude.phone = [self.sfDude.phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
-            
-            
-            [self.sfCongressmen addObject:self.sfDude];
-            
-        }
-        
-        
-        // Fire the first photo request
-        [self photoRequest:self.bioGuides[0]];
-        
-    }
-    else if (connection == self.photoConnection){
-        
-        // Increase the counter by 1
         self.photoRequestCounter++;
+        NSLog(@"PhotoRequestCounter is: %d", self.photoRequestCounter);
+             
         
-        // Add the photo to an array
         [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
         
         if (self.photoRequestCounter == 1) {
             
-            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
             
-            // Washington, D.C. only has one representative
             if([self.sfCongressmen count] > 1){
                 
-                // Fire the next request
-                
+                NSLog(@"Firing second photo request");
                 [self photoRequest:self.bioGuides[1]];
-
-                
             }
             else
             {
@@ -500,23 +462,19 @@
         }
         else if (self.photoRequestCounter == 2){
             
-            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:1]setPhoto:self.congressmenPhotos[1]];
             
-            // Fire the next reqeust
+            NSLog(@"Firing third photo request");
             [self photoRequest:self.bioGuides[2]];
             
         }
         
         if([self.sfCongressmen count] == 3 && [self.congressmenPhotos count] == 3){
             
-            // Assign the photo to the correct congressman
             [[self.sfCongressmen objectAtIndex:2]setPhoto:self.congressmenPhotos[2]];
             
-            // Turn off the networkActivityIndicator
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             
-            // Reset the counter
             self.photoRequestCounter = 0;
             
         }
@@ -524,7 +482,8 @@
     [self.tableView reloadData];
 }
 
-- (void)matchData{
+- (void)matchData
+{
     
     
     for (int i=0; i < [self.sfCongressmen count]; i++){
@@ -533,37 +492,34 @@
             if([[self.sfCongressmen[i] phone] isEqualToString:[self.googCongressmen[j] phone]] ){
                 [self.sfCongressmen[i] setTwitterID:[self.googCongressmen[j] twitterID]];
                 [self.sfCongressmen[i] setFacebookID:[self.googCongressmen[j] facebookID]];
-                
             }
         }
     }
 }
 
 
-- (NSString*)cleanPhoneNumber:(NSString*)phoneNumber{
+- (NSString*)cleanPhoneNumber:(NSString*)phoneNumber
+{
     
-    // Strip the google phone numbers
     
     NSString *cleanedPhoneNumber = [[NSString alloc]init];
     
-    cleanedPhoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-"
-                                                                withString:@""];
-    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@"("
-                                                                       withString:@""];
-    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@")"
-                                                                       withString:@""];
-    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@" "
-                                                                       withString:@""];
+    cleanedPhoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    cleanedPhoneNumber = [cleanedPhoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     return cleanedPhoneNumber;
     
 }
 
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
 }
 
-- (void)formatTermDates:(NSString*)termDate congressman:(Congressman*)congressman{
+- (void)formatTermDates:(NSString*)termDate congressman:(Congressman*)congressman
+{
     
     congressman.termEnd = [[NSString alloc]init];
     
