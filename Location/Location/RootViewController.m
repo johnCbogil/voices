@@ -12,6 +12,7 @@
 {
     
     NSArray *viewControllers;
+    int index;
     
     UIViewController *firstVC;
     UIViewController *secondVC;
@@ -43,6 +44,8 @@
     self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    index = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +56,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    
     
     if (self.pageViewController.viewControllers[0] == secondVC)
     {
