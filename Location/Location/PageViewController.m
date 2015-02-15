@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 John Bogil. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "PageViewController.h"
 
-@interface RootViewController ()
+@interface PageViewController ()
 {
     
     NSArray *viewControllers;
@@ -21,7 +21,7 @@
 }
 @end
 
-@implementation RootViewController
+@implementation PageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

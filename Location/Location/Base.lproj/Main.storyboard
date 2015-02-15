@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Page View Controller-->
         <scene sceneID="G8y-yw-nUW">
             <objects>
-                <viewController storyboardIdentifier="RootViewController" id="BdR-Kp-uhw" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewController" id="BdR-Kp-uhw" customClass="PageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5tn-cM-IQA"/>
                         <viewControllerLayoutGuide type="bottom" id="dhA-EF-Kv0"/>
