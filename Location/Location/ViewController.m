@@ -19,12 +19,66 @@
     
     [self createVoicesLabel];
     
-    self.buttonLabel.layer.cornerRadius = 5;
-
     self.photoRequestCounter = 0;
+
+    
+    
+                      
+    self.searchBar.alpha = 0.0;
+    self.searchBar.userInteractionEnabled = NO;
+    self.searchBar.delegate = self;
+
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]forState:UIControlStateNormal];
+    
+    
+    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    
+
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],}];
+    
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+
+    
+    
+    
+
+
+
 
 }
 
+- (IBAction)searchButtonPressed:(id)sender {
+    
+
+    self.whoRepsButton.enabled = NO;
+    self.searchButton.hidden = YES;
+    [UIView animateWithDuration:0.25 animations:^{self.whoRepsButton.alpha = 0.0;} completion:^(BOOL finished) {
+        self.searchBar.userInteractionEnabled = YES;
+        [UIView animateWithDuration:0.25 animations:^{self.searchBar.alpha = 1.0;}];
+        
+    }];
+
+}
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    
+    self.whoRepsButton.enabled = YES;
+    [UIView animateWithDuration:.25 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
+        self.searchBar.userInteractionEnabled = NO;
+        [UIView animateWithDuration:.25 animations:^{self.whoRepsButton.alpha = 1.0;}];
+        self.searchButton.hidden = NO;
+
+        
+    }];
+
+
+    
+
+    
+}
 
 
 
@@ -50,7 +104,10 @@
     
     [self.tableView addMotionEffect:group];
     [self.voicesLabel addMotionEffect:group];
-    [self.buttonLabel addMotionEffect:group];
+    [self.whoRepsButton addMotionEffect:group];
+    [self.searchButton addMotionEffect:group];
+    [self.searchBar addMotionEffect:group];
+    [self.blueView addMotionEffect:group];
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     
@@ -201,12 +258,6 @@
     return cell;
     
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//}
 
 
 
@@ -532,6 +583,7 @@
     congressman.termEnd =  termDateFormatted;
     
 }
+
 
 
 @end

@@ -15,15 +15,17 @@
 #import "Reachability.h"
 
 
-@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UINavigationControllerDelegate, UINavigationBarDelegate>
+@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate>
 
 
 // UI Objects
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UILabel *voicesLabel;
-@property (strong, nonatomic) IBOutlet UIButton *buttonLabel;
+@property (strong, nonatomic) IBOutlet UIButton *whoRepsButton;
 @property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIView *blueView;
 
 
 
@@ -60,7 +62,8 @@
 @property long long receivedDataBytes;
 
 // Actions
--(IBAction)buttonPressed:(id)sender;
+-(IBAction)buttonPressed:(id)sender; //improve this name
+- (IBAction)searchButtonPressed:(id)sender;
 
 
 
