@@ -18,40 +18,62 @@
     self.geocoder = [[CLGeocoder alloc] init];
     
     [self createVoicesLabel];
+    [self createSearchBar];
     
     self.photoRequestCounter = 0;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    
+    
+    
+    NSURLConnections *NSURLConnectionsClass = [[NSURLConnections alloc]init];
+    [NSURLConnectionsClass googleMapsRequest];
+    
+    
+    
+    
+    
+    
+}
+
+- (void) dismissKeyboard
+{
 
     
+    [self.searchBar resignFirstResponder];
+}
+
+
+-(void)createSearchBar{
     
-                      
+    self.blueView.layer.cornerRadius = 5;
+    self.blueView.backgroundColor = [UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0];
+    
+    
     self.searchBar.alpha = 0.0;
     self.searchBar.userInteractionEnabled = NO;
     self.searchBar.delegate = self;
-
-
+    
+    // Set cancel button to white color
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]forState:UIControlStateNormal];
     
-    
+    // Set placeholder text to white
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     
-
+    // Set the input text font
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],}];
-    
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-
-    
-    
-    
-
-
-
-
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
     
-
+    [self.searchBar becomeFirstResponder];
     self.whoRepsButton.enabled = NO;
     self.searchButton.hidden = YES;
     [UIView animateWithDuration:0.25 animations:^{self.whoRepsButton.alpha = 0.0;} completion:^(BOOL finished) {
@@ -195,6 +217,55 @@
 
 #pragma mark - UITableView Methods
 
+// TableView Fading
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//    NSArray *visibleCells = [self.tableView visibleCells];
+//
+//    for (UITableViewCell *cell in visibleCells) {
+//        cell.alpha = 1.0;
+//    }
+//    
+//    if (visibleCells != nil  &&  [visibleCells count] != 0) {       // Don't do anything for empty table view
+//        
+//        /* Get top and bottom cells */
+//        UITableViewCell *topCell = [visibleCells objectAtIndex:0];
+//        UITableViewCell *bottomCell = [visibleCells lastObject];
+//        
+//        /* Make sure other cells stay opaque */
+//        // Avoids issues with skipped method calls during rapid scrolling
+//        for (UITableViewCell *cell in visibleCells) {
+//            cell.contentView.alpha = 1.0;
+//        }
+//        
+//        /* Set necessary constants */
+//        NSInteger cellHeight = topCell.frame.size.height - 1;   // -1 To allow for typical separator line height
+//        NSInteger tableViewTopPosition = self.tableView.frame.origin.y;
+//        NSInteger tableViewBottomPosition = self.tableView.frame.origin.y + self.tableView.frame.size.height;
+//        
+//        /* Get content offset to set opacity */
+//        CGRect topCellPositionInTableView = [self.tableView rectForRowAtIndexPath:[self.tableView indexPathForCell:topCell]];
+//        CGRect bottomCellPositionInTableView = [self.tableView rectForRowAtIndexPath:[self.tableView indexPathForCell:bottomCell]];
+//        CGFloat topCellPosition = [self.tableView convertRect:topCellPositionInTableView toView:[self.tableView superview]].origin.y;
+//        CGFloat bottomCellPosition = ([self.tableView convertRect:bottomCellPositionInTableView toView:[self.tableView superview]].origin.y + cellHeight);
+//        
+//        /* Set opacity based on amount of cell that is outside of view */
+//        CGFloat modifier = 1.2;     /* Increases the speed of fading (1.0 for fully transparent when the cell is entirely off the screen,
+//                                     2.0 for fully transparent when the cell is half off the screen, etc) */
+//        CGFloat topCellOpacity = (1.0f - ((tableViewTopPosition - topCellPosition) / cellHeight) * modifier);
+//        CGFloat bottomCellOpacity = (1.0f - ((bottomCellPosition - tableViewBottomPosition) / cellHeight) * modifier);
+//        
+//        /* Set cell opacity */
+//        if (topCell) {
+//            topCell.alpha = topCellOpacity;
+//        }
+//        if (bottomCell) {
+//            bottomCell.alpha = bottomCellOpacity;
+//        }  
+//    }
+//    
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

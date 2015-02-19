@@ -13,6 +13,7 @@
 #import "FBShimmeringView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
+#import "NSURLConnections.h"
 
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate>
@@ -68,6 +69,7 @@
 
 
 
+@property (nonatomic,strong) NSURLConnections *NSURLConnectionsClass;
 
 
 @end
