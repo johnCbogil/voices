@@ -84,9 +84,9 @@
     [self.searchBar becomeFirstResponder];
     self.whoRepsButton.enabled = NO;
     self.searchButton.hidden = YES;
-    [UIView animateWithDuration:0.25 animations:^{self.whoRepsButton.alpha = 0.0;} completion:^(BOOL finished) {
+    [UIView animateWithDuration:0.2 animations:^{self.whoRepsButton.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = YES;
-        [UIView animateWithDuration:0.25 animations:^{self.searchBar.alpha = 1.0;}];
+        [UIView animateWithDuration:0.2 animations:^{self.searchBar.alpha = 1.0;}];
         
     }];
 
@@ -96,9 +96,9 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     
     self.whoRepsButton.enabled = YES;
-    [UIView animateWithDuration:.25 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
+    [UIView animateWithDuration:.2 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = NO;
-        [UIView animateWithDuration:.25 animations:^{self.whoRepsButton.alpha = 1.0;}];
+        [UIView animateWithDuration:.2 animations:^{self.whoRepsButton.alpha = 1.0;}];
         self.searchButton.hidden = NO;
 
         
@@ -317,7 +317,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
-            cell.detail.text = [NSString stringWithFormat:@"(%@) - Term Ends: %@", cell.congressman.party, cell.congressman.termEnd];
+            cell.detail.text = [NSString stringWithFormat:@"(%@) Next Election: %@", cell.congressman.party, cell.congressman.termEnd];
             
             cell.photoView.image = cell.congressman.photo;
             
@@ -653,13 +653,23 @@
     
     congressman.termEnd = [[NSString alloc]init];
     
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    NSDate * dateNotFormatted = [dateFormatter dateFromString:termDate];
+    
+    
+    NSDate *dateNotFormatted = [dateFormatter dateFromString:termDate];
+    
+    
+    int daysToAdd = 1;
+    NSDate *newDate1 = [dateNotFormatted dateByAddingTimeInterval:60*60*24*daysToAdd];
+    
     [dateFormatter setDateFormat:@"d MMM YYYY"];
-    NSString * termDateFormatted = [dateFormatter stringFromDate:dateNotFormatted];
+    NSString *termDateFormatted = [dateFormatter stringFromDate:newDate1];
     congressman.termEnd =  termDateFormatted;
+    
+    
+
     
 }
 

@@ -14,8 +14,6 @@
 - (void)googleMapsRequest:(NSString*)searchText
 {
     
-    //NSString *homeAddress = @"115 Laurel Drive, 11040";
-    
     
     NSString *string = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
     
@@ -93,7 +91,8 @@
     
     if (connection == self.googleMapsConnection) {
         
-        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
          NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
         
         NSMutableDictionary *usrSearchAddressData = [decodedData valueForKey:@"results"];
