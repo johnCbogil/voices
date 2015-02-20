@@ -29,18 +29,26 @@
     [self.view addGestureRecognizer:tap];
     
     
-    
-    
-    NSURLConnections *NSURLConnectionsClass = [[NSURLConnections alloc]init];
-    [NSURLConnectionsClass googleMapsRequest];
-    
-    
+
     
     
     
     
 }
+- (void)viewDidAppear:(BOOL)animated{
+    
+    if(self.searchBar.text.length > 0) {
+        
+        APIRequests *APIRequestsClass = [[APIRequests alloc]init];
+        [APIRequestsClass googleMapsRequest:self.searchBar.text];
+        
+        
+    }
+    
 
+    
+    
+}
 - (void) dismissKeyboard
 {
 
