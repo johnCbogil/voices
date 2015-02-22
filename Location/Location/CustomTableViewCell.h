@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Congressman.h"
+#import "MarqueeLabel.h"
 
 @interface CustomTableViewCell : UITableViewCell
 
@@ -23,11 +24,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *tweetButton;
 @property (strong, nonatomic) IBOutlet UIButton *facebookButton;
 @property (strong, nonatomic) IBOutlet UIButton *callButton;
-@property (nonatomic, strong) IBOutlet UILabel *name;
+@property (nonatomic, strong) IBOutlet MarqueeLabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *detail;
 @property (strong, nonatomic)  UIImageView *photoView;
 @property (strong, nonatomic) UIImageView *shadowView;
-@property (strong, nonatomic) IBOutlet UIImageView *congressmanView;
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -35,12 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-ZC-Hse">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-ZC-Hse" userLabel="blueView">
                                 <rect key="frame" x="28" y="28" width="263" height="48"/>
                                 <color key="backgroundColor" red="0.21773246629679679" green="0.32116243545365214" blue="0.78851659982174693" alpha="0.95999999999999996" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
-                                <rect key="frame" x="0.0" y="84" width="320" height="443"/>
+                                <rect key="frame" x="0.0" y="84" width="320" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -65,29 +65,19 @@
                                 <rect key="frame" x="28" y="30" width="264" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg">
-                                <rect key="frame" x="98" y="445" width="206" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg" userLabel="Voices label">
+                                <rect key="frame" x="98" y="444" width="206" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="0pz-n3-3UD"/>
+                                    <constraint firstAttribute="height" constant="80" id="TEy-dd-mdH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
-                                <rect key="frame" x="182" y="527" width="122" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="G0Q-L7-9fL"/>
-                                    <constraint firstAttribute="width" constant="122" id="jvZ-hm-QjH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZM-X4-PJ3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZM-X4-PJ3" userLabel="searchButton">
                                 <rect key="frame" x="247" y="28" width="40" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="qQj-4u-2Db"/>
+                                    <constraint firstAttribute="width" constant="40" id="S0M-hD-ckd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Q">
@@ -98,31 +88,40 @@
                                     <action selector="searchButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QX3-gC-Mac"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="about &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
+                                <rect key="frame" x="182" y="518" width="122" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="J1b-5I-nqn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="TZM-X4-PJ3" firstAttribute="leading" secondItem="1gE-oh-jR2" secondAttribute="trailing" constant="10" id="9p4-Lw-oOb"/>
-                            <constraint firstAttribute="bottom" secondItem="6DS-a3-MYA" secondAttribute="bottom" constant="20" symbolic="YES" id="DNI-3u-ygP"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Dvo-Z5-mHq"/>
-                            <constraint firstAttribute="trailing" secondItem="HWI-Nc-5EP" secondAttribute="trailing" id="HWh-nQ-DNi"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="Vgz-zJ-tBg" secondAttribute="trailing" id="Q3j-eM-N1a"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="top" secondItem="Vgz-zJ-tBg" secondAttribute="bottom" constant="2" id="RUr-7K-Dx9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TZM-X4-PJ3" secondAttribute="trailing" constant="17" id="Rd7-ZS-y0B"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="8" symbolic="YES" id="S0u-Rh-X4b"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="top" secondItem="HWI-Nc-5EP" secondAttribute="bottom" id="Scg-7c-okd"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="TZM-X4-PJ3" secondAttribute="bottom" constant="8" symbolic="YES" id="Svc-P1-i0A"/>
-                            <constraint firstItem="7Ud-ZC-Hse" firstAttribute="leading" secondItem="7NO-XO-FQf" secondAttribute="leading" id="Ybw-3f-van"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="7Ud-ZC-Hse" secondAttribute="bottom" constant="8" symbolic="YES" id="Z40-tK-ZK1"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="bottom" constant="8" symbolic="YES" id="aUW-8P-oiq"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="centerY" secondItem="7Ud-ZC-Hse" secondAttribute="centerY" id="b92-p1-I7x"/>
-                            <constraint firstItem="TZM-X4-PJ3" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="top" id="dWz-hj-KGu"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="22" id="eCX-ej-TMx"/>
-                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="82" id="fBv-UX-Nxp"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="centerX" secondItem="HWI-Nc-5EP" secondAttribute="centerX" id="j2q-8l-KgE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Ud-ZC-Hse" secondAttribute="trailing" constant="13" id="mz0-is-XBw"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="okG-ts-08J"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="10" id="pPK-Q4-RLW"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="7Ud-ZC-Hse" secondAttribute="top" id="thM-J6-9ix"/>
-                            <constraint firstItem="7Ud-ZC-Hse" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="12" id="yMI-0z-PVd"/>
+                            <constraint firstAttribute="trailing" secondItem="HWI-Nc-5EP" secondAttribute="trailing" id="1IQ-f6-7Px"/>
+                            <constraint firstItem="TZM-X4-PJ3" firstAttribute="leading" secondItem="1gE-oh-jR2" secondAttribute="trailing" constant="10" id="2Tl-nc-RNB"/>
+                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="57a-rL-W1d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Ud-ZC-Hse" secondAttribute="trailing" constant="13" id="AVr-lw-1xT"/>
+                            <constraint firstItem="7NO-XO-FQf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="12" id="ClX-Qo-A4A"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kpa-eg-M94"/>
+                            <constraint firstItem="7NO-XO-FQf" firstAttribute="leading" secondItem="7Ud-ZC-Hse" secondAttribute="leading" id="M42-08-a6y"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="centerY" secondItem="7NO-XO-FQf" secondAttribute="centerY" id="Nz2-FX-xEz"/>
+                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="bottom" secondItem="HWI-Nc-5EP" secondAttribute="bottom" id="ObD-lo-HWB"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="TZM-X4-PJ3" secondAttribute="bottom" constant="8" symbolic="YES" id="PP1-io-hlT"/>
+                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="trailing" secondItem="6DS-a3-MYA" secondAttribute="trailing" id="WLt-o7-dgj"/>
+                            <constraint firstItem="7NO-XO-FQf" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="10" id="Wao-AE-xXg"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="7Ud-ZC-Hse" secondAttribute="bottom" constant="8" symbolic="YES" id="Wj9-R2-qMJ"/>
+                            <constraint firstItem="xo3-30-aWn" firstAttribute="top" secondItem="HWI-Nc-5EP" secondAttribute="bottom" constant="44" id="fME-1P-h7N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TZM-X4-PJ3" secondAttribute="trailing" constant="17" id="ktt-Y1-SOS"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="22" id="l39-Q2-ifS"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="8" symbolic="YES" id="rn4-r0-8Jv"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="TZM-X4-PJ3" secondAttribute="top" id="tmW-Al-F90"/>
+                            <constraint firstItem="xo3-30-aWn" firstAttribute="top" secondItem="6DS-a3-MYA" secondAttribute="bottom" constant="19" id="uSS-WC-eG8"/>
+                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="7Ud-ZC-Hse" secondAttribute="top" id="vwf-7C-Myf"/>
+                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="bottom" constant="8" symbolic="YES" id="vxi-m1-zne"/>
+                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="82" id="wn1-jp-Wq5"/>
+                            <constraint firstItem="7NO-XO-FQf" firstAttribute="centerX" secondItem="HWI-Nc-5EP" secondAttribute="centerX" id="xPT-3L-Qy3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -154,14 +153,14 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" text="Voices is a tool that helps make sure your Congressmen hear you" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIf-6z-0j8">
                                 <rect key="frame" x="16" y="220" width="288" height="156"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.19215686274509805" green="0.27843137254901962" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Voices?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doW-2s-H6t">
                                 <rect key="frame" x="16" y="157" width="288" height="55"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="40"/>
-                                <color key="textColor" red="0.19607843137254902" green="0.27843137254901962" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431372549022" green="0.45490196078431372" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -187,14 +186,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="But Congress only listens to rich lobbyists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
                                 <rect key="frame" x="0.0" y="148" width="322" height="88"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
-                                <color key="textColor" red="0.14509803921568629" green="0.19215686274509805" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
                                 <rect key="frame" x="40" y="244" width="240" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Not true! Did you know that on a single day in 2012, we generated more than 8 million phone calls to Congress to effectively kill legislation that would have "broken" the internet </string>
-                                <color key="textColor" red="0.19215686274509805" green="0.27450980392156865" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -221,21 +220,21 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Its easy! Checkout our example script:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-Oh-tGL">
                                 <rect key="frame" x="40" y="248" width="240" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.14509803921568629" green="0.19215686274509805" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="&quot;Hello, my name is [your name] and I [support/oppose] [something you care about] and that I will be voting this November&quot;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-Q6-deL">
                                 <rect key="frame" x="40" y="304" width="240" height="163"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.17254901960784313" green="0.21568627450980393" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OK, I'll talk to my Congressman! But what do I say?!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAV-qs-vgC">
                                 <rect key="frame" x="16" y="136" width="288" height="104"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="25"/>
-                                <color key="textColor" red="0.10588235294117647" green="0.11372549019607843" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

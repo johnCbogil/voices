@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8501A99649B00357C58 /* MarqueeLabel.m */; };
 		529BB9461A720A6B0018B75A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BB9451A720A6B0018B75A /* PageViewController.m */; };
 		52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC657619E0F0D7004BF6B3 /* Congressman.m */; };
 		52D5F2151A3E2808007EC83B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5F2141A3E2808007EC83B /* QuartzCore.framework */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5269E84F1A99649B00357C58 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		5269E8501A99649B00357C58 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		529BB9441A720A6B0018B75A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		529BB9451A720A6B0018B75A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		52BC657519E0F0D7004BF6B3 /* Congressman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Congressman.h; path = ../Congressman.h; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
 				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
 				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
+				5269E84F1A99649B00357C58 /* MarqueeLabel.h */,
+				5269E8501A99649B00357C58 /* MarqueeLabel.m */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
 				7800F5C7186377C8005D4946 /* Supporting Files */,
 			);
@@ -321,6 +326,7 @@
 				AA9D46441A3F951300FC4815 /* FBShimmeringLayer.m in Sources */,
 				52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */,
 				AA7A30341A425D060043910D /* Reachability.m in Sources */,
+				5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */,
 				7800F5D7186377C8005D4946 /* ViewController.m in Sources */,
 				AA9D46451A3F951300FC4815 /* FBShimmeringView.m in Sources */,
 				529BB9461A720A6B0018B75A /* PageViewController.m in Sources */,

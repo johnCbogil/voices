@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -14,10 +14,10 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qY-hP-qps" id="H4f-Qn-H4F">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty" userLabel="name" customClass="MarqueeLabel">
                         <rect key="frame" x="94" y="12" width="218" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="LnI-vc-AmN"/>
+                            <constraint firstAttribute="height" constant="35" id="3gK-43-acc"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="21"/>
                         <nil key="highlightedColor"/>
@@ -27,10 +27,10 @@
                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH">
-                        <rect key="frame" x="92" y="55" width="70" height="38"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-p5-MdH" userLabel="Twitter Button">
+                        <rect key="frame" x="90" y="55" width="70" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="Q2L-lP-88p"/>
+                            <constraint firstAttribute="width" constant="70" id="oat-es-kmt"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                         <state key="normal">
@@ -40,11 +40,8 @@
                             <action selector="tweetButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="rzQ-OL-4za"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-Bc-sGk">
-                        <rect key="frame" x="157" y="55" width="88" height="38"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="88" id="I9H-VH-v57"/>
-                        </constraints>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-Bc-sGk" userLabel="Facebook Button">
+                        <rect key="frame" x="155" y="55" width="88" height="38"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,8 +50,8 @@
                             <action selector="facebookButtonPressed:" destination="8qY-hP-qps" eventType="touchUpInside" id="8g2-90-rKg"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiX-rk-zsk">
-                        <rect key="frame" x="224" y="55" width="88" height="38"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiX-rk-zsk" userLabel="Call Button">
+                        <rect key="frame" x="217" y="55" width="88" height="38"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,29 +63,30 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="34" id="1lp-AA-sEN"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="vz4-27-hty" secondAttribute="bottom" constant="8" symbolic="YES" id="3aH-SP-C0T"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Ku9-p5-MdH" secondAttribute="bottom" constant="-2" id="4rJ-wt-xyN"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="HHl-NF-d7u" secondAttribute="trailing" constant="-5" id="8mm-KZ-czC"/>
-                    <constraint firstItem="MiX-rk-zsk" firstAttribute="trailing" secondItem="vz4-27-hty" secondAttribute="trailing" id="9b5-3B-Xm7"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="bottom" secondItem="Hf9-Bc-sGk" secondAttribute="bottom" id="9ff-3T-wcx"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="baseline" secondItem="MiX-rk-zsk" secondAttribute="baseline" id="BHC-JV-14M"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" constant="86" id="EcU-62-mcW"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="Hf9-Bc-sGk" secondAttribute="top" id="JDG-Ob-32Y"/>
-                    <constraint firstItem="MiX-rk-zsk" firstAttribute="leading" secondItem="Ku9-p5-MdH" secondAttribute="trailing" constant="62" id="QL3-pp-fir"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="baseline" secondItem="Hf9-Bc-sGk" secondAttribute="baseline" id="Qgx-7a-Dvz"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Hf9-Bc-sGk" secondAttribute="trailing" constant="67" id="Qxe-RS-Ynd"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="firstBaseline" secondItem="Hf9-Bc-sGk" secondAttribute="firstBaseline" id="TxV-7p-LGJ"/>
-                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="bottom" secondItem="MiX-rk-zsk" secondAttribute="bottom" id="UZb-Tb-z6i"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="HHl-NF-d7u" secondAttribute="bottom" constant="28" id="Vtj-zx-Bdc"/>
-                    <constraint firstItem="MiX-rk-zsk" firstAttribute="firstBaseline" secondItem="Ku9-p5-MdH" secondAttribute="firstBaseline" id="aAo-kS-8Mh"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" id="arT-aH-AZH"/>
-                    <constraint firstItem="MiX-rk-zsk" firstAttribute="firstBaseline" secondItem="Hf9-Bc-sGk" secondAttribute="firstBaseline" id="cfz-q4-VsI"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="4" id="dbT-IZ-P8g"/>
-                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" constant="91" id="jxP-TJ-2Ai"/>
-                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="baseline" secondItem="MiX-rk-zsk" secondAttribute="baseline" id="ozH-NQ-uvu"/>
-                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" constant="84" id="pp7-mX-iDr"/>
-                    <constraint firstItem="MiX-rk-zsk" firstAttribute="top" secondItem="Hf9-Bc-sGk" secondAttribute="top" id="w96-MI-Ysq"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="34" id="0E5-GH-j9d"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="HHl-NF-d7u" secondAttribute="bottom" constant="28" id="4jl-VO-ywt"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="firstBaseline" secondItem="Ku9-p5-MdH" secondAttribute="firstBaseline" id="7qi-pG-geo"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="baseline" secondItem="Ku9-p5-MdH" secondAttribute="baseline" id="A2p-1g-cA9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Hf9-Bc-sGk" secondAttribute="trailing" constant="69" id="AKH-rh-C0n"/>
+                    <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" id="FG4-jv-geK"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="baseline" secondItem="Hf9-Bc-sGk" secondAttribute="baseline" id="HLH-X1-yrk"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="vz4-27-hty" secondAttribute="bottom" constant="8" symbolic="YES" id="QAb-RK-7xd"/>
+                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="centerX" secondItem="HHl-NF-d7u" secondAttribute="centerX" constant="-9" id="RGP-Mf-GcI"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="top" secondItem="Hf9-Bc-sGk" secondAttribute="top" id="SIX-qq-hwT"/>
+                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="bottom" secondItem="Ku9-p5-MdH" secondAttribute="bottom" id="TTm-EP-C3P"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HHl-NF-d7u" secondAttribute="trailing" constant="-5" id="Tge-Wp-Vpo"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="firstBaseline" secondItem="Hf9-Bc-sGk" secondAttribute="firstBaseline" id="Zq9-1C-FL6"/>
+                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="top" secondItem="Ku9-p5-MdH" secondAttribute="top" id="aAa-or-T0X"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="leading" secondItem="HHl-NF-d7u" secondAttribute="leading" constant="-9" id="bGP-bu-k3N"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="leading" secondItem="Ku9-p5-MdH" secondAttribute="trailing" constant="57" id="dWn-wg-2GI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="MiX-rk-zsk" secondAttribute="trailing" constant="7" id="dhv-cM-sO5"/>
+                    <constraint firstItem="MiX-rk-zsk" firstAttribute="firstBaseline" secondItem="Hf9-Bc-sGk" secondAttribute="firstBaseline" id="ehf-50-LkV"/>
+                    <constraint firstItem="vz4-27-hty" firstAttribute="top" secondItem="H4f-Qn-H4F" secondAttribute="topMargin" constant="4" id="gvw-Jd-l19"/>
+                    <constraint firstItem="vz4-27-hty" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" constant="86" id="mLL-WE-wVU"/>
+                    <constraint firstItem="Ku9-p5-MdH" firstAttribute="baseline" secondItem="Hf9-Bc-sGk" secondAttribute="baseline" id="v6R-vW-E5o"/>
+                    <constraint firstItem="Hf9-Bc-sGk" firstAttribute="bottom" secondItem="MiX-rk-zsk" secondAttribute="bottom" id="vgi-pj-v4g"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ku9-p5-MdH" secondAttribute="bottom" constant="-2" id="xPO-DF-HJd"/>
+                    <constraint firstItem="HHl-NF-d7u" firstAttribute="leading" secondItem="H4f-Qn-H4F" secondAttribute="leadingMargin" constant="91" id="xya-Yu-VKb"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

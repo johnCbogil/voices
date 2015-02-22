@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Congressman.h"
+
+
 
 @interface APIRequests : NSObject <NSURLConnectionDataDelegate>
 
@@ -28,11 +32,22 @@
 // Congress.gov API Properties
 @property (strong, nonatomic) NSMutableData *photoResponseData;
 @property (strong, nonatomic) NSURLConnection *photoConnection;
+@property int photoRequestCounter;
 
 
 
+// CoreLocation Properties
+@property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) CLPlacemark *placemark;
+@property (strong, nonatomic) CLLocationManager *manager;
+@property (strong, nonatomic) CLLocation *currentLocation;
 
-
+// Congressmen Properties
+@property (strong, nonatomic) Congressman *sfDude;
+@property (strong, nonatomic) NSMutableArray *sfCongressmen;
+@property (strong, nonatomic) NSMutableArray *googCongressmen;
+@property (strong, nonatomic) NSMutableArray *congressmenPhotos;
+@property (strong, nonatomic) NSMutableArray *bioGuides;
 
 
 
@@ -44,6 +59,7 @@
 
 
 - (void)googleMapsRequest:(NSString*)searchText;
+- (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude;
 
 
 @end

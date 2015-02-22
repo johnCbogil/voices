@@ -20,9 +20,9 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self.tweetButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [self.facebookButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [self.callButton setTitleColor:[UIColor colorWithRed:81.0/255.0 green:118/255.0 blue:201.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [self.tweetButton setTitleColor:[UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0] forState:UIControlStateNormal];
+        [self.facebookButton setTitleColor:[UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0] forState:UIControlStateNormal];
+        [self.callButton setTitleColor:[UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0] forState:UIControlStateNormal];
         
         self.shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
         [self.shadowView setBackgroundColor:[UIColor whiteColor]];

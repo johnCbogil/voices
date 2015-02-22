@@ -16,6 +16,7 @@
 #import "APIRequests.h"
 
 
+
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate>
 
 
@@ -59,8 +60,6 @@
 
 
 
-@property long long totalFileSize;
-@property long long receivedDataBytes;
 
 // Actions
 -(IBAction)buttonPressed:(id)sender; //improve this name
