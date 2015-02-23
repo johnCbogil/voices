@@ -15,6 +15,11 @@
     
     self.manager = [[CLLocationManager alloc] init];
     self.geocoder = [[CLGeocoder alloc] init];
+    self.manager.delegate = self;
+    self.manager.distanceFilter = 200;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+
     
     self.aboutLabel.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1];
     [self createVoicesLabel];
@@ -29,6 +34,8 @@
     self.APIRequestsClass = [[APIRequests alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
+    
+
 
 }
 
@@ -193,9 +200,7 @@
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
     {
         NSLog(@"Location services are enabled");
-        self.manager.delegate = self;
-        self.manager.distanceFilter = 200;
-        self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+
         [self checkForInternetServices];
 
     }
@@ -248,6 +253,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     [self.manager stopUpdatingLocation];
+    self.manager = nil;
     
     self.currentLocation = locations[0];
     NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);

@@ -148,14 +148,14 @@
 
          NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
         
-        NSMutableDictionary *usrSearchAddressData = [decodedData valueForKey:@"results"];
+        NSMutableDictionary *userSearchAddressData = [decodedData valueForKey:@"results"];
         
-        NSString *usrSearchLat = [usrSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
-        NSString *usrSearchLng = [usrSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
+        NSString *userSearchLat = [userSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
+        NSString *userSearchLng = [userSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
         
         
-        CLLocationDegrees latitude = [usrSearchLat doubleValue];
-        CLLocationDegrees longitude = [usrSearchLng doubleValue];
+        CLLocationDegrees latitude = [userSearchLat doubleValue];
+        CLLocationDegrees longitude = [userSearchLng doubleValue];
         
         
         [self sunlightFoundationRequest:latitude coordinates:longitude];
