@@ -16,7 +16,7 @@
 {
     
     
-    NSString *string = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
+    NSString *string = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&components=country:US&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
     
     NSString *cleanUrl = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
