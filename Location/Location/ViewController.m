@@ -13,12 +13,7 @@
     
     self.tableView.hidden = YES;
     
-    
     self.geocoder = [[CLGeocoder alloc] init];
-    
-
-    
-
     
     self.aboutLabel.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1];
     [self createVoicesLabel];
@@ -37,34 +32,71 @@
     self.APIRequestsClass = [[APIRequests alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
-    
+}
 
-
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 
-- (void)createLocationManager{
-    
-    self.manager = [[CLLocationManager alloc] init];
-    self.manager.delegate = self;
-    self.manager.distanceFilter = 200;
-    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
-}
 
 - (void)viewDidUnload
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-- (void)reloadTableView:(NSNotification*)notification
-{
-    [self.tableView reloadData];
-    
-}
+
 
 - (void) dismissKeyboard
 {
     [self.searchBar resignFirstResponder];
+}
+
+- (void)createVoicesLabel
+{
+    
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-8);
+    verticalMotionEffect.maximumRelativeValue = @(8);
+    
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-8);
+    horizontalMotionEffect.maximumRelativeValue = @(8);
+    
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    [self.tableView addMotionEffect:group];
+    [self.voicesLabel addMotionEffect:group];
+    [self.whoRepsButton addMotionEffect:group];
+    [self.searchButton addMotionEffect:group];
+    [self.searchBar addMotionEffect:group];
+    [self.blueView addMotionEffect:group];
+    
+    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
+    
+    [self.voicesLabel addSubview:shimmeringView];
+    
+    self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    
+    self.voicesLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
+    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:60]];
+    self.voicesLabel.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0];
+    
+    
+    shimmeringView.contentView = self.voicesLabel;
+    shimmeringView.shimmering = YES;
+    
+    
 }
 
 #pragma mark - UISearchBar methods
@@ -119,7 +151,7 @@
 }
 
 
-
+#pragma mark - Execute Request Methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
@@ -144,69 +176,23 @@
 }
 
 
-- (IBAction)buttonPressed:(id)sender
+- (IBAction)whoRepsButtonPressed:(id)sender
 {
     NSLog(@"Button Pressed");
     
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
-
-        [self checkForLocationServices];
+    
+    [self checkForLocationServices];
 }
 
 
-- (void)createVoicesLabel
-{
-
-    UIInterpolatingMotionEffect *verticalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.y"
-     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalMotionEffect.minimumRelativeValue = @(-8);
-    verticalMotionEffect.maximumRelativeValue = @(8);
-    
-    UIInterpolatingMotionEffect *horizontalMotionEffect =
-    [[UIInterpolatingMotionEffect alloc]
-     initWithKeyPath:@"center.x"
-     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalMotionEffect.minimumRelativeValue = @(-8);
-    horizontalMotionEffect.maximumRelativeValue = @(8);
-    
-    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
-    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
-    
-    [self.tableView addMotionEffect:group];
-    [self.voicesLabel addMotionEffect:group];
-    [self.whoRepsButton addMotionEffect:group];
-    [self.searchButton addMotionEffect:group];
-    [self.searchBar addMotionEffect:group];
-    [self.blueView addMotionEffect:group];
-    
-    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
-    
-    [self.voicesLabel addSubview:shimmeringView];
-    
-    self.voicesLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
-    
-    self.voicesLabel.textAlignment = NSTextAlignmentCenter;
-    
-    self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
-    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:60]];
-    self.voicesLabel.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0];
-    
-    
-    shimmeringView.contentView = self.voicesLabel;
-    shimmeringView.shimmering = YES;
-    
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 
+
+
+
+#pragma mark - Service Check Methods
 
 - (void)checkForLocationServices
 {
@@ -256,6 +242,16 @@
 
 #pragma mark - CLLocationManagerDelegate Methods
 
+
+
+- (void)createLocationManager{
+    
+    self.manager = [[CLLocationManager alloc] init];
+    self.manager.delegate = self;
+    self.manager.distanceFilter = 200;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Error: %@", error);
@@ -296,6 +292,12 @@
 {
     
     return [self.APIRequestsClass.sfCongressmen count];
+}
+
+- (void)reloadTableView:(NSNotification*)notification
+{
+    [self.tableView reloadData];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

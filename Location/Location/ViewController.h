@@ -62,7 +62,7 @@
 
 
 // Actions
--(IBAction)buttonPressed:(id)sender; //improve this name
+-(IBAction)whoRepsButtonPressed:(id)sender;
 - (IBAction)searchButtonPressed:(id)sender;
 
 
