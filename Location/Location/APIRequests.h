@@ -60,6 +60,9 @@
 
 - (void)googleMapsRequest:(NSString*)searchText;
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude;
+- (void)googleCivRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude;
+
+
 
 
 @end

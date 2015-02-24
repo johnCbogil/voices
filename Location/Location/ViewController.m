@@ -13,11 +13,10 @@
     
     self.tableView.hidden = YES;
     
-    self.manager = [[CLLocationManager alloc] init];
+    
     self.geocoder = [[CLGeocoder alloc] init];
-    self.manager.delegate = self;
-    self.manager.distanceFilter = 200;
-    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+
     
 
     
@@ -41,6 +40,15 @@
     
 
 
+}
+
+
+- (void)createLocationManager{
+    
+    self.manager = [[CLLocationManager alloc] init];
+    self.manager.delegate = self;
+    self.manager.distanceFilter = 200;
+    self.manager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
 - (void)viewDidUnload
@@ -85,6 +93,7 @@
 
 - (IBAction)searchButtonPressed:(id)sender {
     
+    [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     [self.searchBar becomeFirstResponder];
     self.whoRepsButton.enabled = NO;
@@ -139,6 +148,7 @@
 {
     NSLog(@"Button Pressed");
     
+    [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
 
         [self checkForLocationServices];
@@ -263,6 +273,8 @@
     NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
     
     [self.APIRequestsClass sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
+    
+    [self.APIRequestsClass googleCivRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
     
 }
 
