@@ -25,6 +25,10 @@
     [self createVoicesLabel];
     [self createSearchBar];
     
+    UIImage *searchImage = [UIImage imageNamed:@"search icon.png"];
+    [self.searchButton setImage:searchImage forState:UIControlStateNormal];
+
+    
     self.photoRequestCounter = 0;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
