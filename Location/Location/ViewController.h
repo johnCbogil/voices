@@ -33,31 +33,11 @@
 
 // Data Properties
 
-@property (strong, nonatomic) NSMutableData *googleResponseData;
-@property (strong, nonatomic) NSMutableData *sfResponseData;
-@property (strong, nonatomic) NSMutableData *photoResponseData;
-
-@property (strong, nonatomic) NSURLConnection *googleConn;
-@property (strong, nonatomic) NSURLConnection *sfConnection;
-@property (strong, nonatomic) NSURLConnection *photoConnection;
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (strong, nonatomic) CLPlacemark *placemark;
 @property (strong, nonatomic) CLLocationManager *manager;
 @property (strong, nonatomic) CLLocation *currentLocation;
-
-@property (strong, nonatomic) NSMutableArray *cleanedPhones;
-
-@property (strong, nonatomic) NSMutableArray *sfCongressmen;
-@property (strong, nonatomic) NSMutableArray *googCongressmen;
-@property (strong, nonatomic) NSMutableArray *congressmenPhotos;
-@property (strong, nonatomic) NSMutableArray *bioGuides;
-@property int photoRequestCounter;
-
-@property (strong, nonatomic) Congressman *sfDude;
-
-
-
 
 
 

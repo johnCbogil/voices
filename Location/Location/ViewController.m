@@ -22,9 +22,7 @@
     UIImage *searchImage = [UIImage imageNamed:@"search icon.png"];
     [self.searchButton setImage:searchImage forState:UIControlStateNormal];
 
-    
-    self.photoRequestCounter = 0;
-    
+        
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
@@ -141,6 +139,14 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     
+    NSLog(@"Cancel button pressed");
+    [self.APIRequestsClass.googleMapsConnection cancel];
+    [self.APIRequestsClass.sfConnection cancel];
+    [self.APIRequestsClass.googleCivConnection cancel];
+    [self.APIRequestsClass.photoConnection cancel];
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = NO;
