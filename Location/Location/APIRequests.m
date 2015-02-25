@@ -58,6 +58,22 @@
     
 }
 
+- (void)photoRequest:(NSString*)bioGuide
+{
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide]];
+    NSLog(@"PhotoRequest URL: %@", url);
+    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    getRequest.HTTPMethod = @"GET";
+    
+    [getRequest setValue:@"image/jpg" forHTTPHeaderField:@"Accept"];
+    
+    self.photoConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
+    
+    
+}
+
 - (void)googleCivRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude
 {
     
@@ -81,10 +97,7 @@
         self.googleCivConnection = [[NSURLConnection alloc] initWithRequest:googleGetRequest delegate:self];
         
     }];
-    
-    
-    
-    
+
 }
 
 
@@ -311,24 +324,23 @@
 - (void)formatTermDates:(NSString*)termDate congressman:(Congressman*)congressman
 {
     
-    congressman.termEnd = [[NSString alloc]init];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    
-    
-    NSDate *dateNotFormatted = [dateFormatter dateFromString:termDate];
-    
-    
-    int daysToAdd = 1;
-    NSDate *newDate1 = [dateNotFormatted dateByAddingTimeInterval:60*60*24*daysToAdd];
-    
-    [dateFormatter setDateFormat:@"d MMM YYYY"];
-    NSString *termDateFormatted = [dateFormatter stringFromDate:newDate1];
-    congressman.termEnd =  termDateFormatted;
-    
-    
+    if([termDate isEqualToString:@"2017-01-03"]){
+        
+        
+        congressman.termEnd = @"4 Nov 2016";
+        
+    }
+    else if ([termDate isEqualToString:@"2019-01-03"]){
+        
+        congressman.termEnd = @"6 Nov 2018";
+        
+        
+    }
+    else if([termDate isEqualToString:@"2021-01-03"]){
+        
+        congressman.termEnd = @"3 Nov 2020";
+    }
     
     
 }
@@ -363,21 +375,7 @@
     }
 }
 
-- (void)photoRequest:(NSString*)bioGuide
-{
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://theunitedstates.io/images/congress/450x550/%@.jpg", bioGuide]];
-    NSLog(@"PhotoRequest URL: %@", url);
-    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    getRequest.HTTPMethod = @"GET";
-    
-    [getRequest setValue:@"image/jpg" forHTTPHeaderField:@"Accept"];
-    
-    self.photoConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
-    
-    
-}
+
 
 
 
