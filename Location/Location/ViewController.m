@@ -140,6 +140,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     
     NSLog(@"Cancel button pressed");
+    self.searchBar.text = nil;
     [self.APIRequestsClass.googleMapsConnection cancel];
     [self.APIRequestsClass.sfConnection cancel];
     [self.APIRequestsClass.googleCivConnection cancel];

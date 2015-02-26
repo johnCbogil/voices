@@ -18,7 +18,12 @@
     
     NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&components=country:US&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
     
-    NSURL *url = [[NSURL alloc] initWithString:formattedString];
+    NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    
+    NSURL *url = [[NSURL alloc] initWithString:cleanUrl];
+    
+
 
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
 
@@ -30,8 +35,17 @@
     
     self.googleMapsConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    if (url == nil) {
+
+        UIAlertView *locationNotDetermined = [[UIAlertView alloc]initWithTitle:@"Address not found" message:@"Perhaps try a more specific address" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [locationNotDetermined show];
     
+    }
+    else{
+        
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    }
     
 }
 
@@ -88,7 +102,7 @@
         
         
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ]];
-        NSLog(@"Google URL: %@", url);
+        NSLog(@"Google Civ URL: %@", url);
         
         NSMutableURLRequest *googleGetRequest = [NSMutableURLRequest requestWithURL:url];
         googleGetRequest.HTTPMethod = @"GET";
@@ -211,9 +225,19 @@
             
         }
         
+        
+        if (![self.bioGuides count] > 0) {
+            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            UIAlertView *locationNotDetermined = [[UIAlertView alloc]initWithTitle:@"Address not found" message:@"Perhaps try a more specific address" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            [locationNotDetermined show];
+        }
+        else{
+            
+        
         NSLog(@"Firing first photo request");
         [self photoRequest:self.bioGuides[0]];
-        
+        }
     }
     else if (connection == self.googleCivConnection){
         
