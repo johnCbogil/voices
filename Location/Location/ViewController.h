@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIView *blueView;
 
+@property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 
 
 // Data Properties

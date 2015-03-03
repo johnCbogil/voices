@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Page View Controller-->
@@ -10,8 +9,8 @@
             <objects>
                 <viewController storyboardIdentifier="PageViewController" id="BdR-Kp-uhw" customClass="PageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5tn-cM-IQA"/>
-                        <viewControllerLayoutGuide type="bottom" id="dhA-EF-Kv0"/>
+                        <viewControllerLayoutGuide type="top" id="xpA-ed-CKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="prE-KE-a1O"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BfM-Ps-0Hb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -28,18 +27,18 @@
             <objects>
                 <viewController storyboardIdentifier="firstViewController" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zbP-NO-P59"/>
-                        <viewControllerLayoutGuide type="bottom" id="xo3-30-aWn"/>
+                        <viewControllerLayoutGuide type="top" id="38b-TK-NWQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="FtH-1d-qL5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-ZC-Hse" userLabel="blueView">
-                                <rect key="frame" x="28" y="28" width="263" height="48"/>
-                                <color key="backgroundColor" red="0.21773246629679679" green="0.32116243545365214" blue="0.78851659982174693" alpha="0.95999999999999996" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-ZC-Hse" userLabel="blueView">
+                                <rect key="frame" x="28" y="28" width="260" height="48"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
                                 <rect key="frame" x="0.0" y="84" width="320" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,8 +49,8 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="v5s-1p-ffa"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-oh-jR2">
-                                <rect key="frame" x="38" y="28" width="199" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-oh-jR2">
+                                <rect key="frame" x="42" y="28" width="196" height="48"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Who Represents You?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,38 +60,27 @@
                                     <action selector="whoRepsButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RY3-wd-KLK"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by address" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7NO-XO-FQf">
-                                <rect key="frame" x="28" y="30" width="264" height="44"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search by address" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7NO-XO-FQf">
+                                <rect key="frame" x="28" y="30" width="261" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg" userLabel="Voices label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg" userLabel="Voices label">
                                 <rect key="frame" x="98" y="444" width="206" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="coi-3N-Px5"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="about &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="about &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
                                 <rect key="frame" x="182" y="518" width="122" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="f2j-iZ-MGp"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZM-X4-PJ3" userLabel="searchButton">
-                                <rect key="frame" x="253" y="41" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZM-X4-PJ3" userLabel="searchButton">
+                                <rect key="frame" x="246" y="30" width="42" height="46"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.24999999999999967" height="0.24999999999999967"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="WEI-UN-kr3"/>
-                                    <constraint firstAttribute="width" constant="22" id="z2a-uy-JE0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Q">
+                                <state key="normal" image="search icon.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -101,31 +89,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="1cQ-gn-xHZ"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="Vgz-zJ-tBg" secondAttribute="trailing" id="2Gg-fp-pRO"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="8" symbolic="YES" id="3Hf-EW-vZw"/>
-                            <constraint firstItem="xo3-30-aWn" firstAttribute="top" secondItem="HWI-Nc-5EP" secondAttribute="bottom" constant="44" id="4Vu-LM-TpI"/>
-                            <constraint firstAttribute="trailing" secondItem="HWI-Nc-5EP" secondAttribute="trailing" id="AzH-co-gsX"/>
-                            <constraint firstItem="xo3-30-aWn" firstAttribute="top" secondItem="6DS-a3-MYA" secondAttribute="bottom" constant="19" id="Caq-6N-LMJ"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="centerX" secondItem="7NO-XO-FQf" secondAttribute="centerX" id="Hgp-4f-UYd"/>
-                            <constraint firstItem="Vgz-zJ-tBg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="82" id="MZD-EC-Rec"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="centerY" secondItem="1gE-oh-jR2" secondAttribute="centerY" id="SV4-sm-oUR"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="bottom" secondItem="Vgz-zJ-tBg" secondAttribute="bottom" id="WOb-ET-nFT"/>
-                            <constraint firstItem="TZM-X4-PJ3" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="top" constant="13" id="bk2-2M-StW"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="7Ud-ZC-Hse" secondAttribute="bottom" constant="8" symbolic="YES" id="cBk-W5-KCC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TZM-X4-PJ3" secondAttribute="trailing" constant="29" id="eZ4-77-Oew"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="leading" secondItem="7Ud-ZC-Hse" secondAttribute="leading" id="eyS-LC-n0e"/>
-                            <constraint firstItem="TZM-X4-PJ3" firstAttribute="leading" secondItem="1gE-oh-jR2" secondAttribute="trailing" constant="16" id="g9B-4G-kNi"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="10" id="gqu-OL-Qr4"/>
-                            <constraint firstItem="7Ud-ZC-Hse" firstAttribute="top" secondItem="zbP-NO-P59" secondAttribute="bottom" constant="8" id="k51-qS-77N"/>
-                            <constraint firstItem="6DS-a3-MYA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="k5y-dp-oCY"/>
-                            <constraint firstItem="7NO-XO-FQf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="12" id="ltb-vX-BMB"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="TZM-X4-PJ3" secondAttribute="bottom" constant="21" id="n4T-Vz-Arb"/>
-                            <constraint firstItem="HWI-Nc-5EP" firstAttribute="top" secondItem="1gE-oh-jR2" secondAttribute="bottom" constant="8" symbolic="YES" id="nTI-9b-gSd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Ud-ZC-Hse" secondAttribute="trailing" constant="13" id="pEg-89-fmm"/>
-                            <constraint firstItem="1gE-oh-jR2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="22" id="wH2-nq-GHx"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="aboutLabel" destination="6DS-a3-MYA" id="eeE-d7-YWC"/>
@@ -146,14 +109,14 @@
             <objects>
                 <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xin-9S-GsV"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Ui-q7-KG0"/>
+                        <viewControllerLayoutGuide type="top" id="zBa-vZ-mA0"/>
+                        <viewControllerLayoutGuide type="bottom" id="EXV-Nv-6RP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IUK-iQ-rmN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" text="Voices is a tool that helps make sure your Congressmen hear you" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIf-6z-0j8">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" text="Voices is a tool that encourages participation in your community" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIf-6z-0j8">
                                 <rect key="frame" x="16" y="220" width="288" height="156"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -179,23 +142,22 @@
             <objects>
                 <viewController storyboardIdentifier="thirdViewController" id="x5F-zk-kFb" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iRw-Z3-Vv4"/>
-                        <viewControllerLayoutGuide type="bottom" id="a6o-vy-N5T"/>
+                        <viewControllerLayoutGuide type="top" id="lvV-on-uj7"/>
+                        <viewControllerLayoutGuide type="bottom" id="cnb-rV-IRn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EVd-iY-4RS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="But Congress only listens to rich lobbyists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
-                                <rect key="frame" x="0.0" y="148" width="322" height="88"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speaking to your Congressmen is an effective way to influence your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
+                                <rect key="frame" x="0.0" y="52" width="322" height="184"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
                                 <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
                                 <rect key="frame" x="40" y="244" width="240" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Not true! Did you know that on a single day in 2012, we generated more than 8 million phone calls to Congress to effectively kill legislation that would have "broken" the internet </string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -211,10 +173,10 @@
         <!--View Controller-->
         <scene sceneID="4lT-X1-W21">
             <objects>
-                <viewController storyboardIdentifier="fourthViewController" id="NLV-i5-WYK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fourthViewController" id="NLV-i5-WYK" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SdQ-gD-kBo"/>
-                        <viewControllerLayoutGuide type="bottom" id="6yT-Aj-Nla"/>
+                        <viewControllerLayoutGuide type="top" id="Rc6-qu-prR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Khz-z7-d9U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slv-Fk-FjU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -227,7 +189,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="&quot;Hello, my name is [your name] and I [support/oppose] [something you care about] and that I will be voting this November&quot;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-Q6-deL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-Q6-deL">
                                 <rect key="frame" x="40" y="304" width="240" height="163"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -243,12 +205,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="scriptTextView" destination="RhM-Q6-deL" id="kR2-7i-hQJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVI-nj-gJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="356"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="search icon.png" width="100" height="100"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

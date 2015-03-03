@@ -19,8 +19,9 @@
     [self createVoicesLabel];
     [self createSearchBar];
     
-    UIImage *searchImage = [UIImage imageNamed:@"search icon.png"];
-    [self.searchButton setImage:searchImage forState:UIControlStateNormal];
+
+    self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
+
 
         
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
@@ -30,6 +31,26 @@
     self.APIRequestsClass = [[APIRequests alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
+    
+
+    
+    NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting this November";
+    
+    UIFont *font = [UIFont fontWithName:@"Avenir" size:16.0];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
+    
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(66,48)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
+    
+    
+
+    
+    [self.scriptTextView setAttributedText:scriptAttributedString];
+    self.scriptTextView.textAlignment = 1.0;
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -214,7 +235,7 @@
     
     else{
         
-        [self locationServicesUnavailable];
+        [self locationServicesUnavailableAlert];
     }
 }
 
@@ -238,7 +259,7 @@
     
 }
 
-- (void)locationServicesUnavailable
+- (void)locationServicesUnavailableAlert
 {
     
     UIAlertView *noLocationServices = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"We weren't able to figure out your location, check to make sure that location services are enabled and try again"delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -263,7 +284,7 @@
 {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
-    [self locationServicesUnavailable];
+    //[self locationServicesUnavailable];
     
 }
 

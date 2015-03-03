@@ -16,15 +16,13 @@
 {
     
     
-    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&components=country:US&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
+    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
     
     NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
     
     NSURL *url = [[NSURL alloc] initWithString:cleanUrl];
+    NSLog(@"GoogleMapsURL: %@", url);
     
-
-
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
 
     getRequest.HTTPMethod = @"GET";
@@ -35,17 +33,8 @@
     
     self.googleMapsConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     
-    if (url == nil) {
-
-        UIAlertView *locationNotDetermined = [[UIAlertView alloc]initWithTitle:@"Address not found" message:@"Perhaps try a more specific address" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-        [locationNotDetermined show];
-    
-    }
-    else{
-        
-    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    }
+    
     
 }
 
@@ -65,8 +54,7 @@
     self.sfConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    
+
     
 }
 
@@ -99,9 +87,14 @@
         
         NSString * address = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.administrativeArea, self.placemark.country];
         NSString *formattedAddress = [address stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        NSString *formattedString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ];
         
         
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ]];
+        NSString *encodedString = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        
+        
+        NSURL *url = [NSURL URLWithString:encodedString];
         NSLog(@"Google Civ URL: %@", url);
         
         NSMutableURLRequest *googleGetRequest = [NSMutableURLRequest requestWithURL:url];
@@ -233,7 +226,7 @@
             [locationNotDetermined show];
         }
         else{
-            
+        
         
         NSLog(@"Firing first photo request");
         [self photoRequest:self.bioGuides[0]];
@@ -317,8 +310,19 @@
             
             [[self.sfCongressmen objectAtIndex:1]setPhoto:self.congressmenPhotos[1]];
             
-            NSLog(@"Firing third photo request");
-            [self photoRequest:self.bioGuides[2]];
+            if([self.sfCongressmen count] > 2){
+                
+                NSLog(@"Firing third photo request");
+                [self photoRequest:self.bioGuides[2]];
+            }
+            else{
+
+                self.photoRequestCounter = 0;
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"ReloadTableViewNotification" object:nil];
+                
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            }
+
             
         }
         
