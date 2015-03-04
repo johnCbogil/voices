@@ -11,7 +11,7 @@
     
     [super viewDidLoad];
     
-    self.tableView.hidden = YES;
+    self.tableView.alpha = 0.0;
     
     self.geocoder = [[CLGeocoder alloc] init];
     
@@ -20,23 +20,23 @@
     [self createSearchBar];
     [self createAttributedStrings];
     
-
+    
     self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
-
-
-        
+    
+    
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
-
+    
     self.APIRequestsClass = [[APIRequests alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
     
-
     
-
-
+    
+    
+    
     
 }
 
@@ -46,7 +46,7 @@
     
     // About page 2 - "sopa"
     UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
-
+    
     NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet. Learn more here"];
     [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, 135)];
     [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
@@ -190,7 +190,7 @@
         [UIView animateWithDuration:0.2 animations:^{self.searchBar.alpha = 1.0;}];
         
     }];
-
+    
 }
 
 
@@ -202,15 +202,15 @@
     [self.APIRequestsClass.sfConnection cancel];
     [self.APIRequestsClass.googleCivConnection cancel];
     [self.APIRequestsClass.photoConnection cancel];
-
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
+    
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = NO;
         [UIView animateWithDuration:.2 animations:^{self.whoRepsButton.alpha = 1.0;}];
         self.searchButton.hidden = NO;
-   
+        
     }];
 }
 
@@ -233,9 +233,9 @@
             
             [self.searchBar resignFirstResponder];
             [self.APIRequestsClass googleMapsRequest:self.searchBar.text];
-
+            
         }
- 
+        
     }
 }
 
@@ -264,9 +264,9 @@
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
     {
         NSLog(@"Location services are enabled");
-
+        
         [self checkForInternetServices];
-
+        
     }
     
     else{
@@ -383,7 +383,11 @@
     
     if (cell.congressman == nil) {
         
-        self.tableView.hidden = YES;
+        
+        self.tableView.alpha = 0.0;
+        
+        
+        
         
     }
     else{
@@ -413,7 +417,11 @@
             
             
             
-            self.tableView.hidden = NO;
+            //self.tableView.hidden = NO;
+            [UIView animateWithDuration:0.2
+                             animations:^{
+                                 self.tableView.alpha = 1.0;
+                             }];
             
         });
     }
