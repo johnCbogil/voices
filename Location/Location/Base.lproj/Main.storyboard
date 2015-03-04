@@ -211,7 +211,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Its easy! Checkout our example script:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-Oh-tGL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="It's easy! Checkout our example script:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-Oh-tGL">
                                 <rect key="frame" x="40" y="248" width="240" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

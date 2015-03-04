@@ -28,13 +28,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIView *blueView;
-
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
 
 
 // Data Properties
-
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (strong, nonatomic) CLPlacemark *placemark;

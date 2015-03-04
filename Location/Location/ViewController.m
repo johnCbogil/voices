@@ -52,7 +52,7 @@
     [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
     [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
     [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
-    //[sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
     
     
     [self.sopaTextView setAttributedText:sopaString];
@@ -319,7 +319,8 @@
 {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
-    //[self locationServicesUnavailable];
+    self.manager = nil;
+    [self locationServicesUnavailableAlert];
     
 }
 
