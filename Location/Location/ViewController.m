@@ -45,7 +45,7 @@
     
     
     // About page 2 - "sopa"
-    UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:22.0];
+    UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
 
     NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet. Learn more here"];
     [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, 135)];
@@ -65,7 +65,7 @@
     
     
     // About page 3 - "script"
-    NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting this November";
+    NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting in November";
     
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
     NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
@@ -143,7 +143,8 @@
     self.voicesLabel.textAlignment = NSTextAlignmentCenter;
     
     self.voicesLabel.text = NSLocalizedString(@"Voices", nil);
-    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:60]];
+    [self.voicesLabel setFont:[UIFont fontWithName:@"Avenir" size:80
+                               ]];
     self.voicesLabel.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0];
     
     

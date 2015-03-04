@@ -9,8 +9,8 @@
             <objects>
                 <viewController storyboardIdentifier="PageViewController" id="BdR-Kp-uhw" customClass="PageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ho9-Sg-8lW"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Xb-qy-ruT"/>
+                        <viewControllerLayoutGuide type="top" id="peg-Uz-ZTH"/>
+                        <viewControllerLayoutGuide type="bottom" id="i7q-Tc-uOp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BfM-Ps-0Hb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -27,8 +27,8 @@
             <objects>
                 <viewController storyboardIdentifier="firstViewController" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jND-7V-8Ei"/>
-                        <viewControllerLayoutGuide type="bottom" id="r12-lf-M55"/>
+                        <viewControllerLayoutGuide type="top" id="zYy-Be-uDe"/>
+                        <viewControllerLayoutGuide type="bottom" id="e31-Lj-btT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -38,8 +38,14 @@
                                 <rect key="frame" x="28" y="28" width="260" height="48"/>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg" userLabel="Voices label">
+                                <rect key="frame" x="64" y="449" width="240" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
-                                <rect key="frame" x="0.0" y="84" width="320" height="415"/>
+                                <rect key="frame" x="0.0" y="84" width="320" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -64,14 +70,8 @@
                                 <rect key="frame" x="28" y="30" width="261" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgz-zJ-tBg" userLabel="Voices label">
-                                <rect key="frame" x="98" y="419" width="206" height="80"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="about &gt;&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
-                                <rect key="frame" x="182" y="493" width="122" height="31"/>
+                                <rect key="frame" x="182" y="517" width="122" height="31"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="22"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -109,8 +109,8 @@
             <objects>
                 <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rXK-oS-vzR"/>
-                        <viewControllerLayoutGuide type="bottom" id="lgH-WM-EZB"/>
+                        <viewControllerLayoutGuide type="top" id="PE9-hG-8k4"/>
+                        <viewControllerLayoutGuide type="bottom" id="b1t-up-1y7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IUK-iQ-rmN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -142,8 +142,8 @@
             <objects>
                 <viewController storyboardIdentifier="thirdViewController" id="x5F-zk-kFb" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d0I-bp-8P4"/>
-                        <viewControllerLayoutGuide type="bottom" id="d6S-Ev-QfA"/>
+                        <viewControllerLayoutGuide type="top" id="tpO-j5-BAm"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Yd-eH-W01"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EVd-iY-4RS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -178,8 +178,8 @@
             <objects>
                 <viewController id="fzS-er-RWC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="abi-jg-kYL"/>
-                        <viewControllerLayoutGuide type="bottom" id="j0Y-1n-FmH"/>
+                        <viewControllerLayoutGuide type="top" id="o2w-5K-FYb"/>
+                        <viewControllerLayoutGuide type="bottom" id="h2J-9j-e83"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LRm-VU-NZw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -204,8 +204,8 @@
             <objects>
                 <viewController storyboardIdentifier="fourthViewController" id="NLV-i5-WYK" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3wi-IG-BHb"/>
-                        <viewControllerLayoutGuide type="bottom" id="gWw-Wh-Qnf"/>
+                        <viewControllerLayoutGuide type="top" id="KOP-Ur-2g7"/>
+                        <viewControllerLayoutGuide type="bottom" id="g0f-Sf-JZk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Slv-Fk-FjU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
