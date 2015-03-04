@@ -18,6 +18,7 @@
     self.aboutLabel.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1];
     [self createVoicesLabel];
     [self createSearchBar];
+    [self createAttributedStrings];
     
 
     self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
@@ -34,22 +35,56 @@
     
 
     
+
+
+    
+}
+
+- (void)createAttributedStrings
+{
+    
+    
+    // About page 2 - "sopa"
+    UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:22.0];
+
+    NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet. Learn more here"];
+    [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, 135)];
+    [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
+    //[sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
+    
+    
+    [self.sopaTextView setAttributedText:sopaString];
+    self.sopaTextView.textAlignment = 1.0;
+    
+    
+    
+    
+    
+    
+    
+    // About page 3 - "script"
     NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting this November";
     
-    UIFont *font = [UIFont fontWithName:@"Avenir" size:16.0];
-    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
     NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
     
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(66,48)];
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
+    [scriptAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:16.0] range:NSMakeRange(0, 100)];
     
-    
-
     
     [self.scriptTextView setAttributedText:scriptAttributedString];
     self.scriptTextView.textAlignment = 1.0;
-
+    
+    
+    
+    
+    
+    
+    
     
 }
 
