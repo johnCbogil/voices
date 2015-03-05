@@ -17,11 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   // self.webView = [[UIWebView alloc]init];
+    //self.webView = [[UIWebView alloc]init];
     self.webView.delegate = self;
+    
     self.webView.backgroundColor = [UIColor whiteColor];
-
-    //self.webView.backgroundColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
     self.navBar.barTintColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
     self.navBar.tintColor = [UIColor whiteColor];
 
@@ -32,7 +31,6 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [self.webView loadRequest:urlRequest];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [UIApplication sharedApplication].statusBarHidden = YES;
 
 
 

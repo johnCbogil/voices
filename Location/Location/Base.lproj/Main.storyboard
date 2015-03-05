@@ -44,17 +44,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
-                                <rect key="frame" x="0.0" y="84" width="320" height="357"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="FVm-mV-mdY"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="v5s-1p-ffa"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-oh-jR2">
                                 <rect key="frame" x="42" y="28" width="196" height="48"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
@@ -88,6 +77,17 @@
                                     <action selector="searchButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QX3-gC-Mac"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cell" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-Nc-5EP">
+                                <rect key="frame" x="0.0" y="84" width="320" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="FVm-mV-mdY"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="v5s-1p-ffa"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                     </view>
                     <connections>
@@ -107,7 +107,7 @@
         <!--View Controller-->
         <scene sceneID="Omw-G0-Lf7">
             <objects>
-                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NTB-Cb-2S8"/>
                         <viewControllerLayoutGuide type="bottom" id="qR5-M3-gNj"/>
@@ -116,6 +116,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Voices?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doW-2s-H6t">
+                                <rect key="frame" x="16" y="157" width="288" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="40"/>
+                                <color key="textColor" red="0.96078431372549022" green="0.45490196078431372" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" editable="NO" text="Voices is a tool that encourages participation in your community" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIf-6z-0j8">
                                 <rect key="frame" x="16" y="220" width="288" height="156"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,15 +129,13 @@
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is Voices?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doW-2s-H6t">
-                                <rect key="frame" x="16" y="157" width="288" height="55"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="40"/>
-                                <color key="textColor" red="0.96078431372549022" green="0.45490196078431372" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="pageHeaderOne" destination="doW-2s-H6t" id="5Jf-iV-8EH"/>
+                        <outlet property="voicesIsTextView" destination="OIf-6z-0j8" id="dok-Wx-4ld"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGr-eq-Ntu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,6 +264,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="itsEasyTextView" destination="L8u-Oh-tGL" id="elv-xi-D61"/>
                         <outlet property="pageHeaderThree" destination="kAV-qs-vgC" id="clU-xi-zfA"/>
                         <outlet property="scriptTextView" destination="RhM-Q6-deL" id="kR2-7i-hQJ"/>
                     </connections>

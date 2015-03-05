@@ -15,7 +15,7 @@
     
     self.geocoder = [[CLGeocoder alloc] init];
     
-    self.aboutLabel.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1];
+    self.aboutLabel.textColor = [UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0];
     [self createVoicesLabel];
     [self createSearchBar];
     [self createAttributedStrings];
@@ -43,6 +43,9 @@
 
 - (void)createAttributedStrings
 {
+    // About page 1 - "voices is"
+    self.pageHeaderOne.textColor = [UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0];
+    self.voicesIsTextView.textColor = [UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0];
     
     
     // About page 2 - "sopa"
@@ -52,9 +55,11 @@
     
     NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet. Learn more here"];
     [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, 135)];
-    [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
-    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
-    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,130)];
+[sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(131, 4)];
+    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(131, 4)];
     //[sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
     
     
@@ -69,14 +74,18 @@
     
     // About page 3 - "script"
     self.pageHeaderThree.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
+    self.itsEasyTextView.textColor = [UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0];
+    
     NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting in November";
     
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
     NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
     
-    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
-    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(66,48)];
-    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(18,11)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(18,11)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,17)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(30,35)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(65,49)];
+    [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(114,33)];
     [scriptAttributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:16.0] range:NSMakeRange(0, 100)];
     
     
