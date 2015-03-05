@@ -14,10 +14,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Reachability.h"
 #import "APIRequests.h"
+#import "WebViewController.h"
 
 
 
-@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate>
+@interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UINavigationControllerDelegate>
 
 
 // UI Objects
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIView *blueView;
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
+- (IBAction)hereLinkPressed:(id)sender;
 
 
 // Data Properties

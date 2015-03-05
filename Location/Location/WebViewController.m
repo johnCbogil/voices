@@ -1,9 +1,9 @@
 //
 //  WebViewController.m
-//  Location
+//  Voices
 //
-//  Created by John Bogil on 1/4/15.
-//  Copyright (c) 2015 PJ Vea. All rights reserved.
+//  Created by Aditya Narayan on 3/4/15.
+//  Copyright (c) 2015 John Bogil. All rights reserved.
 //
 
 #import "WebViewController.h"
@@ -16,6 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   // self.webView = [[UIWebView alloc]init];
+    self.webView.delegate = self;
+
+    // Load the URL from the previous view
+    NSURL *websiteUrl = [NSURL URLWithString:(@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA") ];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    [self.webView loadRequest:urlRequest];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
 
 
@@ -36,4 +45,9 @@
 }
 */
 
+- (IBAction)backButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end

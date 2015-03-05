@@ -52,7 +52,7 @@
     [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(131, 4)];
     [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
     [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(131, 4)];
-    [sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
+    //[sopaString addAttribute:NSLinkAttributeName value:@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA" range:NSMakeRange(131, 4)];
     
     
     [self.sopaTextView setAttributedText:sopaString];
@@ -82,6 +82,46 @@
     
     
     
+    
+    
+    
+    
+}
+
+
+
+- (IBAction)hereLinkPressed:(id)sender
+{
+    
+    NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
+    CGPoint location = [sender locationInView:self.sopaTextView];
+    location.x -= self.sopaTextView.textContainerInset.left;
+    location.y -= self.sopaTextView.textContainerInset.top;
+    
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:location
+                                           inTextContainer:self.sopaTextView.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex > 131) {
+        
+        NSRange range;
+        id value = [self.sopaTextView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
+        
+        NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location, (unsigned long)range.length);
+        
+//        NSLog(@"nav controller = %@", self.navigationController);
+//        //self.navigationController = [[UINavigationController alloc]init];
+//        self.navigationController.delegate = self;
+//        WebViewController *webVC = [[WebViewController alloc]init];
+//        [self.navigationController pushViewController:webVC animated:YES];
+       // [self.navigationController presentViewController:webVC animated:YES completion:nil];
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
+        //[self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
     
     
     
@@ -427,5 +467,8 @@
     }
     return cell;
 }
+
+
+
 
 @end
