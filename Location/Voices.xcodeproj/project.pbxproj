@@ -276,9 +276,10 @@
 				ORGANIZATIONNAME = "John Bogil";
 				TargetAttributes = {
 					7800F5BC186377C8005D4946 = {
-						DevelopmentTeam = 4Y3GGL46D2;
+						DevelopmentTeam = 7NYC5B4J52;
 					};
 					7800F5DD186377C8005D4946 = {
+						DevelopmentTeam = 7NYC5B4J52;
 						TestTargetID = 7800F5BC186377C8005D4946;
 					};
 				};

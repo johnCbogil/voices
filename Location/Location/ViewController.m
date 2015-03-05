@@ -19,6 +19,7 @@
     [self createVoicesLabel];
     [self createSearchBar];
     [self createAttributedStrings];
+    [self createButtonSeperator];
     
     
     self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
@@ -45,6 +46,8 @@
     
     
     // About page 2 - "sopa"
+    self.pageHeaderTwo.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
+    
     UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
     
     NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"Did you know that on a single day in 2012, more than 8 million people called their Congressmen to protect the internet. Learn more here"];
@@ -65,6 +68,7 @@
     
     
     // About page 3 - "script"
+    self.pageHeaderThree.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
     NSString *scriptString = @"Hello, my name is [your name] and I would like the Congressman to [support/oppose] [something that you care about] and I will be voting in November";
     
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
@@ -147,8 +151,7 @@
     [self.searchBar resignFirstResponder];
 }
 
-- (void)createVoicesLabel
-{
+- (UIMotionEffectGroup*) createMotionEffect {
     
     UIInterpolatingMotionEffect *verticalMotionEffect =
     [[UIInterpolatingMotionEffect alloc]
@@ -167,12 +170,20 @@
     UIMotionEffectGroup *group = [UIMotionEffectGroup new];
     group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
     
-    [self.tableView addMotionEffect:group];
-    [self.voicesLabel addMotionEffect:group];
-    [self.whoRepsButton addMotionEffect:group];
-    [self.searchButton addMotionEffect:group];
-    [self.searchBar addMotionEffect:group];
-    [self.blueView addMotionEffect:group];
+    return group;
+    
+}
+
+- (void)createVoicesLabel
+{
+    UIMotionEffectGroup *motionEffect = [self createMotionEffect];
+    
+    [self.tableView addMotionEffect:motionEffect];
+    [self.voicesLabel addMotionEffect:motionEffect];
+    [self.whoRepsButton addMotionEffect:motionEffect];
+    [self.searchButton addMotionEffect:motionEffect];
+    [self.searchBar addMotionEffect:motionEffect];
+    [self.blueView addMotionEffect:motionEffect];
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     
@@ -192,6 +203,15 @@
     shimmeringView.shimmering = YES;
     
     
+}
+
+- (void) createButtonSeperator {
+    self.buttonSeperator = [[UIView alloc] initWithFrame:CGRectMake(245, 40, 1, 24)];
+    self.buttonSeperator.backgroundColor = [UIColor colorWithRed:133 green:133. blue:133 alpha:1.0];
+    
+    [self.buttonSeperator addMotionEffect:[self createMotionEffect]];
+    [self.view addSubview:self.buttonSeperator];
+                            
 }
 
 #pragma mark - UISearchBar methods
@@ -220,6 +240,8 @@
 
 - (IBAction)searchButtonPressed:(id)sender {
     
+    self.buttonSeperator.hidden = YES;
+    
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     [self.searchBar becomeFirstResponder];
@@ -228,6 +250,7 @@
     [UIView animateWithDuration:0.2 animations:^{self.whoRepsButton.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = YES;
         [UIView animateWithDuration:0.2 animations:^{self.searchBar.alpha = 1.0;}];
+        [UIView animateWithDuration:0.2 animations:^{self.buttonSeperator.alpha = 0.0;}];
         
     }];
     
@@ -244,12 +267,13 @@
     [self.APIRequestsClass.photoConnection cancel];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
+    self.buttonSeperator.hidden = NO;
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
         self.searchBar.userInteractionEnabled = NO;
         [UIView animateWithDuration:.2 animations:^{self.whoRepsButton.alpha = 1.0;}];
         self.searchButton.hidden = NO;
+        [UIView animateWithDuration:0.2 animations:^{self.buttonSeperator.alpha = 1.0;}];
         
     }];
 }

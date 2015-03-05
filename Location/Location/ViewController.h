@@ -31,6 +31,10 @@
 @property (strong, nonatomic) IBOutlet UIView *blueView;
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderOne;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderTwo;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderThree;
+
 - (IBAction)hereLinkPressed:(id)sender;
 
 
@@ -51,6 +55,7 @@
 
 
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
+@property (nonatomic, strong) UIView *buttonSeperator;
 
 
 @end
