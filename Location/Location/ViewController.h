@@ -29,8 +29,14 @@
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) IBOutlet UIView *blueView;
-@property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderOne;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderTwo;
+@property (strong, nonatomic) IBOutlet UILabel *pageHeaderThree;
+@property (strong, nonatomic) IBOutlet UITextView *voicesIsTextView;
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
+@property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
+@property (weak, nonatomic) IBOutlet UITextView *itsEasyTextView;
+
 - (IBAction)hereLinkPressed:(id)sender;
 
 
@@ -51,6 +57,7 @@
 
 
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
+@property (nonatomic, strong) UIView *buttonSeparator;
 
 
 @end

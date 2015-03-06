@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *backButton;
 - (IBAction)backButtonPressed:(id)sender;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end

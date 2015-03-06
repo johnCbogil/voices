@@ -17,11 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   // self.webView = [[UIWebView alloc]init];
+    //self.webView = [[UIWebView alloc]init];
     self.webView.delegate = self;
+    
+    self.webView.backgroundColor = [UIColor whiteColor];
+    self.navBar.barTintColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
+    self.navBar.tintColor = [UIColor whiteColor];
 
+    
+    
     // Load the URL from the previous view
-    NSURL *websiteUrl = [NSURL URLWithString:(@"http://en.wikipedia.org/wiki/Protests_against_SOPA_and_PIPA") ];
+    NSURL *websiteUrl = [NSURL URLWithString:(@"http://www.nytimes.com/2012/01/21/technology/senate-postpones-piracy-vote.html?_r=0") ];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [self.webView loadRequest:urlRequest];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
