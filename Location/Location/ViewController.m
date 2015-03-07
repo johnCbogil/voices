@@ -106,7 +106,6 @@
 
 - (IBAction)hereLinkPressed:(id)sender
 {
-    
     NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
     CGPoint location = [sender locationInView:self.sopaTextView];
     location.x -= self.sopaTextView.textContainerInset.left;

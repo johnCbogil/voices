@@ -16,10 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //self.webView = [[UIWebView alloc]init];
     self.webView.delegate = self;
-    
+    [self showActivityInidcator];
     self.webView.backgroundColor = [UIColor whiteColor];
     self.navBar.barTintColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
     self.navBar.tintColor = [UIColor whiteColor];
@@ -31,6 +30,8 @@
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [self.webView loadRequest:urlRequest];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    //[self webViewDidFinishLoad:self.webView];
+    
 
 
 
@@ -40,6 +41,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
@@ -56,4 +58,25 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+- (void) showActivityInidcator {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.activityIndicator.alpha = 1.0;
+    //self.activityIndicator.color = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0];
+    self.activityIndicator.center = CGPointMake(300, -22.0);
+    self.activityIndicator.hidesWhenStopped = YES;
+    [self.webView addSubview:self.activityIndicator];
+    [self.activityIndicator startAnimating];
+}
+
+- (void) hideActivityIndicator {
+    [self.activityIndicator stopAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    if ([[webView stringByEvaluatingJavaScriptFromString:@"document.readyState"] isEqualToString:@"complete"]) {
+        [self hideActivityIndicator];
+    }
+}
+
 @end
