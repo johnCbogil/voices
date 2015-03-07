@@ -34,11 +34,6 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
     
-    
-    
-    
-    
-    
 }
 
 - (void)createAttributedStrings
@@ -257,7 +252,7 @@
 - (IBAction)searchButtonPressed:(id)sender {
     
     self.buttonSeparator.hidden = YES;
-    
+
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     [self.searchBar becomeFirstResponder];
@@ -299,6 +294,7 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
+    [self showActivityInidcator];
     if(self.searchBar.text.length > 0) {
         
         //check for internet
@@ -323,16 +319,29 @@
 - (IBAction)whoRepsButtonPressed:(id)sender
 {
     NSLog(@"Button Pressed");
-    
+    [self showActivityInidcator];
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     
     [self checkForLocationServices];
 }
 
+#pragma mark - Activity Indicator
 
+- (void) showActivityInidcator {
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator.alpha = 1.0;
+    self.activityIndicator.color = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1.0];
+    self.activityIndicator.center = CGPointMake(160.0, 110.0);
+    self.activityIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:self.activityIndicator];
+    [self.activityIndicator startAnimating];
+    NSLog(@"%@", self.activityIndicator);
+}
 
-
+- (void) hideActivityIndicator {
+    [self.activityIndicator stopAnimating];
+}
 
 
 
@@ -505,6 +514,7 @@
             
         });
     }
+    [self hideActivityIndicator];
     return cell;
 }
 

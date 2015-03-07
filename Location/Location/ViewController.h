@@ -36,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itsEasyTextView;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 - (IBAction)hereLinkPressed:(id)sender;
 
