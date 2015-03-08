@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8501A99649B00357C58 /* MarqueeLabel.m */; };
+		526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526B571B1AABC12200814CD3 /* MissingRepCell.xib */; };
 		529BB9461A720A6B0018B75A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BB9451A720A6B0018B75A /* PageViewController.m */; };
 		52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC657619E0F0D7004BF6B3 /* Congressman.m */; };
 		52D5F2151A3E2808007EC83B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5F2141A3E2808007EC83B /* QuartzCore.framework */; };
+		52D8C2911AABD5680079ABB6 /* noPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D8C2901AABD5680079ABB6 /* noPhoto.png */; };
 		7800F5C1186377C8005D4946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C0186377C8005D4946 /* Foundation.framework */; };
 		7800F5C5186377C8005D4946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C4186377C8005D4946 /* UIKit.framework */; };
 		7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7800F5C9186377C8005D4946 /* InfoPlist.strings */; };
@@ -50,11 +52,13 @@
 /* Begin PBXFileReference section */
 		5269E84F1A99649B00357C58 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		5269E8501A99649B00357C58 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
+		526B571B1AABC12200814CD3 /* MissingRepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MissingRepCell.xib; path = ../MissingRepCell.xib; sourceTree = "<group>"; };
 		529BB9441A720A6B0018B75A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		529BB9451A720A6B0018B75A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		52BC657519E0F0D7004BF6B3 /* Congressman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Congressman.h; path = ../Congressman.h; sourceTree = "<group>"; };
 		52BC657619E0F0D7004BF6B3 /* Congressman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Congressman.m; path = ../Congressman.m; sourceTree = "<group>"; };
 		52D5F2141A3E2808007EC83B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		52D8C2901AABD5680079ABB6 /* noPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noPhoto.png; sourceTree = "<group>"; };
 		7800F5BD186377C8005D4946 /* Voices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7800F5C0186377C8005D4946 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7800F5C2186377C8005D4946 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +134,7 @@
 				7800F5BE186377C8005D4946 /* Products */,
 				AAB5DF751A72FCF70079BD3E /* staticmap.png */,
 				F272A5FB1A9C16B300FF0150 /* search icon.png */,
+				52D8C2901AABD5680079ABB6 /* noPhoto.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +167,7 @@
 				AA7A302F1A42550A0043910D /* FBShimmer */,
 				7800F5D2186377C8005D4946 /* Main.storyboard */,
 				AAFABC591A227AB90028214D /* CustomCell.xib */,
+				526B571B1AABC12200814CD3 /* MissingRepCell.xib */,
 				AAE60F751A965E6900F4E5D8 /* APIRequests.h */,
 				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
 				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
@@ -276,10 +282,10 @@
 				ORGANIZATIONNAME = "John Bogil";
 				TargetAttributes = {
 					7800F5BC186377C8005D4946 = {
-						DevelopmentTeam = 7NYC5B4J52;
+						DevelopmentTeam = 4Y3GGL46D2;
 					};
 					7800F5DD186377C8005D4946 = {
-						DevelopmentTeam = 7NYC5B4J52;
+						DevelopmentTeam = 4Y3GGL46D2;
 						TestTargetID = 7800F5BC186377C8005D4946;
 					};
 				};
@@ -310,8 +316,10 @@
 			files = (
 				7800F5D9186377C8005D4946 /* Images.xcassets in Resources */,
 				7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */,
+				526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */,
 				AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */,
 				AAB5DF761A72FCF70079BD3E /* staticmap.png in Resources */,
+				52D8C2911AABD5680079ABB6 /* noPhoto.png in Resources */,
 				7800F5D4186377C8005D4946 /* Main.storyboard in Resources */,
 				F272A5FC1A9C16B300FF0150 /* search icon.png in Resources */,
 			);

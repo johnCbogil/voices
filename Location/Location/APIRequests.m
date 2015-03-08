@@ -285,7 +285,19 @@
         NSLog(@"PhotoRequestCounter is: %d", self.photoRequestCounter);
         
         
-        [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
+        if ([self.photoResponseData length] < 9000) {
+            [self.congressmenPhotos addObject:[UIImage imageNamed:@"noPhoto.png"]];
+            
+        }
+        else{
+            [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
+
+        }
+        
+
+        
+        
+        
         
         if (self.photoRequestCounter == 1) {
             

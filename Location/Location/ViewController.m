@@ -468,15 +468,12 @@
     
     cell.congressman = [self.APIRequestsClass.sfCongressmen objectAtIndex:indexPath.row];
     
-    
+    // This checks if app is starting up or nah
     if (cell.congressman == nil) {
         
         
         self.tableView.alpha = 0.0;
-        
-        
-        
-        
+
     }
     else{
         
@@ -502,8 +499,7 @@
             [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
             [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
             [cell.callButton setTitle:@"Call" forState:UIControlStateNormal];
-            
-            
+
             
             //self.tableView.hidden = NO;
             [UIView animateWithDuration:0.2
