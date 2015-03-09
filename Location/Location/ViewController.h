@@ -16,7 +16,7 @@
 #import "APIRequests.h"
 #import "WebViewController.h"
 
-
+@class APIRequests;
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UINavigationControllerDelegate>
 
@@ -60,5 +60,6 @@
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
 @property (nonatomic, strong) UIView *buttonSeparator;
 
+- (void) hideActivityIndicator;
 
 @end

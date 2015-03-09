@@ -222,6 +222,9 @@
         if (![self.bioGuides count] > 0) {
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            ViewController *vc = [[ViewController alloc]init];
+            //vc.activityIndicator = [[UIActivityIndicatorView alloc]init];
+            [vc hideActivityIndicator];
             UIAlertView *locationNotDetermined = [[UIAlertView alloc]initWithTitle:@"Address not found" message:@"Perhaps try a more specific address" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
             [locationNotDetermined show];
         }
@@ -284,7 +287,7 @@
         self.photoRequestCounter++;
         NSLog(@"PhotoRequestCounter is: %d", self.photoRequestCounter);
         
-        
+        // Confirm that the photo exists
         if ([self.photoResponseData length] < 9000) {
             [self.congressmenPhotos addObject:[UIImage imageNamed:@"noPhoto.png"]];
             
@@ -293,17 +296,12 @@
             [self.congressmenPhotos addObject:[UIImage imageWithData:self.photoResponseData]];
 
         }
-        
 
-        
-        
-        
-        
+        // DC check
         if (self.photoRequestCounter == 1) {
             
             [[self.sfCongressmen objectAtIndex:0]setPhoto:self.congressmenPhotos[0]];
             
-            // DC check
             if([self.sfCongressmen count] > 1){
                 
                 NSLog(@"Firing second photo request");

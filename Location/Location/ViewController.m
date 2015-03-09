@@ -76,11 +76,11 @@
     NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
     
     
-
-
+    
+    
     //grey
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,scriptAttributedString.length)];
-
+    
     
     // orange
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(18,11)];
@@ -123,12 +123,12 @@
         
         NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location, (unsigned long)range.length);
         
-//        NSLog(@"nav controller = %@", self.navigationController);
-//        //self.navigationController = [[UINavigationController alloc]init];
-//        self.navigationController.delegate = self;
-//        WebViewController *webVC = [[WebViewController alloc]init];
-//        [self.navigationController pushViewController:webVC animated:YES];
-       // [self.navigationController presentViewController:webVC animated:YES completion:nil];
+        //        NSLog(@"nav controller = %@", self.navigationController);
+        //        //self.navigationController = [[UINavigationController alloc]init];
+        //        self.navigationController.delegate = self;
+        //        WebViewController *webVC = [[WebViewController alloc]init];
+        //        [self.navigationController pushViewController:webVC animated:YES];
+        // [self.navigationController presentViewController:webVC animated:YES completion:nil];
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
@@ -221,7 +221,7 @@
     
     [self.buttonSeparator addMotionEffect:[self createMotionEffect]];
     [self.view addSubview:self.buttonSeparator];
-                            
+    
 }
 
 #pragma mark - UISearchBar methods
@@ -251,7 +251,7 @@
 - (IBAction)searchButtonPressed:(id)sender {
     
     self.buttonSeparator.hidden = YES;
-
+    
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     [self.searchBar becomeFirstResponder];
@@ -277,6 +277,7 @@
     [self.APIRequestsClass.photoConnection cancel];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self hideActivityIndicator];
     self.buttonSeparator.hidden = NO;
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2 animations:^{self.searchBar.alpha = 0.0;} completion:^(BOOL finished) {
@@ -340,6 +341,7 @@
 
 - (void) hideActivityIndicator {
     [self.activityIndicator stopAnimating];
+
 }
 
 
@@ -408,6 +410,7 @@
 {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
+    [self hideActivityIndicator];
     self.manager = nil;
     [self locationServicesUnavailableAlert];
     
@@ -444,7 +447,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [self.APIRequestsClass.sfCongressmen count];
+    
+    if (self.APIRequestsClass.sfCongressmen.count == 1) {
+        return 1;
+    }
+    else{
+        return 3;
+    }
+    
+    
 }
 
 - (void)reloadTableView:(NSNotification*)notification
@@ -456,61 +467,89 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+    
+    // Create cell
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    
+    // load cell
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     
     
-    cell.congressman = [self.APIRequestsClass.sfCongressmen objectAtIndex:indexPath.row];
-    
-    // This checks if app is starting up or nah
-    if (cell.congressman == nil) {
+    // Check if the search text was ambiguous
+    if (self.APIRequestsClass.sfCongressmen.count == 2 && indexPath.row == 2){
         
         
-        self.tableView.alpha = 0.0;
-
+        static NSString *simpleTableIdentifier = @"MissingRepCell";
+        CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        
+        if (cell == nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MissingRepCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             self.tableView.alpha = 1.0;
+                         }];
+        [self hideActivityIndicator];
+        return cell;
+        
     }
+    
+    
     else{
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
-            cell.name.textColor = [UIColor colorWithRed:(100.0/255.0) green:(100.0/255.0) blue:(100.0/255.0) alpha:1.0];
-            
-            cell.name.marqueeType = MLLeftRight;
-            cell.name.rate = 15.0f;
-            cell.name.fadeLength = 10.0f;
-            //cell.name.leadingBuffer = 1.0f;
-            //cell.name.trailingBuffer = 1.0f;
-            cell.name.textAlignment = NSTextAlignmentLeft;
-            cell.name.tag = 102;
-            
-            cell.detail.text = [NSString stringWithFormat:@"(%@) Next Election: %@", cell.congressman.party, cell.congressman.termEnd];
-            cell.detail.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1.0];
-            
-            cell.photoView.image = cell.congressman.photo;
+        
+        cell.congressman = [self.APIRequestsClass.sfCongressmen objectAtIndex:indexPath.row];
+        
+        // This checks if app is starting up or nah
+        if (cell.congressman == nil) {
             
             
-            [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
-            [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
-            [cell.callButton setTitle:@"Call" forState:UIControlStateNormal];
-
+            self.tableView.alpha = 0.0;
             
-            //self.tableView.hidden = NO;
-            [UIView animateWithDuration:0.2
-                             animations:^{
-                                 self.tableView.alpha = 1.0;
-                             }];
+        }
+        else{
             
-        });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
+                cell.name.textColor = [UIColor colorWithRed:(100.0/255.0) green:(100.0/255.0) blue:(100.0/255.0) alpha:1.0];
+                
+                cell.name.marqueeType = MLLeftRight;
+                cell.name.rate = 15.0f;
+                cell.name.fadeLength = 10.0f;
+                //cell.name.leadingBuffer = 1.0f;
+                //cell.name.trailingBuffer = 1.0f;
+                cell.name.textAlignment = NSTextAlignmentLeft;
+                cell.name.tag = 102;
+                
+                cell.detail.text = [NSString stringWithFormat:@"(%@) Next Election: %@", cell.congressman.party, cell.congressman.termEnd];
+                cell.detail.textColor = [UIColor colorWithRed:(130.0/255.0) green:(130.0/255.0) blue:(130.0/255.0) alpha:1.0];
+                
+                cell.photoView.image = cell.congressman.photo;
+                
+                
+                [cell.tweetButton setTitle:@"Twitter" forState:UIControlStateNormal];
+                [cell.facebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
+                [cell.callButton setTitle:@"Call" forState:UIControlStateNormal];
+                
+                
+                [UIView animateWithDuration:0.2
+                                 animations:^{
+                                     self.tableView.alpha = 1.0;
+                                 }];
+            });
+        }
+        
+        [self hideActivityIndicator];
+        return cell;
     }
-    [self hideActivityIndicator];
-    return cell;
 }
 
 

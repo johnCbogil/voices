@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		526626EA1AAD299800283833 /* johnlennon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526626E91AAD299800283833 /* johnlennon.png */; };
 		5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8501A99649B00357C58 /* MarqueeLabel.m */; };
 		526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526B571B1AABC12200814CD3 /* MissingRepCell.xib */; };
 		529BB9461A720A6B0018B75A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BB9451A720A6B0018B75A /* PageViewController.m */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		526626E91AAD299800283833 /* johnlennon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = johnlennon.png; sourceTree = "<group>"; };
 		5269E84F1A99649B00357C58 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		5269E8501A99649B00357C58 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		526B571B1AABC12200814CD3 /* MissingRepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MissingRepCell.xib; path = ../MissingRepCell.xib; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				AAB5DF751A72FCF70079BD3E /* staticmap.png */,
 				F272A5FB1A9C16B300FF0150 /* search icon.png */,
 				52D8C2901AABD5680079ABB6 /* noPhoto.png */,
+				526626E91AAD299800283833 /* johnlennon.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +322,7 @@
 				526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */,
 				AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */,
 				AAB5DF761A72FCF70079BD3E /* staticmap.png in Resources */,
+				526626EA1AAD299800283833 /* johnlennon.png in Resources */,
 				52D8C2911AABD5680079ABB6 /* noPhoto.png in Resources */,
 				7800F5D4186377C8005D4946 /* Main.storyboard in Resources */,
 				F272A5FC1A9C16B300FF0150 /* search icon.png in Resources */,
