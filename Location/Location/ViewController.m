@@ -11,6 +11,11 @@
     
     [super viewDidLoad];
     
+    self.APIRequestsClass = [[APIRequests alloc]init];
+    self.APIRequestsClass.viewController = self;
+    
+    
+    
     self.tableView.alpha = 0.0;
     
     self.geocoder = [[CLGeocoder alloc] init];
@@ -30,7 +35,7 @@
     
     [self.view addGestureRecognizer:tap];
     
-    self.APIRequestsClass = [[APIRequests alloc]init];
+    
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
     
@@ -60,11 +65,7 @@
     [self.sopaTextView setAttributedText:sopaString];
     self.sopaTextView.textAlignment = 1.0;
     
-    
-    
-    
-    
-    
+
     
     // About page 3 - "script"
     self.pageHeaderThree.textColor = [UIColor colorWithRed:(255.0/255.0) green:(128.0/255.0) blue:(5.0/255.0) alpha:1];
@@ -74,13 +75,10 @@
     
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
     NSMutableAttributedString *scriptAttributedString = [[NSMutableAttributedString alloc] initWithString:scriptString attributes:attrsDictionary];
-    
-    
-    
+
     
     //grey
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,scriptAttributedString.length)];
-    
     
     // orange
     [scriptAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(18,11)];
@@ -92,14 +90,7 @@
     
     [self.scriptTextView setAttributedText:scriptAttributedString];
     self.scriptTextView.textAlignment = 1.0;
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
 
 
@@ -122,23 +113,13 @@
         id value = [self.sopaTextView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
         
         NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location, (unsigned long)range.length);
-        
-        //        NSLog(@"nav controller = %@", self.navigationController);
-        //        //self.navigationController = [[UINavigationController alloc]init];
-        //        self.navigationController.delegate = self;
-        //        WebViewController *webVC = [[WebViewController alloc]init];
-        //        [self.navigationController pushViewController:webVC animated:YES];
-        // [self.navigationController presentViewController:webVC animated:YES completion:nil];
-        
+    
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
         //[self dismissViewControllerAnimated:YES completion:nil];
         
     }
-    
-    
-    
-    
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -263,7 +244,6 @@
         [UIView animateWithDuration:0.2 animations:^{self.buttonSeparator.alpha = 0.0;}];
         
     }];
-    
 }
 
 
@@ -301,6 +281,7 @@
         Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
         NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
         if (networkStatus == NotReachable) {
+            [self hideActivityIndicator];
             UIAlertView *noInternetConnection = [[UIAlertView alloc]initWithTitle:@"No Internet Connection" message:@"Please check your network connection and try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [noInternetConnection show];
             
@@ -311,7 +292,6 @@
             [self.APIRequestsClass googleMapsRequest:self.searchBar.text];
             
         }
-        
     }
 }
 
@@ -372,6 +352,7 @@
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
+        [self hideActivityIndicator];
         UIAlertView *noInternetConnection = [[UIAlertView alloc]initWithTitle:@"No Internet Connection" message:@"Please check your network connection and try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [noInternetConnection show];
         
@@ -381,8 +362,6 @@
         [self.manager startUpdatingLocation];
         
     }
-    
-    
 }
 
 - (void)locationServicesUnavailableAlert
@@ -446,16 +425,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    
+  
     if (self.APIRequestsClass.sfCongressmen.count == 1) {
         return 1;
     }
     else{
         return 3;
     }
-    
-    
 }
 
 - (void)reloadTableView:(NSNotification*)notification
@@ -466,9 +442,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
+
     // Create cell
     static NSString *simpleTableIdentifier = @"CustomCell";
     CustomTableViewCell *cell = (CustomTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -496,12 +470,10 @@
                          animations:^{
                              self.tableView.alpha = 1.0;
                          }];
-        [self hideActivityIndicator];
+        //[self hideActivityIndicator];
         return cell;
         
     }
-    
-    
     else{
         
         
@@ -551,8 +523,4 @@
         return cell;
     }
 }
-
-
-
-
 @end

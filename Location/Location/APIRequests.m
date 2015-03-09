@@ -222,9 +222,7 @@
         if (![self.bioGuides count] > 0) {
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            ViewController *vc = [[ViewController alloc]init];
-            //vc.activityIndicator = [[UIActivityIndicatorView alloc]init];
-            [vc hideActivityIndicator];
+            [self.viewController hideActivityIndicator];
             UIAlertView *locationNotDetermined = [[UIAlertView alloc]initWithTitle:@"Address not found" message:@"Perhaps try a more specific address" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
             [locationNotDetermined show];
         }

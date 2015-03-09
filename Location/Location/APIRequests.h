@@ -11,6 +11,8 @@
 #import "Congressman.h"
 #import "ViewController.h"
 
+@class ViewController;
+
 
 
 @interface APIRequests : NSObject <NSURLConnectionDataDelegate>
@@ -53,6 +55,7 @@
 
 
 
+@property (strong, nonatomic) ViewController *viewController;
 
 
 
