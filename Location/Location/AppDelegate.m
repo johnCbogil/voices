@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  Location
 //
-//  Created by PJ Vea on 12/19/13.
-//  Copyright (c) 2013 PJ Vea. All rights reserved.
+//  Created by John Bogil 2014
+//  Copyright (c) 2014 John Bogil. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -12,8 +12,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        // app already launched
+        NSLog(@"app has launched previously");
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"first time launching app");
+    
+    
+    }    return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
