@@ -194,10 +194,10 @@
 		7800F5C7186377C8005D4946 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA7A30321A425D060043910D /* Reachability.h */,
-				AA7A30331A425D060043910D /* Reachability.m */,
 				7800F5CF186377C8005D4946 /* AppDelegate.h */,
 				7800F5D0186377C8005D4946 /* AppDelegate.m */,
+				AA7A30321A425D060043910D /* Reachability.h */,
+				AA7A30331A425D060043910D /* Reachability.m */,
 				7800F5C8186377C8005D4946 /* Voices-Info.plist */,
 				7800F5C9186377C8005D4946 /* InfoPlist.strings */,
 				7800F5CC186377C8005D4946 /* main.m */,

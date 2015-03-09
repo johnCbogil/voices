@@ -11,6 +11,37 @@
     
     [super viewDidLoad];
     
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        // app already launched
+        NSLog(@"app has launched previously");
+        self.orangeView.hidden = YES;
+        self.searchByLocationLabel.hidden = YES;
+        self.searchByLabel.hidden = YES;
+        self.moreInfoLabel.hidden = YES;
+        self.bar1Label.hidden = YES;
+        self.bar2Label.hidden = YES;
+        self.bar3Label.hidden = YES;
+        self.getStartedButton.hidden = YES;
+        
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"first time launching app");
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     self.APIRequestsClass = [[APIRequests alloc]init];
     self.APIRequestsClass.viewController = self;
     
@@ -244,6 +275,23 @@
         [UIView animateWithDuration:0.2 animations:^{self.buttonSeparator.alpha = 0.0;}];
         
     }];
+}
+
+- (IBAction)getStartedButtonPressed:(id)sender {
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+    
+    self.orangeView.alpha = 0;
+    self.searchByLocationLabel.alpha = 0;
+    self.searchByLabel.alpha = 0;
+    self.moreInfoLabel.alpha = 0;
+    self.bar1Label.alpha = 0;
+    self.bar2Label.alpha = 0;
+    self.bar3Label.alpha = 0;
+    self.getStartedButton.alpha = 0;
+                         
+                           }];
 }
 
 

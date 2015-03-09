@@ -37,6 +37,20 @@
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itsEasyTextView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIView *buttonSeparator;
+
+
+// onboarding Objects
+@property (strong, nonatomic) IBOutlet UIView *orangeView;
+@property (strong, nonatomic) IBOutlet UIButton *getStartedButton;
+@property (strong, nonatomic) IBOutlet UILabel *moreInfoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *searchByLabel;
+@property (strong, nonatomic) IBOutlet UILabel *streetZipLabel;
+@property (strong, nonatomic) IBOutlet UILabel *searchByLocationLabel;
+@property (strong, nonatomic) IBOutlet UIView *bar1Label;
+@property (strong, nonatomic) IBOutlet UIView *bar2Label;
+@property (strong, nonatomic) IBOutlet UIView *bar3Label;
+
 
 - (IBAction)hereLinkPressed:(id)sender;
 
@@ -53,12 +67,12 @@
 // Actions
 -(IBAction)whoRepsButtonPressed:(id)sender;
 - (IBAction)searchButtonPressed:(id)sender;
+- (IBAction)getStartedButtonPressed:(id)sender;
 
 
 
 
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
-@property (nonatomic, strong) UIView *buttonSeparator;
 
 - (void) hideActivityIndicator;
 

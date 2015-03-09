@@ -12,19 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
-    {
-        // app already launched
-        NSLog(@"app has launched previously");
-    }
-    else
-    {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"first time launching app");
-    
-    
-    }    return YES;
+   return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
