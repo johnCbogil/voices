@@ -72,11 +72,10 @@
 - (IBAction)getStartedButtonPressed:(id)sender;
 
 
-// Class Properties
+// Class properties
+
 @property (nonatomic, strong) PageViewController *pageVC;
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
-
-
 
 - (void) hideActivityIndicator;
 

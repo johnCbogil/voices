@@ -16,8 +16,8 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
-
 @property (strong, nonatomic) ViewController *vc;
+
 
 
 @end

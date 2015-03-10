@@ -63,7 +63,6 @@
     
     if (self.pageViewController.viewControllers[0] == secondVC)
     {
-        
         return firstVC;
     }
     else if (self.pageViewController.viewControllers[0] == thirdVC){

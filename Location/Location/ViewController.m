@@ -10,10 +10,8 @@
 {
     
     [super viewDidLoad];
-
-    self.pageVC.vc = self;
-
     
+    self.pageVC.vc = self;
     
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
@@ -29,24 +27,23 @@
         self.bar3Label.hidden = YES;
         self.getStartedButton.hidden = YES;
         
-        
-        
     }
     else
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"first time launching app");
-        
-        
         self.pageVC.pageViewController.dataSource = nil;
         
-
-
         
         
     }
-
+    
+    
+    
+    
+    
+    
     
     self.APIRequestsClass = [[APIRequests alloc]init];
     self.APIRequestsClass.viewController = self;
@@ -63,11 +60,14 @@
     [self createAttributedStrings];
     [self createButtonSeparator];
     
-
+    
+    
+    
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     [tap addTarget:self action:@selector(searchBarCancelButtonClicked:)];
     [self.view addGestureRecognizer:tap];
+    
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
@@ -149,6 +149,8 @@
     
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
+        //[self dismissViewControllerAnimated:YES completion:nil];
+        
     }
    
 }
@@ -258,7 +260,6 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],}];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    
     self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
 
 }
@@ -267,8 +268,7 @@
     
     self.buttonSeparator.hidden = YES;
     
-    [self createLocationManager];
-    [self.manager requestWhenInUseAuthorization];
+
     [self.searchBar becomeFirstResponder];
     self.whoRepsButton.enabled = NO;
     self.searchButton.hidden = YES;
@@ -293,8 +293,7 @@
     self.bar2Label.alpha = 0;
     self.bar3Label.alpha = 0;
     self.getStartedButton.alpha = 0;
-                         
-                           }];
+                     }];
     self.pageVC.pageViewController.dataSource = self.pageVC;
 }
 
@@ -330,6 +329,8 @@
     if(self.searchBar.text.length > 0) {
         
         //check for internet
+        [self createLocationManager];
+        [self.manager requestWhenInUseAuthorization];
         Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
         NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
         if (networkStatus == NotReachable) {
@@ -522,12 +523,11 @@
                          animations:^{
                              self.tableView.alpha = 1.0;
                          }];
-        //[self hideActivityIndicator];
+        [self hideActivityIndicator];
         return cell;
         
     }
     else{
-        
         
         cell.congressman = [self.APIRequestsClass.sfCongressmen objectAtIndex:indexPath.row];
         
@@ -569,9 +569,13 @@
                                      self.tableView.alpha = 1.0;
                                  }];
             });
+            
+            // this is getting called 3 times at startup
+            [self hideActivityIndicator];
+            return cell;
+
         }
         
-        [self hideActivityIndicator];
         return cell;
     }
 }
