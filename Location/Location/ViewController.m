@@ -10,6 +10,10 @@
 {
     
     [super viewDidLoad];
+
+    self.pageVC.vc = self;
+
+    
     
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
@@ -25,6 +29,8 @@
         self.bar3Label.hidden = YES;
         self.getStartedButton.hidden = YES;
         
+        
+        
     }
     else
     {
@@ -33,14 +39,14 @@
         NSLog(@"first time launching app");
         
         
+        self.pageVC.pageViewController.dataSource = nil;
+        
+
+
+        
         
     }
-    
-    
-    
-    
-    
-    
+
     
     self.APIRequestsClass = [[APIRequests alloc]init];
     self.APIRequestsClass.viewController = self;
@@ -57,15 +63,11 @@
     [self createAttributedStrings];
     [self createButtonSeparator];
     
-    
-    self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
-    
-    
+
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
-    
+    [tap addTarget:self action:@selector(searchBarCancelButtonClicked:)];
     [self.view addGestureRecognizer:tap];
-    
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
@@ -147,8 +149,6 @@
     
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
-        //[self dismissViewControllerAnimated:YES completion:nil];
-        
     }
    
 }
@@ -228,7 +228,7 @@
 }
 
 - (void) createButtonSeparator {
-    self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(247, 57, 1, 24)];
+    self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
     self.buttonSeparator.backgroundColor = [UIColor colorWithRed:133 green:133. blue:133 alpha:.5];
     
     [self.buttonSeparator addMotionEffect:[self createMotionEffect]];
@@ -258,6 +258,9 @@
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],}];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
+    
+    self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
+
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
@@ -292,6 +295,7 @@
     self.getStartedButton.alpha = 0;
                          
                            }];
+    self.pageVC.pageViewController.dataSource = self.pageVC;
 }
 
 

@@ -15,7 +15,9 @@
 #import "Reachability.h"
 #import "APIRequests.h"
 #import "WebViewController.h"
+#import "PageViewController.h"
 
+@class PageViewController;
 @class APIRequests;
 
 @interface ViewController : UIViewController  <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UISearchBarDelegate, UINavigationControllerDelegate>
@@ -70,9 +72,11 @@
 - (IBAction)getStartedButtonPressed:(id)sender;
 
 
-
-
+// Class Properties
+@property (nonatomic, strong) PageViewController *pageVC;
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
+
+
 
 - (void) hideActivityIndicator;
 

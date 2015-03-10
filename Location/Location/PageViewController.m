@@ -36,6 +36,9 @@
     thirdVC = [self.storyboard instantiateViewControllerWithIdentifier:@"thirdViewController"];
     fourthVC = [self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"];
 
+    ViewController *initialView = (ViewController*)firstVC;
+    initialView.pageVC = self;
+    
     // This sets the starting VC
     viewControllers = @[firstVC];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -60,6 +63,7 @@
     
     if (self.pageViewController.viewControllers[0] == secondVC)
     {
+        
         return firstVC;
     }
     else if (self.pageViewController.viewControllers[0] == thirdVC){
