@@ -37,6 +37,8 @@
 		AAE60F771A965E6900F4E5D8 /* APIRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE60F761A965E6900F4E5D8 /* APIRequests.m */; };
 		AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFABC591A227AB90028214D /* CustomCell.xib */; };
 		AAFABC5D1A227C000028214D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFABC5C1A227C000028214D /* CustomTableViewCell.m */; };
+		F2467C011AAFE3CA00DB698A /* johnlennon23.png in Resources */ = {isa = PBXBuildFile; fileRef = F2467C001AAFE3CA00DB698A /* johnlennon23.png */; };
+		F2467C031AAFE54200DB698A /* App_Logo16.png in Resources */ = {isa = PBXBuildFile; fileRef = F2467C021AAFE54200DB698A /* App_Logo16.png */; };
 		F272A5FC1A9C16B300FF0150 /* search icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F272A5FB1A9C16B300FF0150 /* search icon.png */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		AAFABC591A227AB90028214D /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AAFABC5B1A227C000028214D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		AAFABC5C1A227C000028214D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		F2467C001AAFE3CA00DB698A /* johnlennon23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = johnlennon23.png; sourceTree = "<group>"; };
+		F2467C021AAFE54200DB698A /* App_Logo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = App_Logo16.png; path = ../App_Logo16.png; sourceTree = "<group>"; };
 		F272A5FB1A9C16B300FF0150 /* search icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +142,7 @@
 				F272A5FB1A9C16B300FF0150 /* search icon.png */,
 				52D8C2901AABD5680079ABB6 /* noPhoto.png */,
 				526626E91AAD299800283833 /* johnlennon.png */,
+				F2467C001AAFE3CA00DB698A /* johnlennon23.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,6 +190,7 @@
 				7800F5D6186377C8005D4946 /* ViewController.m */,
 				AA047AAC1AA7BD2B00B0056D /* WebViewController.h */,
 				AA047AAD1AA7BD2B00B0056D /* WebViewController.m */,
+				F2467C021AAFE54200DB698A /* App_Logo16.png */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
 				7800F5C7186377C8005D4946 /* Supporting Files */,
 			);
@@ -285,10 +291,10 @@
 				ORGANIZATIONNAME = "John Bogil";
 				TargetAttributes = {
 					7800F5BC186377C8005D4946 = {
-						DevelopmentTeam = 4Y3GGL46D2;
+						DevelopmentTeam = 7NYC5B4J52;
 					};
 					7800F5DD186377C8005D4946 = {
-						DevelopmentTeam = 4Y3GGL46D2;
+						DevelopmentTeam = 7NYC5B4J52;
 						TestTargetID = 7800F5BC186377C8005D4946;
 					};
 				};
@@ -318,6 +324,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7800F5D9186377C8005D4946 /* Images.xcassets in Resources */,
+				F2467C031AAFE54200DB698A /* App_Logo16.png in Resources */,
+				F2467C011AAFE3CA00DB698A /* johnlennon23.png in Resources */,
 				7800F5CB186377C8005D4946 /* InfoPlist.strings in Resources */,
 				526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */,
 				AAFABC5A1A227AB90028214D /* CustomCell.xib in Resources */,
@@ -478,8 +486,8 @@
 		7800F5F0186377C9005D4946 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconOrange;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageOrange;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -494,8 +502,8 @@
 		7800F5F1186377C9005D4946 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconOrange;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImageOrange;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

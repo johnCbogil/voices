@@ -286,8 +286,8 @@
         NSLog(@"PhotoRequestCounter is: %d", self.photoRequestCounter);
         
         // Confirm that the photo exists
-        if ([self.photoResponseData length] < 9000) {
-            [self.congressmenPhotos addObject:[UIImage imageNamed:@"noPhoto.png"]];
+        if ([self.photoResponseData length] < 15000) {
+            [self.congressmenPhotos addObject:[UIImage imageNamed:@"johnlennon23.png"]];
             
         }
         else{
