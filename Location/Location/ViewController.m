@@ -256,13 +256,29 @@
     // Set placeholder text to white
     [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
     
+    
+    
     // Set the input text font
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:15],}];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     self.searchButton.imageEdgeInsets = UIEdgeInsetsMake(self.searchButton.frame.size.height - 35, self.searchButton.frame.size.width - 35, 12, 12);
+    
+    
+    [self.searchBar setImage:[UIImage new] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    [[UISearchBar appearance] setPositionAdjustment:UIOffsetMake(-20, 0) forSearchBarIcon:UISearchBarIconSearch];
+
+
+    [self.searchBar setTintColor:[UIColor whiteColor]];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[UIColor colorWithRed:255.0/255.0 green:160.0/255.0 blue:5.0/255.0 alpha:1.0]];
+    
+
 
 }
+
+
+
+
 
 - (IBAction)searchButtonPressed:(id)sender {
     
