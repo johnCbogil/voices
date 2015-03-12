@@ -4,6 +4,9 @@
 //  
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "Congressman.h"
+#import "MarqueeLabel.h"
 
 /** An enum that defines the types of `MarqueeLabel` scrolling */
 typedef NS_ENUM(NSUInteger, MarqueeType) {

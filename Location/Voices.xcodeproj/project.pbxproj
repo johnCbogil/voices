@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5206EFDE1AB133D2000158EA /* MissingRepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5206EFDD1AB133D2000158EA /* MissingRepTableViewCell.m */; };
 		526626EA1AAD299800283833 /* johnlennon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526626E91AAD299800283833 /* johnlennon.png */; };
 		5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8501A99649B00357C58 /* MarqueeLabel.m */; };
 		526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526B571B1AABC12200814CD3 /* MissingRepCell.xib */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5206EFDC1AB133D2000158EA /* MissingRepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissingRepTableViewCell.h; sourceTree = "<group>"; };
+		5206EFDD1AB133D2000158EA /* MissingRepTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissingRepTableViewCell.m; sourceTree = "<group>"; };
 		526626E91AAD299800283833 /* johnlennon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = johnlennon.png; sourceTree = "<group>"; };
 		5269E84F1A99649B00357C58 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		5269E8501A99649B00357C58 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
 				5269E84F1A99649B00357C58 /* MarqueeLabel.h */,
 				5269E8501A99649B00357C58 /* MarqueeLabel.m */,
+				5206EFDC1AB133D2000158EA /* MissingRepTableViewCell.h */,
+				5206EFDD1AB133D2000158EA /* MissingRepTableViewCell.m */,
 				529BB9441A720A6B0018B75A /* PageViewController.h */,
 				529BB9451A720A6B0018B75A /* PageViewController.m */,
 				7800F5D5186377C8005D4946 /* ViewController.h */,
@@ -291,10 +296,10 @@
 				ORGANIZATIONNAME = "John Bogil";
 				TargetAttributes = {
 					7800F5BC186377C8005D4946 = {
-						DevelopmentTeam = 7NYC5B4J52;
+						DevelopmentTeam = 4Y3GGL46D2;
 					};
 					7800F5DD186377C8005D4946 = {
-						DevelopmentTeam = 7NYC5B4J52;
+						DevelopmentTeam = 4Y3GGL46D2;
 						TestTargetID = 7800F5BC186377C8005D4946;
 					};
 				};
@@ -353,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE60F771A965E6900F4E5D8 /* APIRequests.m in Sources */,
+				5206EFDE1AB133D2000158EA /* MissingRepTableViewCell.m in Sources */,
 				AA9D46441A3F951300FC4815 /* FBShimmeringLayer.m in Sources */,
 				52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */,
 				AA7A30341A425D060043910D /* Reachability.m in Sources */,
