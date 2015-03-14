@@ -561,7 +561,7 @@
                 cell.name.text = [NSString stringWithFormat:@"%@. %@ %@" , cell.congressman.officeTitle, cell.congressman.firstName, cell.congressman.lastName];
                 cell.name.textColor = [UIColor colorWithRed:(100.0/255.0) green:(100.0/255.0) blue:(100.0/255.0) alpha:1.0];
                 
-                cell.name.marqueeType = MLLeftRight;
+                cell.name.marqueeType = MLContinuous;
                 cell.name.rate = 15.0f;
                 cell.name.fadeLength = 10.0f;
                 //cell.name.leadingBuffer = 1.0f;
