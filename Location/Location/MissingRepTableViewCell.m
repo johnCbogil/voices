@@ -32,7 +32,7 @@
     [self.contentView addSubview:self.shadowView];
     
     self.photoView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 82, 82)];
-    [self.photoView setImage:[UIImage imageNamed:@"johnlennon23.png"]];
+    [self.photoView setImage:[UIImage imageNamed:@"johnLennon"]];
     
     
     

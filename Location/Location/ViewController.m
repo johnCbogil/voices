@@ -272,8 +272,10 @@
     [self.searchBar setTintColor:[UIColor whiteColor]];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[UIColor colorWithRed:255.0/255.0 green:160.0/255.0 blue:5.0/255.0 alpha:1.0]];
     
+    [self.searchBar setImage:[UIImage imageNamed:@"clearButton"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateHighlighted];
+    [self.searchBar setImage:[UIImage imageNamed:@"clearButton"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
 
-
+    
 }
 
 

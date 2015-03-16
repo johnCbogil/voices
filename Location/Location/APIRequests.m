@@ -287,7 +287,7 @@
         
         // Confirm that the photo exists
         if ([self.photoResponseData length] < 15000) {
-            [self.congressmenPhotos addObject:[UIImage imageNamed:@"johnlennon23.png"]];
+            [self.congressmenPhotos addObject:[UIImage imageNamed:@"johnLennon"]];
             
         }
         else{
