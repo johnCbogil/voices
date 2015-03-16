@@ -41,7 +41,7 @@
                                     <constraint firstAttribute="height" constant="67" id="ljv-8T-p27"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe left" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DS-a3-MYA">
@@ -162,7 +162,7 @@
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.36862745099999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="lwu-Sg-jbj" firstAttribute="top" secondItem="sjH-d5-SdU" secondAttribute="top" constant="88" id="37p-wK-qdk"/>
                                     <constraint firstAttribute="trailing" secondItem="lwu-Sg-jbj" secondAttribute="trailing" constant="53" id="4o6-UU-GeM"/>
@@ -293,14 +293,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speaking to your Congressmen is an effective way to influence your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
-                                <rect key="frame" x="0.0" y="77" width="322" height="184"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
-                                <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
-                                <rect key="frame" x="40" y="269" width="240" height="222"/>
+                                <rect key="frame" x="40" y="269" width="240" height="143"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -310,6 +304,12 @@
                                     <outletCollection property="gestureRecognizers" destination="GWM-hj-vJa" appends="YES" id="vHW-wS-IME"/>
                                 </connections>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speaking to your representative is an effective way to influence your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
+                                <rect key="frame" x="10" y="77" width="300" height="184"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

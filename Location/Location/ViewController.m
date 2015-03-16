@@ -86,13 +86,13 @@
     
     UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
     
-    NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"On a single day in 2012, more than 14 million people called their Congressmen to protect the internet. Learn more here"];
+    NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"On a single day in 2012, more than 14 million people called their representatives to protect the internet. Learn more here"];
     [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, [sopaString length])];
     [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(114, 4)];
     [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,114)];
-    [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(114, 4)];
-    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(114, 4)];
-    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(114, 4)];
+    [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(118, 4)];
+    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(118, 4)];
+    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(118, 4)];
     
     
     [self.sopaTextView setAttributedText:sopaString];
@@ -140,7 +140,7 @@
                                            inTextContainer:self.sopaTextView.textContainer
                   fractionOfDistanceBetweenInsertionPoints:NULL];
     
-    if (characterIndex > 114) {
+    if (characterIndex > 118) {
         
         NSRange range;
         id value = [self.sopaTextView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
@@ -149,7 +149,6 @@
     
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.view.window.rootViewController presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"webViewController"] animated:YES completion:nil];
-        //[self dismissViewControllerAnimated:YES completion:nil];
         
     }
    
