@@ -17,7 +17,6 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
         // app already launched
-        NSLog(@"app has launched previously");
         self.orangeView.hidden = YES;
         self.searchByLocationLabel.hidden = YES;
         self.searchByLabel.hidden = YES;
@@ -88,8 +87,8 @@
     
     NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]initWithString:@"On a single day in 2012, more than 14 million people called their representatives to protect the internet. Learn more here"];
     [sopaString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Avenir" size:18.0] range:NSMakeRange(0, [sopaString length])];
-    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(114, 4)];
-    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,114)];
+    [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(118, 4)];
+    [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:83.0/255 green:95.0/255.0 blue:107.0/255.0 alpha:1.0] range:NSMakeRange(0,118)];
     [sopaString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1.0] range:NSMakeRange(118, 4)];
     [sopaString addAttribute:NSUnderlineColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(118, 4)];
     [sopaString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:5.0/255.0 alpha:1.0] range:NSMakeRange(118, 4)];
