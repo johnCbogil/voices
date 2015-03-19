@@ -16,7 +16,7 @@
 {
     
     
-    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=AIzaSyBRIJi9cX10r1LJ2wDrcp1uYZCw6kROL9o", searchText];
+    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGMAPSKEY];
     
     NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -42,7 +42,7 @@
 {
     self.photoRequestCounter = 0;
 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=6c15da72f7f04c91bad04c89c178e01e", latitude, longitude]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://congress.api.sunlightfoundation.com/legislators/locate?latitude=%.8f&longitude=%.8f&apikey=%@", latitude, longitude, SFKEY]];
     NSLog(@"SF URL: %@", url);
     NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
     
@@ -87,12 +87,11 @@
         
         NSString * address = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.administrativeArea, self.placemark.country];
         NSString *formattedAddress = [address stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-        NSString *formattedString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=AIzaSyAFmuzxmKaPRHW6DTh3ZEfUySugM_Jj7_s", formattedAddress ];
+        NSString *formattedString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=%@", formattedAddress, GOOGCIVKEY ];
         
         
         NSString *encodedString = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-        
         
         NSURL *url = [NSURL URLWithString:encodedString];
         NSLog(@"Google Civ URL: %@", url);
