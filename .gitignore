@@ -16,7 +16,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-./Location/Location/Keys.h 
-./Location/Location/Keys.m
+/Keys.h 
+/Keys.m
 
 
