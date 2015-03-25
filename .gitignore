@@ -16,7 +16,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-Location/Keys.h 
-Location/Keys.m
+**/Keys.*
 /Location/.DS_Store
 /Location/Voices.xcodeproj/project.xcworkspace/xcuserdata/adityanarayan.xcuserdatad/UserInterfaceState.xcuserstate
