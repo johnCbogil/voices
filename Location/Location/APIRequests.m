@@ -16,7 +16,7 @@
 {
     
     
-    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGMAPSKEY];
+    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGKEY];
     
     NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -87,7 +87,7 @@
         
         NSString * address = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", self.placemark.subThoroughfare, self.placemark.thoroughfare, self.placemark.postalCode, self.placemark.administrativeArea, self.placemark.country];
         NSString *formattedAddress = [address stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-        NSString *formattedString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=%@", formattedAddress, GOOGCIVKEY ];
+        NSString *formattedString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@&includeOffices=true&levels=country&roles=legislatorLowerBody&roles=legislatorUpperBody&key=%@", formattedAddress, GOOGKEY];
         
         
         NSString *encodedString = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
