@@ -10,7 +10,7 @@
 
 @interface Keys : NSObject
 
-#define SFKEY @"3"
+#define SFKEY @"4"
 #define GOOGKEY @"1"
 
 
