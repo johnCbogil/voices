@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Create page view controller
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.dataSource = self;
@@ -34,8 +34,8 @@
     firstVC = [self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"];
     secondVC = [self.storyboard instantiateViewControllerWithIdentifier:@"secondViewController"];
     thirdVC = [self.storyboard instantiateViewControllerWithIdentifier:@"thirdViewController"];
-    fourthVC = [self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"];
-
+    //fourthVC = [self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"];
+    
     ViewController *initialView = (ViewController*)firstVC;
     initialView.pageVC = self;
     
@@ -69,34 +69,23 @@
         
         return secondVC;
     }
-    else if (self.pageViewController.viewControllers[0] == fourthVC){
-        return thirdVC;
-    }
-
-
-return nil;
+    
+    return nil;
 }
 
-    
+
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     if (self.pageViewController.viewControllers[0] == firstVC){
-        
         return secondVC;
-
     }
     else if (self.pageViewController.viewControllers[0] == secondVC){
         return thirdVC;
     }
     else if (self.pageViewController.viewControllers[0] == thirdVC){
-        return fourthVC;
-    }
-    else if (self.pageViewController.viewControllers[0] == fourthVC){
         return firstVC;
     }
-
-
     
     return nil;
 }

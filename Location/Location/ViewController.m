@@ -266,8 +266,7 @@
 }
 
 - (void)createButtonSeparator {
-  self.buttonSeparator =
-      [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
+  self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
   self.buttonSeparator.backgroundColor =
       [UIColor colorWithRed:133 green:133. blue:133 alpha:.5];
 
