@@ -42,19 +42,9 @@
 @property (nonatomic, strong) UIView *buttonSeparator;
 
 
-// onboarding Objects
-@property (strong, nonatomic) IBOutlet UIView *orangeView;
-@property (strong, nonatomic) IBOutlet UIButton *getStartedButton;
-@property (strong, nonatomic) IBOutlet UILabel *moreInfoLabel;
-@property (strong, nonatomic) IBOutlet UILabel *searchByLabel;
-@property (strong, nonatomic) IBOutlet UILabel *streetZipLabel;
-@property (strong, nonatomic) IBOutlet UILabel *searchByLocationLabel;
-@property (strong, nonatomic) IBOutlet UIView *bar1Label;
-@property (strong, nonatomic) IBOutlet UIView *bar2Label;
-@property (strong, nonatomic) IBOutlet UIView *bar3Label;
 
 
-- (IBAction)hereLinkPressed:(id)sender;
+//- (IBAction)hereLinkPressed:(id)sender;
 
 
 // Data Properties
