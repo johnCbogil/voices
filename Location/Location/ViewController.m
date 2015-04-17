@@ -13,18 +13,10 @@
 
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
     // app already launched
-    self.orangeView.hidden = YES;
-    self.searchByLocationLabel.hidden = YES;
-    self.searchByLabel.hidden = YES;
-    self.moreInfoLabel.hidden = YES;
-    self.bar1Label.hidden = YES;
-    self.bar2Label.hidden = YES;
-    self.bar3Label.hidden = YES;
-    self.getStartedButton.hidden = YES;
+
 
   } else {
-    [[NSUserDefaults standardUserDefaults] setBool:YES
-                                            forKey:@"HasLaunchedOnce"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     NSLog(@"first time launching app");
     self.pageVC.pageViewController.dataSource = nil;
@@ -46,17 +38,11 @@
   [self createAttributedStrings];
   [self createButtonSeparator];
 
-  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-      initWithTarget:self
-              action:@selector(dismissKeyboard)];
+  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
   [tap addTarget:self action:@selector(searchBarCancelButtonClicked:)];
   [self.view addGestureRecognizer:tap];
 
-  [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(reloadTableView:)
-             name:@"ReloadTableViewNotification"
-           object:nil];
+  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
 }
 
 - (void)createAttributedStrings {
@@ -69,52 +55,54 @@
                                                     green:95.0 / 255.0
                                                      blue:107.0 / 255.0
                                                     alpha:1.0];
+    
+    UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
 
-  // About page 2 - "sopa"
-  self.pageHeaderTwo.textColor = [UIColor colorWithRed:(255.0 / 255.0)
-                                                 green:(128.0 / 255.0)
-                                                  blue:(5.0 / 255.0)
-                                                 alpha:1];
-
-  UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
-
-  NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]
-      initWithString:@"On a single day in 2012, more than 14 million people "
-      @"called their representatives to protect the internet. "
-      @"Learn more here"];
-  [sopaString addAttribute:NSFontAttributeName
-                     value:[UIFont fontWithName:@"Avenir" size:18.0]
-                     range:NSMakeRange(0, [sopaString length])];
-  [sopaString addAttribute:NSUnderlineColorAttributeName
-                     value:[UIColor colorWithRed:255.0 / 255.0
-                                           green:128.0 / 255.0
-                                            blue:5.0 / 255.0
-                                           alpha:1.0]
-                     range:NSMakeRange(118, 4)];
-  [sopaString addAttribute:NSForegroundColorAttributeName
-                     value:[UIColor colorWithRed:83.0 / 255
-                                           green:95.0 / 255.0
-                                            blue:107.0 / 255.0
-                                           alpha:1.0]
-                     range:NSMakeRange(0, 118)];
-  [sopaString addAttribute:NSUnderlineStyleAttributeName
-                     value:[NSNumber numberWithInt:1.0]
-                     range:NSMakeRange(118, 4)];
-  [sopaString addAttribute:NSUnderlineColorAttributeName
-                     value:[UIColor colorWithRed:255.0 / 255.0
-                                           green:128.0 / 255.0
-                                            blue:5.0 / 255.0
-                                           alpha:1.0]
-                     range:NSMakeRange(118, 4)];
-  [sopaString addAttribute:NSForegroundColorAttributeName
-                     value:[UIColor colorWithRed:255.0 / 255.0
-                                           green:128.0 / 255.0
-                                            blue:5.0 / 255.0
-                                           alpha:1.0]
-                     range:NSMakeRange(118, 4)];
-
-  [self.sopaTextView setAttributedText:sopaString];
-  self.sopaTextView.textAlignment = 1.0;
+//
+//  // About page 2 - "sopa"
+//  self.pageHeaderTwo.textColor = [UIColor colorWithRed:(255.0 / 255.0)
+//                                                 green:(128.0 / 255.0)
+//                                                  blue:(5.0 / 255.0)
+//                                                 alpha:1];
+//
+//
+//  NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]
+//      initWithString:@"On a single day in 2012, more than 14 million people "
+//      @"called their representatives to protect the internet. "
+//      @"Learn more here"];
+//  [sopaString addAttribute:NSFontAttributeName
+//                     value:[UIFont fontWithName:@"Avenir" size:18.0]
+//                     range:NSMakeRange(0, [sopaString length])];
+//  [sopaString addAttribute:NSUnderlineColorAttributeName
+//                     value:[UIColor colorWithRed:255.0 / 255.0
+//                                           green:128.0 / 255.0
+//                                            blue:5.0 / 255.0
+//                                           alpha:1.0]
+//                     range:NSMakeRange(118, 4)];
+//  [sopaString addAttribute:NSForegroundColorAttributeName
+//                     value:[UIColor colorWithRed:83.0 / 255
+//                                           green:95.0 / 255.0
+//                                            blue:107.0 / 255.0
+//                                           alpha:1.0]
+//                     range:NSMakeRange(0, 118)];
+//  [sopaString addAttribute:NSUnderlineStyleAttributeName
+//                     value:[NSNumber numberWithInt:1.0]
+//                     range:NSMakeRange(118, 4)];
+//  [sopaString addAttribute:NSUnderlineColorAttributeName
+//                     value:[UIColor colorWithRed:255.0 / 255.0
+//                                           green:128.0 / 255.0
+//                                            blue:5.0 / 255.0
+//                                           alpha:1.0]
+//                     range:NSMakeRange(118, 4)];
+//  [sopaString addAttribute:NSForegroundColorAttributeName
+//                     value:[UIColor colorWithRed:255.0 / 255.0
+//                                           green:128.0 / 255.0
+//                                            blue:5.0 / 255.0
+//                                           alpha:1.0]
+//                     range:NSMakeRange(118, 4)];
+//
+//  [self.sopaTextView setAttributedText:sopaString];
+//  self.sopaTextView.textAlignment = 1.0;
 
   // About page 3 - "script"
   self.pageHeaderThree.textColor = [UIColor colorWithRed:(255.0 / 255.0)
@@ -168,37 +156,37 @@
   self.scriptTextView.textAlignment = 1.0;
 }
 
-- (IBAction)hereLinkPressed:(id)sender {
-  NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
-  CGPoint location = [sender locationInView:self.sopaTextView];
-  location.x -= self.sopaTextView.textContainerInset.left;
-  location.y -= self.sopaTextView.textContainerInset.top;
-
-  NSUInteger characterIndex;
-  characterIndex = [layoutManager
-                        characterIndexForPoint:location
-                               inTextContainer:self.sopaTextView.textContainer
-      fractionOfDistanceBetweenInsertionPoints:NULL];
-
-  if (characterIndex > 118) {
-
-    NSRange range;
-    id value = [self.sopaTextView.attributedText attribute:@"myCustomTag"
-                                                   atIndex:characterIndex
-                                            effectiveRange:&range];
-
-    NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location,
-          (unsigned long)range.length);
-
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self.view.window.rootViewController
-        presentViewController:
-            [self.storyboard
-                instantiateViewControllerWithIdentifier:@"webViewController"]
-                     animated:YES
-                   completion:nil];
-  }
-}
+//- (IBAction)hereLinkPressed:(id)sender {
+//  NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
+//  CGPoint location = [sender locationInView:self.sopaTextView];
+//  location.x -= self.sopaTextView.textContainerInset.left;
+//  location.y -= self.sopaTextView.textContainerInset.top;
+//
+//  NSUInteger characterIndex;
+//  characterIndex = [layoutManager
+//                        characterIndexForPoint:location
+//                               inTextContainer:self.sopaTextView.textContainer
+//      fractionOfDistanceBetweenInsertionPoints:NULL];
+//
+//  if (characterIndex > 118) {
+//
+//    NSRange range;
+//    id value = [self.sopaTextView.attributedText attribute:@"myCustomTag"
+//                                                   atIndex:characterIndex
+//                                            effectiveRange:&range];
+//
+//    NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location,
+//          (unsigned long)range.length);
+//
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    [self.view.window.rootViewController
+//        presentViewController:
+//            [self.storyboard
+//                instantiateViewControllerWithIdentifier:@"webViewController"]
+//                     animated:YES
+//                   completion:nil];
+//  }
+//}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -266,8 +254,7 @@
 }
 
 - (void)createButtonSeparator {
-  self.buttonSeparator =
-      [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
+  self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
   self.buttonSeparator.backgroundColor =
       [UIColor colorWithRed:133 green:133. blue:133 alpha:.5];
 
@@ -363,18 +350,7 @@
 
 - (IBAction)getStartedButtonPressed:(id)sender {
 
-  [UIView animateWithDuration:0.5
-                   animations:^{
 
-                     self.orangeView.alpha = 0;
-                     self.searchByLocationLabel.alpha = 0;
-                     self.searchByLabel.alpha = 0;
-                     self.moreInfoLabel.alpha = 0;
-                     self.bar1Label.alpha = 0;
-                     self.bar2Label.alpha = 0;
-                     self.bar3Label.alpha = 0;
-                     self.getStartedButton.alpha = 0;
-                   }];
   self.pageVC.pageViewController.dataSource = self.pageVC;
 }
 
@@ -535,7 +511,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
+didFailWithError:(NSError *)error {
   NSLog(@"Error: %@", error);
   NSLog(@"Failed to get location");
   [self hideActivityIndicator];
@@ -543,23 +519,16 @@
   [self locationServicesUnavailableAlert];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
   [self.manager stopUpdatingLocation];
   self.manager = nil;
 
   self.currentLocation = locations[0];
-  NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n",
-        self.currentLocation.coordinate.latitude,
-        self.currentLocation.coordinate.longitude);
+  NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n",self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude);
 
-  [self.APIRequestsClass
-      sunlightFoundationRequest:self.currentLocation.coordinate.latitude
-                    coordinates:self.currentLocation.coordinate.longitude];
+  [self.APIRequestsClass sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
 
-  [self.APIRequestsClass
-      googleCivRequest:self.currentLocation.coordinate.latitude
-           coordinates:self.currentLocation.coordinate.longitude];
+  [self.APIRequestsClass googleCivRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
 }
 
 #pragma mark - UITableView Methods
