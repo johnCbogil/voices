@@ -43,6 +43,14 @@
     [self.view addGestureRecognizer:tap];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
+    
+    if (!self.activityIndicator) {
+        [self showActivityInidcator];
+    }
+    [self createLocationManager];
+    [self.manager requestWhenInUseAuthorization];
+    
+    [self checkForLocationServices];
 }
 
 - (void)createAttributedStrings {
@@ -280,20 +288,14 @@
     
     // Set cancel button to white color
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
-     setTitleTextAttributes:
-     [NSDictionary
-      dictionaryWithObjectsAndKeys:[UIColor whiteColor],
-      NSForegroundColorAttributeName, nil]
-     forState:UIControlStateNormal];
+     setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]forState:UIControlStateNormal];
     
     // Set placeholder text to white
-    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil]
-     setTextColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil]setTextColor:[UIColor whiteColor]];
     
     // Set the input text font
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil]
-     setDefaultTextAttributes:@{
-                                NSFontAttributeName : [UIFont fontWithName:@"Avenir" size:15],
+     setDefaultTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Avenir" size:15],
                                 }];
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil]
      setDefaultTextAttributes:@{
@@ -349,11 +351,10 @@
                      }];
 }
 
-- (IBAction)getStartedButtonPressed:(id)sender {
-    
-    
-    self.pageVC.pageViewController.dataSource = self.pageVC;
-}
+//- (IBAction)getStartedButtonPressed:(id)sender {
+//    
+//    self.pageVC.pageViewController.dataSource = self.pageVC;
+//}
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     

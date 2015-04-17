@@ -59,7 +59,6 @@
 // Actions
 -(IBAction)whoRepsButtonPressed:(id)sender;
 - (IBAction)searchButtonPressed:(id)sender;
-- (IBAction)getStartedButtonPressed:(id)sender;
 
 
 // Class properties

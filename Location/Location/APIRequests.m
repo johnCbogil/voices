@@ -329,8 +329,6 @@
                 
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }
-
-            
         }
         
         if([self.sfCongressmen count] == 3 && [self.congressmenPhotos count] == 3){
@@ -347,9 +345,6 @@
             
         }
     }
-
-        
-    
 }
 
 #pragma mark - More Data Parsing Methods

@@ -15,11 +15,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-27-hty" userLabel="name" customClass="MarqueeLabel">
-                        <rect key="frame" x="94" y="12" width="218" height="35"/>
+                        <rect key="frame" x="94" y="12" width="226" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="3gK-43-acc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="21"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-NF-d7u" userLabel="Party - Next Election">
@@ -68,7 +68,7 @@
                     <constraint firstItem="MiX-rk-zsk" firstAttribute="firstBaseline" secondItem="Ku9-p5-MdH" secondAttribute="firstBaseline" id="7qi-pG-geo"/>
                     <constraint firstItem="MiX-rk-zsk" firstAttribute="baseline" secondItem="Ku9-p5-MdH" secondAttribute="baseline" id="A2p-1g-cA9"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Hf9-Bc-sGk" secondAttribute="trailing" constant="69" id="AKH-rh-C0n"/>
-                    <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" id="FG4-jv-geK"/>
+                    <constraint firstItem="vz4-27-hty" firstAttribute="trailing" secondItem="H4f-Qn-H4F" secondAttribute="trailingMargin" constant="8" id="FG4-jv-geK"/>
                     <constraint firstItem="MiX-rk-zsk" firstAttribute="baseline" secondItem="Hf9-Bc-sGk" secondAttribute="baseline" id="HLH-X1-yrk"/>
                     <constraint firstItem="Ku9-p5-MdH" firstAttribute="top" secondItem="vz4-27-hty" secondAttribute="bottom" constant="8" symbolic="YES" id="QAb-RK-7xd"/>
                     <constraint firstItem="Hf9-Bc-sGk" firstAttribute="centerX" secondItem="HHl-NF-d7u" secondAttribute="centerX" constant="-9" id="RGP-Mf-GcI"/>
