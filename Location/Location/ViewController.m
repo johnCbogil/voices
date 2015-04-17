@@ -11,16 +11,16 @@
     
     self.pageVC.vc = self;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
-        // app already launched
-        
-        
-    } else {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"first time launching app");
-        self.pageVC.pageViewController.dataSource = nil;
-    }
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
+//        // app already launched
+//        
+//        
+//    } else {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        NSLog(@"first time launching app");
+//        self.pageVC.pageViewController.dataSource = nil;
+//    }
     
     self.APIRequestsClass = [[APIRequests alloc] init];
     self.APIRequestsClass.viewController = self;
@@ -203,6 +203,7 @@
 - (void)viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 - (void)dismissKeyboard {
     [self.searchBar resignFirstResponder];
