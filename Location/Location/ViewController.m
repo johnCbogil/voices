@@ -9,7 +9,7 @@
     
     [super viewDidLoad];
     
-    self.pageVC.vc = self;
+   // self.pageVC.vc = self;
     
 //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
 //        // app already launched
@@ -55,10 +55,10 @@
 
 - (void)createAttributedStrings {
     // About page 1 - "voices is"
-    self.pageHeaderOne.textColor = [UIColor colorWithRed:255.0 / 255.0
-                                                   green:128.0 / 255.0
-                                                    blue:5.0 / 255.0
-                                                   alpha:1.0];
+//    self.pageHeaderOne.textColor = [UIColor colorWithRed:255.0 / 255.0
+//                                                   green:128.0 / 255.0
+//                                                    blue:5.0 / 255.0
+//                                                   alpha:1.0];
     self.voicesIsTextView.textColor = [UIColor colorWithRed:83.0 / 255
                                                       green:95.0 / 255.0
                                                        blue:107.0 / 255.0
@@ -541,18 +541,15 @@
 
 #pragma mark - UITableView Methods
 
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (self.APIRequestsClass.sfCongressmen.count == 1) {
         return 1;
@@ -565,8 +562,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView reloadData];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Create cell
     static NSString *simpleTableIdentifier = @"CustomCell";

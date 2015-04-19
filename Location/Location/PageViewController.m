@@ -12,7 +12,6 @@
 {
     
     NSArray *viewControllers;
-    int index;
     
     UIViewController *firstVC;
     UIViewController *secondVC;
@@ -36,8 +35,8 @@
     thirdVC = [self.storyboard instantiateViewControllerWithIdentifier:@"thirdViewController"];
     //fourthVC = [self.storyboard instantiateViewControllerWithIdentifier:@"fourthViewController"];
     
-    ViewController *initialView = (ViewController*)firstVC;
-    initialView.pageVC = self;
+//    ViewController *initialView = (ViewController*)firstVC;
+//    initialView.pageVC = self;
     
     // This sets the starting VC
     viewControllers = @[firstVC];
@@ -48,7 +47,6 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    index = 0;
 }
 
 - (void)didReceiveMemoryWarning {
