@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *itsEasyTextView;
 //@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIView *buttonSeparator;
+@property (strong, nonatomic) IBOutlet UILabel *whoRepsLabel;
 
 
 

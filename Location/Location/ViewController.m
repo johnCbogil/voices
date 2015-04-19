@@ -34,6 +34,7 @@
                                                  blue:107.0 / 255.0
                                                 alpha:1.0];
     [self createVoicesLabel];
+    [self startDownloadShimmer];
     [self createSearchBar];
     [self createAttributedStrings];
     [self createButtonSeparator];
@@ -196,6 +197,8 @@
 //  }
 //}
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -244,8 +247,7 @@
     [self.blueView addMotionEffect:motionEffect];
     [self.aboutLabel addMotionEffect:motionEffect];
     
-    FBShimmeringView *shimmeringView =
-    [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
+    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     
     [self.voicesLabel addSubview:shimmeringView];
     
@@ -261,7 +263,48 @@
                                                  alpha:1.0];
     
     shimmeringView.contentView = self.voicesLabel;
+    //shimmeringView.shimmering = YES;
+}
+
+- (void)startDownloadShimmer{
+    
+// Set the entire button to shimmer
+//    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.blueView.bounds];
+//    //shimmeringView.alpha = .25;
+//    [self.blueView addSubview:shimmeringView];
+//    
+//    self.blueView = [[UIView alloc] initWithFrame:shimmeringView.bounds];
+//
+//    
+//    UIView * v = [[UIView alloc] initWithFrame:shimmeringView.bounds];
+//    [v setBackgroundColor:[UIColor whiteColor]];
+//    
+//    
+//    shimmeringView.contentView = self.blueView;
+//    
+//    // Start shimmering.
+//    shimmeringView.shimmering = YES;
+    
+    
+    
+    
+    
+    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.whoRepsLabel.bounds];
+    
+    [self.whoRepsLabel addSubview:shimmeringView];
+    
+    self.whoRepsLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    
+    self.whoRepsLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.whoRepsLabel.text = NSLocalizedString(@"Who Represents You?", nil);
+    [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:20]];
+    self.whoRepsLabel.textColor = [UIColor whiteColor];
+    
+    shimmeringView.contentView = self.whoRepsLabel;
+
     shimmeringView.shimmering = YES;
+    
 }
 
 - (void)createButtonSeparator {
@@ -337,7 +380,7 @@
     self.searchButton.hidden = YES;
     [UIView animateWithDuration:0.2
                      animations:^{
-                         self.whoRepsButton.alpha = 0.0;
+                         self.whoRepsLabel.alpha = 0.0;
                      }
                      completion:^(BOOL finished) {
                          self.searchBar.userInteractionEnabled = YES;
@@ -378,7 +421,7 @@
                          self.searchBar.userInteractionEnabled = NO;
                          [UIView animateWithDuration:.2
                                           animations:^{
-                                              self.whoRepsButton.alpha = 1.0;
+                                              self.whoRepsLabel.alpha = 1.0;
                                           }];
                          self.searchButton.hidden = NO;
                          [UIView animateWithDuration:0.2
