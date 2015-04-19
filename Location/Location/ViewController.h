@@ -38,7 +38,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *sopaTextView;
 @property (strong, nonatomic) IBOutlet UITextView *scriptTextView;
 @property (weak, nonatomic) IBOutlet UITextView *itsEasyTextView;
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+//@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIView *buttonSeparator;
 
 
@@ -66,6 +66,6 @@
 @property (nonatomic, strong) PageViewController *pageVC;
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
 
-- (void) hideActivityIndicator;
+//- (void) hideActivityIndicator;
 
 @end

@@ -44,9 +44,9 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
     
-    if (!self.activityIndicator) {
-        [self showActivityInidcator];
-    }
+//    if (!self.activityIndicator) {
+//        [self showActivityInidcator];
+//    }
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     
@@ -367,7 +367,7 @@
     [self.APIRequestsClass.photoConnection cancel];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [self hideActivityIndicator];
+    //[self hideActivityIndicator];
     self.buttonSeparator.hidden = NO;
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2
@@ -393,7 +393,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
-    [self showActivityInidcator];
+   // [self showActivityInidcator];
     if (self.searchBar.text.length > 0) {
         
         // check for internet
@@ -405,7 +405,7 @@
         [networkReachability currentReachabilityStatus];
         
         if (networkStatus == NotReachable) {
-            [self hideActivityIndicator];
+            //[self hideActivityIndicator];
             UIAlertView *noInternetConnection = [[UIAlertView alloc]
                                                  initWithTitle:@"No Internet Connection"
                                                  message:
@@ -425,9 +425,9 @@
 
 - (IBAction)whoRepsButtonPressed:(id)sender {
     NSLog(@"Button Pressed");
-    if (!self.activityIndicator) {
-        [self showActivityInidcator];
-    }
+//    if (!self.activityIndicator) {
+//        [self showActivityInidcator];
+//    }
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     
@@ -436,26 +436,26 @@
 
 #pragma mark - Activity Indicator
 
-- (void)showActivityInidcator {
-    self.activityIndicator = [[UIActivityIndicatorView alloc]
-                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.activityIndicator.alpha = 1.0;
-    self.activityIndicator.color = [UIColor colorWithRed:(255.0 / 255.0)
-                                                   green:(128.0 / 255.0)
-                                                    blue:(5.0 / 255.0)
-                                                   alpha:1.0];
-    self.activityIndicator.center = CGPointMake(160.0, 110.0);
-    self.activityIndicator.hidesWhenStopped = YES;
-    [self.view addSubview:self.activityIndicator];
-    [self.activityIndicator startAnimating];
-    NSLog(@"%@", self.activityIndicator);
-}
-
-- (void)hideActivityIndicator {
-    [self.activityIndicator stopAnimating];
-    self.activityIndicator.hidden = YES;
-    self.activityIndicator = nil;
-}
+//- (void)showActivityInidcator {
+//    self.activityIndicator = [[UIActivityIndicatorView alloc]
+//                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    self.activityIndicator.alpha = 1.0;
+//    self.activityIndicator.color = [UIColor colorWithRed:(255.0 / 255.0)
+//                                                   green:(128.0 / 255.0)
+//                                                    blue:(5.0 / 255.0)
+//                                                   alpha:1.0];
+//    self.activityIndicator.center = CGPointMake(160.0, 110.0);
+//    self.activityIndicator.hidesWhenStopped = YES;
+//    [self.view addSubview:self.activityIndicator];
+//    [self.activityIndicator startAnimating];
+//    NSLog(@"%@", self.activityIndicator);
+//}
+//
+//- (void)hideActivityIndicator {
+//    [self.activityIndicator stopAnimating];
+//    self.activityIndicator.hidden = YES;
+//    self.activityIndicator = nil;
+//}
 
 #pragma mark - Service Check Methods
 
@@ -480,7 +480,7 @@
     [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
-        [self hideActivityIndicator];
+        //[self hideActivityIndicator];
         UIAlertView *noInternetConnection = [[UIAlertView alloc]
                                              initWithTitle:@"No Internet Connection"
                                              message:@"Please check your network connection and try again"
@@ -522,7 +522,7 @@
        didFailWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
-    [self hideActivityIndicator];
+    //[self hideActivityIndicator];
     self.manager = nil;
     [self locationServicesUnavailableAlert];
 }
@@ -595,7 +595,7 @@
                          animations:^{
                              self.tableView.alpha = 1.0;
                          }];
-        [self hideActivityIndicator];
+        //[self hideActivityIndicator];
         return cell;
         
     } else {
@@ -650,12 +650,12 @@
                                  }];
             });
             
-            [self hideActivityIndicator];
+            //[self hideActivityIndicator];
             return cell;
         }
         // this is getting called 3 times at startup
 
-        [self hideActivityIndicator];
+        //[self hideActivityIndicator];
         return cell;
     }
 }
