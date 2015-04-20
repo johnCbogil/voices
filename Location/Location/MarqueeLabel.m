@@ -201,7 +201,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
     _tapToScroll = NO;
     _isPaused = NO;
     _fadeLength = 0.0f;
-    _animationDelay = 3.0;
+    _animationDelay = 7.0;
     _animationDuration = 0.0f;
     _leadingBuffer = 0.0f;
     _trailingBuffer = 0.0f;
