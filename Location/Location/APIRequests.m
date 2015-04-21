@@ -10,7 +10,7 @@
 
 @implementation APIRequests
 
-#pragma mark - Requsts
+#pragma mark - Requests
 
 - (void)googleMapsRequest:(NSString*)searchText
 {

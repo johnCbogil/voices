@@ -57,6 +57,9 @@
 @property (nonatomic) BOOL locationAuthorization;
 
 
+@property (nonatomic, strong) FBShimmeringView *shimmeringView;
+
+
 
 
 // Actions
@@ -70,5 +73,7 @@
 @property (nonatomic,strong) APIRequests *APIRequestsClass;
 
 //- (void) hideActivityIndicator;
+- (void)setDownloadShimmer:(BOOL)status;
+
 
 @end

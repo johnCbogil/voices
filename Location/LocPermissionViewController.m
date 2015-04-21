@@ -35,6 +35,7 @@
     
     shimmeringView.contentView = self.voicesLabel;
     shimmeringView.shimmering = YES;
+    shimmeringView.shimmeringSpeed = 115;
     
     self.allowButton.layer.cornerRadius = 5;
     self.laterButton.layer.cornerRadius = 5;
@@ -57,6 +58,12 @@
  */
 
 - (IBAction)laterButtonPressed:(id)sender {
+    
+    
+    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"] animated:YES completion:nil];
+
+    
+    
 }
 
 - (IBAction)allowButtonPressed:(id)sender {
@@ -68,28 +75,17 @@
     [self.manager requestWhenInUseAuthorization];
     
     
-    
-    // compiler will continue onto next line w.o waiting for user's answer to UIAlertView
-    
-    
-    [self determineLocationAuthorization];
-    
-    
-    
-}
-
-- (void)determineLocationAuthorization{
-    
 
     
     
 }
+
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         
-        NSLog(@"hello");
+        NSLog(@"location authorization denied");
     }
     else if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
         

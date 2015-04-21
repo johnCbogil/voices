@@ -11,16 +11,16 @@
     
    // self.pageVC.vc = self;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
-        // app already launched
-        
-        
-    } else {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSLog(@"first time launching app");
-//        self.pageVC.pageViewController.dataSource = nil;
-    }
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
+//        // app already launched
+//        
+//        
+//    } else {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        NSLog(@"first time launching app");
+////        self.pageVC.pageViewController.dataSource = nil;
+//    }
     
 
     
@@ -41,7 +41,7 @@
                                                  blue:107.0 / 255.0
                                                 alpha:1.0];
     [self createVoicesLabel];
-    [self startDownloadShimmer];
+    [self createDownloadShimmer];
     [self createSearchBar];
     [self createAttributedStrings];
     [self createButtonSeparator];
@@ -56,7 +56,7 @@
 //        [self showActivityInidcator];
 //    }
     [self createLocationManager];
-    [self.manager requestWhenInUseAuthorization];
+//    [self.manager requestWhenInUseAuthorization];
     
     [self checkForLocationServices];
 }
@@ -273,7 +273,7 @@
     //shimmeringView.shimmering = YES;
 }
 
-- (void)startDownloadShimmer{
+- (void)createDownloadShimmer{
     
 // Set the entire button to shimmer
 //    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.blueView.bounds];
@@ -296,11 +296,11 @@
     
     
     
-    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.whoRepsLabel.bounds];
+    self.shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.whoRepsLabel.bounds];
     
-    [self.whoRepsLabel addSubview:shimmeringView];
+    [self.whoRepsLabel addSubview:self.shimmeringView];
     
-    self.whoRepsLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    self.whoRepsLabel = [[UILabel alloc] initWithFrame:self.shimmeringView.bounds];
     
     self.whoRepsLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -308,9 +308,16 @@
     [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:20]];
     self.whoRepsLabel.textColor = [UIColor whiteColor];
     
-    shimmeringView.contentView = self.whoRepsLabel;
+    self.shimmeringView.contentView = self.whoRepsLabel;
 
-    shimmeringView.shimmering = YES;
+    
+}
+
+- (void)setDownloadShimmer:(BOOL)status{
+    
+    self.shimmeringView.shimmering = status;
+
+    
     
 }
 
@@ -418,6 +425,7 @@
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     //[self hideActivityIndicator];
+    [self setDownloadShimmer:NO];
     self.buttonSeparator.hidden = NO;
     self.whoRepsButton.enabled = YES;
     [UIView animateWithDuration:.2
@@ -443,6 +451,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
+    [self setDownloadShimmer:YES];
    // [self showActivityInidcator];
     if (self.searchBar.text.length > 0) {
         
@@ -456,6 +465,7 @@
         
         if (networkStatus == NotReachable) {
             //[self hideActivityIndicator];
+            [self setDownloadShimmer:NO];
             UIAlertView *noInternetConnection = [[UIAlertView alloc]
                                                  initWithTitle:@"No Internet Connection"
                                                  message:
@@ -478,6 +488,7 @@
 //    if (!self.activityIndicator) {
 //        [self showActivityInidcator];
 //    }
+    [self setDownloadShimmer:YES];
     [self createLocationManager];
     [self.manager requestWhenInUseAuthorization];
     
@@ -510,6 +521,7 @@
 #pragma mark - Service Check Methods
 
 - (void)checkForLocationServices {
+    
     if ([CLLocationManager locationServicesEnabled] &&
         [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
         NSLog(@"Location services are enabled");
@@ -533,6 +545,7 @@
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
         //[self hideActivityIndicator];
+        [self setDownloadShimmer:NO];
         UIAlertView *noInternetConnection = [[UIAlertView alloc]
                                              initWithTitle:@"No Internet Connection"
                                              message:@"Please check your network connection and try again"
@@ -543,6 +556,7 @@
         
     } else {
         
+        [self setDownloadShimmer:YES];
         [self.manager startUpdatingLocation];
     }
 }
@@ -575,6 +589,7 @@
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
     //[self hideActivityIndicator];
+    [self setDownloadShimmer:NO];
     self.manager = nil;
     [self locationServicesUnavailableAlert];
 }
@@ -586,6 +601,7 @@
     self.currentLocation = locations[0];
     NSLog(@"Retrieved current location, Latitude: %.8f Longitude: %.8f\n",self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude);
     
+    [self setDownloadShimmer:YES];
     [self.APIRequestsClass sunlightFoundationRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
     
     [self.APIRequestsClass googleCivRequest:self.currentLocation.coordinate.latitude coordinates:self.currentLocation.coordinate.longitude];
@@ -648,6 +664,7 @@
                              self.tableView.alpha = 1.0;
                          }];
         //[self hideActivityIndicator];
+        [self setDownloadShimmer:NO];
         return cell;
         
     } else {
@@ -703,11 +720,13 @@
             });
             
             //[self hideActivityIndicator];
+            [self setDownloadShimmer:NO];
             return cell;
         }
         // this is getting called 3 times at startup
 
         //[self hideActivityIndicator];
+        [self setDownloadShimmer:NO];
         return cell;
     }
 }

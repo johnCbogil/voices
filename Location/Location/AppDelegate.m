@@ -21,8 +21,7 @@
     // determine the initial view controller here and instantiate it with [storyboard instantiateViewControllerWithIdentifier:<storyboard id>];
     UIViewController *pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     UIViewController *permissionsViewController = [storyboard instantiateViewControllerWithIdentifier:@"permissionsViewController"];
-    
-    
+
     
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
         
@@ -36,10 +35,7 @@
         self.window.rootViewController = pageViewController;
         
     }
-    
-    
-    
-    
+
     [self.window makeKeyAndVisible];
     
     return YES;
