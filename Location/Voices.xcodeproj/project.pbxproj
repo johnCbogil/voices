@@ -31,6 +31,7 @@
 		AA108B791AE1BD760069EFC5 /* Keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AA108B781AE1BD760069EFC5 /* Keys.m */; };
 		AA7A30311A425CEE0043910D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7A30301A425CEE0043910D /* SystemConfiguration.framework */; };
 		AA7A30341A425D060043910D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A30331A425D060043910D /* Reachability.m */; };
+		AA889F5B1AE5B86D00D02954 /* LocPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */; };
 		AA9D46441A3F951300FC4815 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D46411A3F951300FC4815 /* FBShimmeringLayer.m */; };
 		AA9D46451A3F951300FC4815 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9D46431A3F951300FC4815 /* FBShimmeringView.m */; };
 		AAE60F771A965E6900F4E5D8 /* APIRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE60F761A965E6900F4E5D8 /* APIRequests.m */; };
@@ -87,6 +88,8 @@
 		AA7A30301A425CEE0043910D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AA7A30321A425D060043910D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Reachability.h; sourceTree = "<group>"; };
 		AA7A30331A425D060043910D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Reachability.m; sourceTree = "<group>"; };
+		AA889F591AE5B86D00D02954 /* LocPermissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocPermissionViewController.h; path = ../LocPermissionViewController.h; sourceTree = "<group>"; };
+		AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocPermissionViewController.m; path = ../LocPermissionViewController.m; sourceTree = "<group>"; };
 		AA9D463E1A3F951300FC4815 /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
 		AA9D463F1A3F951300FC4815 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
 		AA9D46401A3F951300FC4815 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
@@ -170,12 +173,16 @@
 				526B571B1AABC12200814CD3 /* MissingRepCell.xib */,
 				AAE60F751A965E6900F4E5D8 /* APIRequests.h */,
 				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
+				7800F5CF186377C8005D4946 /* AppDelegate.h */,
+				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
 				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
 				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
 				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
 				AA108B771AE1BD750069EFC5 /* Keys.h */,
 				AA108B781AE1BD760069EFC5 /* Keys.m */,
+				AA889F591AE5B86D00D02954 /* LocPermissionViewController.h */,
+				AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */,
 				5269E84F1A99649B00357C58 /* MarqueeLabel.h */,
 				5269E8501A99649B00357C58 /* MarqueeLabel.m */,
 				5206EFDC1AB133D2000158EA /* MissingRepTableViewCell.h */,
@@ -195,8 +202,6 @@
 		7800F5C7186377C8005D4946 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7800F5CF186377C8005D4946 /* AppDelegate.h */,
-				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				AA7A30321A425D060043910D /* Reachability.h */,
 				AA7A30331A425D060043910D /* Reachability.m */,
 				7800F5C8186377C8005D4946 /* Voices-Info.plist */,
@@ -344,6 +349,7 @@
 			files = (
 				AAE60F771A965E6900F4E5D8 /* APIRequests.m in Sources */,
 				5206EFDE1AB133D2000158EA /* MissingRepTableViewCell.m in Sources */,
+				AA889F5B1AE5B86D00D02954 /* LocPermissionViewController.m in Sources */,
 				AA9D46441A3F951300FC4815 /* FBShimmeringLayer.m in Sources */,
 				52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */,
 				AA7A30341A425D060043910D /* Reachability.m in Sources */,

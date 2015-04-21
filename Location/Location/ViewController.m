@@ -11,16 +11,23 @@
     
    // self.pageVC.vc = self;
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
-//        // app already launched
-//        
-//        
-//    } else {
-//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//        NSLog(@"first time launching app");
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
+        // app already launched
+        
+        
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"first time launching app");
 //        self.pageVC.pageViewController.dataSource = nil;
-//    }
+    }
+    
+
+    
+    
+    
+    
+    
     
     self.APIRequestsClass = [[APIRequests alloc] init];
     self.APIRequestsClass.viewController = self;
@@ -506,6 +513,7 @@
     if ([CLLocationManager locationServicesEnabled] &&
         [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
         NSLog(@"Location services are enabled");
+        self.locationAuthorization = YES;
         
         [self checkForInternetServices];
         
@@ -513,6 +521,7 @@
     
     else {
         
+        self.locationAuthorization = NO;
         [self locationServicesUnavailableAlert];
     }
 }
@@ -555,14 +564,14 @@
 
 - (void)createLocationManager {
     
+    
     self.manager = [[CLLocationManager alloc] init];
     self.manager.delegate = self;
     self.manager.distanceFilter = 200;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
     NSLog(@"Failed to get location");
     //[self hideActivityIndicator];

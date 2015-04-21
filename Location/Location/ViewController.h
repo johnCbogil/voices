@@ -54,6 +54,8 @@
 @property (strong, nonatomic) CLPlacemark *placemark;
 @property (strong, nonatomic) CLLocationManager *manager;
 @property (strong, nonatomic) CLLocation *currentLocation;
+@property (nonatomic) BOOL locationAuthorization;
+
 
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BdR-Kp-uhw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="P5a-fZ-jKq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -21,7 +21,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agl-bC-FBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-506" y="-52"/>
+            <point key="canvasLocation" x="-483" y="-52"/>
+        </scene>
+        <!--Loc Permission View Controller-->
+        <scene sceneID="dFt-ox-vD9">
+            <objects>
+                <viewController storyboardIdentifier="permissionsViewController" id="P5a-fZ-jKq" customClass="LocPermissionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h4f-Q4-pwp"/>
+                        <viewControllerLayoutGuide type="bottom" id="c3Y-oc-ZAK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7BG-oc-uMr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voices uses your location to help you participate in your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="712-gI-dEI">
+                                <rect key="frame" x="16" y="215" width="288" height="100"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-Ez-tm4">
+                                <rect key="frame" x="45" y="322" width="90" height="60"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.36862745099999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="mSp-Zb-7yj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Later">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="laterButtonPressed:" destination="P5a-fZ-jKq" eventType="touchUpInside" id="2yl-cr-2V6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEv-tH-Lzp" userLabel="Voices label">
+                                <rect key="frame" x="45" y="140" width="230" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="NoV-bb-Ogr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4L-sl-bmz">
+                                <rect key="frame" x="185" y="323" width="90" height="59"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.36862745098039218" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="YaK-xE-06o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Allow">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="allowButtonPressed:" destination="P5a-fZ-jKq" eventType="touchUpInside" id="SSk-zu-k7U"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="top" secondItem="h4f-Q4-pwp" secondAttribute="bottom" constant="120" id="3zX-dU-ci8"/>
+                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="leading" secondItem="7BG-oc-uMr" secondAttribute="leadingMargin" constant="29" id="5yR-kh-MsG"/>
+                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="centerY" secondItem="J4L-sl-bmz" secondAttribute="centerY" id="8lB-zl-KAd"/>
+                            <constraint firstItem="712-gI-dEI" firstAttribute="trailing" secondItem="7BG-oc-uMr" secondAttribute="trailingMargin" id="KQJ-fD-OQp"/>
+                            <constraint firstItem="c3Y-oc-ZAK" firstAttribute="top" secondItem="tPJ-Ez-tm4" secondAttribute="bottom" constant="186" id="LGl-mD-tsK"/>
+                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="bottom" secondItem="J4L-sl-bmz" secondAttribute="bottom" id="LRp-18-QAH"/>
+                            <constraint firstItem="712-gI-dEI" firstAttribute="top" secondItem="MEv-tH-Lzp" secondAttribute="bottom" constant="8" symbolic="YES" id="Qjv-mO-1YB"/>
+                            <constraint firstItem="712-gI-dEI" firstAttribute="leading" secondItem="7BG-oc-uMr" secondAttribute="leadingMargin" id="WAL-hP-YJQ"/>
+                            <constraint firstItem="712-gI-dEI" firstAttribute="centerX" secondItem="MEv-tH-Lzp" secondAttribute="centerX" id="aNd-QI-Vro"/>
+                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="trailing" secondItem="J4L-sl-bmz" secondAttribute="trailing" id="oSw-9p-QTe"/>
+                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="leading" secondItem="MEv-tH-Lzp" secondAttribute="leading" id="tcl-LC-00L"/>
+                            <constraint firstItem="J4L-sl-bmz" firstAttribute="top" secondItem="712-gI-dEI" secondAttribute="bottom" constant="8" symbolic="YES" id="uuZ-kS-gHa"/>
+                            <constraint firstItem="J4L-sl-bmz" firstAttribute="leading" secondItem="tPJ-Ez-tm4" secondAttribute="trailing" constant="50" id="xgU-LB-gDe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="allowButton" destination="J4L-sl-bmz" id="5IB-Ak-rDg"/>
+                        <outlet property="laterButton" destination="tPJ-Ez-tm4" id="4yz-OB-AUV"/>
+                        <outlet property="voicesLabel" destination="MEv-tH-Lzp" id="eby-gh-Sft"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBC-8M-Ojd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-920" y="-52"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -66,7 +151,7 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ud-ZC-Hse" userLabel="blueView">
                                 <rect key="frame" x="30" y="45" width="260" height="48"/>
-                                <color key="backgroundColor" red="0.086274509799999996" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.36862745098039218" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-oh-jR2" userLabel="whoRepsButton">
                                 <rect key="frame" x="44" y="45" width="196" height="48"/>
@@ -85,13 +170,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by address" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7NO-XO-FQf">
-                                <rect key="frame" x="30" y="47" width="261" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="I27-EH-pCO"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZM-X4-PJ3" userLabel="searchButton">
                                 <rect key="frame" x="248" y="47" width="42" height="46"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.24999999999999967" height="0.24999999999999967"/>
@@ -107,6 +185,13 @@
                                     <action selector="searchButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QX3-gC-Mac"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by address" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7NO-XO-FQf">
+                                <rect key="frame" x="30" y="47" width="261" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="I27-EH-pCO"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <constraints>
                             <constraint firstItem="1gE-oh-jR2" firstAttribute="bottom" secondItem="TZM-X4-PJ3" secondAttribute="bottom" id="4ix-Nb-A9J"/>
