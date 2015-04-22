@@ -29,6 +29,8 @@
 		7800F5F618637F25005D4946 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5F518637F25005D4946 /* CoreLocation.framework */; };
 		AA047AAE1AA7BD2B00B0056D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047AAD1AA7BD2B00B0056D /* WebViewController.m */; };
 		AA108B791AE1BD760069EFC5 /* Keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AA108B781AE1BD760069EFC5 /* Keys.m */; };
+		AA42F2F11AE7194600F5B164 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA42F2F01AE7194600F5B164 /* AboutViewController.m */; };
+		AA42F2F41AE71D8300F5B164 /* ScriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */; };
 		AA7A30311A425CEE0043910D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7A30301A425CEE0043910D /* SystemConfiguration.framework */; };
 		AA7A30341A425D060043910D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A30331A425D060043910D /* Reachability.m */; };
 		AA889F5B1AE5B86D00D02954 /* LocPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */; };
@@ -85,6 +87,10 @@
 		AA047AAD1AA7BD2B00B0056D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		AA108B771AE1BD750069EFC5 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 		AA108B781AE1BD760069EFC5 /* Keys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keys.m; sourceTree = "<group>"; };
+		AA42F2EF1AE7194600F5B164 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		AA42F2F01AE7194600F5B164 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		AA42F2F21AE71D8300F5B164 /* ScriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptViewController.h; sourceTree = "<group>"; };
+		AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptViewController.m; sourceTree = "<group>"; };
 		AA7A30301A425CEE0043910D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AA7A30321A425D060043910D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Reachability.h; sourceTree = "<group>"; };
 		AA7A30331A425D060043910D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Reachability.m; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 				7800F5D2186377C8005D4946 /* Main.storyboard */,
 				AAFABC591A227AB90028214D /* CustomCell.xib */,
 				526B571B1AABC12200814CD3 /* MissingRepCell.xib */,
+				AA42F2EF1AE7194600F5B164 /* AboutViewController.h */,
+				AA42F2F01AE7194600F5B164 /* AboutViewController.m */,
 				AAE60F751A965E6900F4E5D8 /* APIRequests.h */,
 				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
 				7800F5CF186377C8005D4946 /* AppDelegate.h */,
@@ -191,6 +199,8 @@
 				529BB9451A720A6B0018B75A /* PageViewController.m */,
 				7800F5D5186377C8005D4946 /* ViewController.h */,
 				7800F5D6186377C8005D4946 /* ViewController.m */,
+				AA42F2F21AE71D8300F5B164 /* ScriptViewController.h */,
+				AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */,
 				AA047AAC1AA7BD2B00B0056D /* WebViewController.h */,
 				AA047AAD1AA7BD2B00B0056D /* WebViewController.m */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
@@ -356,7 +366,9 @@
 				5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */,
 				7800F5D7186377C8005D4946 /* ViewController.m in Sources */,
 				AA9D46451A3F951300FC4815 /* FBShimmeringView.m in Sources */,
+				AA42F2F41AE71D8300F5B164 /* ScriptViewController.m in Sources */,
 				AA047AAE1AA7BD2B00B0056D /* WebViewController.m in Sources */,
+				AA42F2F11AE7194600F5B164 /* AboutViewController.m in Sources */,
 				AA108B791AE1BD760069EFC5 /* Keys.m in Sources */,
 				529BB9461A720A6B0018B75A /* PageViewController.m in Sources */,
 				7800F5D1186377C8005D4946 /* AppDelegate.m in Sources */,

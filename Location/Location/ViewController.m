@@ -8,24 +8,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-   // self.pageVC.vc = self;
-    
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
-//        // app already launched
-//        
-//        
-//    } else {
-//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//        NSLog(@"first time launching app");
-////        self.pageVC.pageViewController.dataSource = nil;
-//    }
-    
 
-    
-    
-    
     
     
     
@@ -36,14 +19,14 @@
     
     self.geocoder = [[CLGeocoder alloc] init];
     
-    self.aboutLabel.textColor = [UIColor colorWithRed:83.0 / 255
+    self.swipeLeftLabel.textColor = [UIColor colorWithRed:83.0 / 255
                                                 green:95.0 / 255.0
                                                  blue:107.0 / 255.0
                                                 alpha:1.0];
     [self createVoicesLabel];
+    [self createParallaxEffect];
     [self createDownloadShimmer];
     [self createSearchBar];
-    [self createAttributedStrings];
     [self createButtonSeparator];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
@@ -52,157 +35,16 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadTableView:) name:@"ReloadTableViewNotification" object:nil];
     
-//    if (!self.activityIndicator) {
-//        [self showActivityInidcator];
-//    }
+
     [self createLocationManager];
 //    [self.manager requestWhenInUseAuthorization];
     
     [self checkForLocationServices];
 }
 
-- (void)createAttributedStrings {
-    // About page 1 - "voices is"
-//    self.pageHeaderOne.textColor = [UIColor colorWithRed:255.0 / 255.0
-//                                                   green:128.0 / 255.0
-//                                                    blue:5.0 / 255.0
-//                                                   alpha:1.0];
-    self.voicesIsTextView.textColor = [UIColor colorWithRed:83.0 / 255
-                                                      green:95.0 / 255.0
-                                                       blue:107.0 / 255.0
-                                                      alpha:1.0];
-    
-    UIFont *avenirFont = [UIFont fontWithName:@"Avenir" size:16.0];
-    
-    //
-    //  // About page 2 - "sopa"
-    //  self.pageHeaderTwo.textColor = [UIColor colorWithRed:(255.0 / 255.0)
-    //                                                 green:(128.0 / 255.0)
-    //                                                  blue:(5.0 / 255.0)
-    //                                                 alpha:1];
-    //
-    //
-    //  NSMutableAttributedString *sopaString = [[NSMutableAttributedString alloc]
-    //      initWithString:@"On a single day in 2012, more than 14 million people "
-    //      @"called their representatives to protect the internet. "
-    //      @"Learn more here"];
-    //  [sopaString addAttribute:NSFontAttributeName
-    //                     value:[UIFont fontWithName:@"Avenir" size:18.0]
-    //                     range:NSMakeRange(0, [sopaString length])];
-    //  [sopaString addAttribute:NSUnderlineColorAttributeName
-    //                     value:[UIColor colorWithRed:255.0 / 255.0
-    //                                           green:128.0 / 255.0
-    //                                            blue:5.0 / 255.0
-    //                                           alpha:1.0]
-    //                     range:NSMakeRange(118, 4)];
-    //  [sopaString addAttribute:NSForegroundColorAttributeName
-    //                     value:[UIColor colorWithRed:83.0 / 255
-    //                                           green:95.0 / 255.0
-    //                                            blue:107.0 / 255.0
-    //                                           alpha:1.0]
-    //                     range:NSMakeRange(0, 118)];
-    //  [sopaString addAttribute:NSUnderlineStyleAttributeName
-    //                     value:[NSNumber numberWithInt:1.0]
-    //                     range:NSMakeRange(118, 4)];
-    //  [sopaString addAttribute:NSUnderlineColorAttributeName
-    //                     value:[UIColor colorWithRed:255.0 / 255.0
-    //                                           green:128.0 / 255.0
-    //                                            blue:5.0 / 255.0
-    //                                           alpha:1.0]
-    //                     range:NSMakeRange(118, 4)];
-    //  [sopaString addAttribute:NSForegroundColorAttributeName
-    //                     value:[UIColor colorWithRed:255.0 / 255.0
-    //                                           green:128.0 / 255.0
-    //                                            blue:5.0 / 255.0
-    //                                           alpha:1.0]
-    //                     range:NSMakeRange(118, 4)];
-    //
-    //  [self.sopaTextView setAttributedText:sopaString];
-    //  self.sopaTextView.textAlignment = 1.0;
-    
-    // About page 3 - "script"
-    self.pageHeaderThree.textColor = [UIColor colorWithRed:(255.0 / 255.0)
-                                                     green:(128.0 / 255.0)
-                                                      blue:(5.0 / 255.0)
-                                                     alpha:1];
-    self.itsEasyTextView.textColor = [UIColor colorWithRed:83.0 / 255
-                                                     green:95.0 / 255.0
-                                                      blue:107.0 / 255.0
-                                                     alpha:1.0];
-    
-    NSString *scriptString = @"Hello, my name is [your name] and I would like "
-    @"the Congressman to [support/oppose] [something "
-    @"that you care about] and I will be voting in " @"November";
-    
-    NSDictionary *attrsDictionary =
-    [NSDictionary dictionaryWithObject:avenirFont forKey:NSFontAttributeName];
-    NSMutableAttributedString *scriptAttributedString =
-    [[NSMutableAttributedString alloc] initWithString:scriptString
-                                           attributes:attrsDictionary];
-    
-    // grey
-    [scriptAttributedString
-     addAttribute:NSForegroundColorAttributeName
-     value:[UIColor colorWithRed:83.0 / 255
-                           green:95.0 / 255.0
-                            blue:107.0 / 255.0
-                           alpha:1.0]
-     range:NSMakeRange(0, scriptAttributedString.length)];
-    
-    // orange
-    [scriptAttributedString addAttribute:NSForegroundColorAttributeName
-                                   value:[UIColor colorWithRed:255.0 / 255.0
-                                                         green:128.0 / 255.0
-                                                          blue:5.0 / 255.0
-                                                         alpha:1.0]
-                                   range:NSMakeRange(18, 11)];
-    [scriptAttributedString addAttribute:NSForegroundColorAttributeName
-                                   value:[UIColor colorWithRed:255.0 / 255.0
-                                                         green:128.0 / 255.0
-                                                          blue:5.0 / 255.0
-                                                         alpha:1.0]
-                                   range:NSMakeRange(65, 49)];
-    
-    // font
-    [scriptAttributedString addAttribute:NSFontAttributeName
-                                   value:[UIFont fontWithName:@"Avenir" size:19.0]
-                                   range:NSMakeRange(0, 100)];
-    
-    [self.scriptTextView setAttributedText:scriptAttributedString];
-    self.scriptTextView.textAlignment = 1.0;
-}
 
-//- (IBAction)hereLinkPressed:(id)sender {
-//  NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
-//  CGPoint location = [sender locationInView:self.sopaTextView];
-//  location.x -= self.sopaTextView.textContainerInset.left;
-//  location.y -= self.sopaTextView.textContainerInset.top;
-//
-//  NSUInteger characterIndex;
-//  characterIndex = [layoutManager
-//                        characterIndexForPoint:location
-//                               inTextContainer:self.sopaTextView.textContainer
-//      fractionOfDistanceBetweenInsertionPoints:NULL];
-//
-//  if (characterIndex > 118) {
-//
-//    NSRange range;
-//    id value = [self.sopaTextView.attributedText attribute:@"myCustomTag"
-//                                                   atIndex:characterIndex
-//                                            effectiveRange:&range];
-//
-//    NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location,
-//          (unsigned long)range.length);
-//
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-//    [self.view.window.rootViewController
-//        presentViewController:
-//            [self.storyboard
-//                instantiateViewControllerWithIdentifier:@"webViewController"]
-//                     animated:YES
-//                   completion:nil];
-//  }
-//}
+
+
 
 
 
@@ -244,15 +86,7 @@
 }
 
 - (void)createVoicesLabel {
-    UIMotionEffectGroup *motionEffect = [self createMotionEffect];
-    
-    [self.tableView addMotionEffect:motionEffect];
-    [self.voicesLabel addMotionEffect:motionEffect];
-    [self.whoRepsButton addMotionEffect:motionEffect];
-    [self.searchButton addMotionEffect:motionEffect];
-    [self.searchBar addMotionEffect:motionEffect];
-    [self.blueView addMotionEffect:motionEffect];
-    [self.aboutLabel addMotionEffect:motionEffect];
+
     
     FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.voicesLabel.bounds];
     
@@ -271,6 +105,21 @@
     
     shimmeringView.contentView = self.voicesLabel;
     //shimmeringView.shimmering = YES;
+}
+
+- (void)createParallaxEffect{
+    
+    UIMotionEffectGroup *motionEffect = [self createMotionEffect];
+    
+    [self.tableView addMotionEffect:motionEffect];
+    [self.voicesLabel addMotionEffect:motionEffect];
+    [self.whoRepsButton addMotionEffect:motionEffect];
+    [self.searchButton addMotionEffect:motionEffect];
+    [self.searchBar addMotionEffect:motionEffect];
+    [self.blueView addMotionEffect:motionEffect];
+    [self.swipeLeftLabel addMotionEffect:motionEffect];
+    [self.whoRepsLabel addMotionEffect:motionEffect];
+    
 }
 
 - (void)createDownloadShimmer{
@@ -292,10 +141,7 @@
 //    // Start shimmering.
 //    shimmeringView.shimmering = YES;
     
-    
-    
-    
-    
+
     self.shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.whoRepsLabel.bounds];
     
     [self.whoRepsLabel addSubview:self.shimmeringView];
@@ -316,9 +162,7 @@
 - (void)setDownloadShimmer:(BOOL)status{
     
     self.shimmeringView.shimmering = status;
-
-    
-    
+  
 }
 
 - (void)createButtonSeparator {
@@ -409,10 +253,7 @@
                      }];
 }
 
-//- (IBAction)getStartedButtonPressed:(id)sender {
-//    
-//    self.pageVC.pageViewController.dataSource = self.pageVC;
-//}
+
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     
@@ -495,28 +336,6 @@
     [self checkForLocationServices];
 }
 
-#pragma mark - Activity Indicator
-
-//- (void)showActivityInidcator {
-//    self.activityIndicator = [[UIActivityIndicatorView alloc]
-//                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    self.activityIndicator.alpha = 1.0;
-//    self.activityIndicator.color = [UIColor colorWithRed:(255.0 / 255.0)
-//                                                   green:(128.0 / 255.0)
-//                                                    blue:(5.0 / 255.0)
-//                                                   alpha:1.0];
-//    self.activityIndicator.center = CGPointMake(160.0, 110.0);
-//    self.activityIndicator.hidesWhenStopped = YES;
-//    [self.view addSubview:self.activityIndicator];
-//    [self.activityIndicator startAnimating];
-//    NSLog(@"%@", self.activityIndicator);
-//}
-//
-//- (void)hideActivityIndicator {
-//    [self.activityIndicator stopAnimating];
-//    self.activityIndicator.hidden = YES;
-//    self.activityIndicator = nil;
-//}
 
 #pragma mark - Service Check Methods
 
@@ -583,6 +402,7 @@
     self.manager.delegate = self;
     self.manager.distanceFilter = 200;
     self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -724,8 +544,8 @@
             return cell;
         }
         // this is getting called 3 times at startup
-
         //[self hideActivityIndicator];
+        
         [self setDownloadShimmer:NO];
         return cell;
     }

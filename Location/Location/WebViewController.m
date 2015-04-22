@@ -79,4 +79,36 @@
     }
 }
 
+//- (IBAction)hereLinkPressed:(id)sender {
+//  NSLayoutManager *layoutManager = self.sopaTextView.layoutManager;
+//  CGPoint location = [sender locationInView:self.sopaTextView];
+//  location.x -= self.sopaTextView.textContainerInset.left;
+//  location.y -= self.sopaTextView.textContainerInset.top;
+//
+//  NSUInteger characterIndex;
+//  characterIndex = [layoutManager
+//                        characterIndexForPoint:location
+//                               inTextContainer:self.sopaTextView.textContainer
+//      fractionOfDistanceBetweenInsertionPoints:NULL];
+//
+//  if (characterIndex > 118) {
+//
+//    NSRange range;
+//    id value = [self.sopaTextView.attributedText attribute:@"myCustomTag"
+//                                                   atIndex:characterIndex
+//                                            effectiveRange:&range];
+//
+//    NSLog(@"%@, %lu, %lu", value, (unsigned long)range.location,
+//          (unsigned long)range.length);
+//
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    [self.view.window.rootViewController
+//        presentViewController:
+//            [self.storyboard
+//                instantiateViewControllerWithIdentifier:@"webViewController"]
+//                     animated:YES
+//                   completion:nil];
+//  }
+//}
+
 @end

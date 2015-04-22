@@ -38,7 +38,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voices uses your location to help you participate in your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="712-gI-dEI">
                                 <rect key="frame" x="16" y="215" width="288" height="100"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-Ez-tm4">
@@ -220,10 +220,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="aboutLabel" destination="6DS-a3-MYA" id="eeE-d7-YWC"/>
                         <outlet property="blueView" destination="7Ud-ZC-Hse" id="Edv-Ek-9qP"/>
                         <outlet property="searchBar" destination="7NO-XO-FQf" id="FUR-Zp-WZc"/>
                         <outlet property="searchButton" destination="TZM-X4-PJ3" id="4za-d8-48o"/>
+                        <outlet property="swipeLeftLabel" destination="6DS-a3-MYA" id="ns9-Nc-Low"/>
                         <outlet property="tableView" destination="HWI-Nc-5EP" id="MKQ-yN-bp9"/>
                         <outlet property="voicesLabel" destination="Vgz-zJ-tBg" id="EyP-U5-8Cc"/>
                         <outlet property="whoRepsButton" destination="1gE-oh-jR2" id="fs6-gu-cKn"/>
@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="-136" y="-52"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="Omw-G0-Lf7">
             <objects>
-                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondViewController" id="ZlH-9r-Y85" customClass="AboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MS9-wd-vLZ"/>
                         <viewControllerLayoutGuide type="bottom" id="1gl-aB-I4D"/>
@@ -262,6 +262,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="voicesIsTextView" destination="OIf-6z-0j8" id="EB7-T6-49Y"/>
+                        <outlet property="whatIsVoicesLabel" destination="doW-2s-H6t" id="TjX-tU-Yd5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGr-eq-Ntu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,10 +358,10 @@
             </objects>
             <point key="canvasLocation" x="1372" y="573"/>
         </scene>
-        <!--View Controller-->
+        <!--Script View Controller-->
         <scene sceneID="4lT-X1-W21">
             <objects>
-                <viewController storyboardIdentifier="thirdViewController" id="NLV-i5-WYK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="thirdViewController" id="NLV-i5-WYK" customClass="ScriptViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YfL-oh-tWr"/>
                         <viewControllerLayoutGuide type="bottom" id="7Ld-R8-jNZ"/>
@@ -378,8 +382,8 @@
                                 <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="and I would like the Congressman to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs9-e1-dpT">
-                                <rect key="frame" x="11" y="258" width="298" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="and I would like the representative to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs9-e1-dpT">
+                                <rect key="frame" x="11" y="258" width="302" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -411,6 +415,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="pageHeaderThree" destination="kAV-qs-vgC" id="DQd-xd-s9h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVI-nj-gJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
