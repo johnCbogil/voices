@@ -271,93 +271,6 @@
             </objects>
             <point key="canvasLocation" x="243" y="-52"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="mP9-t5-MOS">
-            <objects>
-                <viewController id="x5F-zk-kFb" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="D93-HM-mi9"/>
-                        <viewControllerLayoutGuide type="bottom" id="jEi-CY-0ko"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EVd-iY-4RS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cQd-pl-MDb">
-                                <rect key="frame" x="40" y="269" width="240" height="143"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="GWM-hj-vJa" appends="YES" id="vHW-wS-IME"/>
-                                </connections>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speaking to your representative is an effective way to influence your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcK-vd-z8Y">
-                                <rect key="frame" x="10" y="77" width="300" height="184"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="26"/>
-                                <color key="textColor" red="0.96078431369999995" green="0.4549019608" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="pageHeaderTwo" destination="dcK-vd-z8Y" id="k4f-ZQ-l03"/>
-                        <outlet property="sopaTextView" destination="cQd-pl-MDb" id="vRY-D8-4Wr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oaS-Hg-o8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="GWM-hj-vJa">
-                    <connections>
-                        <action selector="hereLinkPressed:" destination="x5F-zk-kFb" id="Hn4-p4-Ana"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1372" y="-64"/>
-        </scene>
-        <!--Web View Controller-->
-        <scene sceneID="tvV-a4-bpL">
-            <objects>
-                <viewController storyboardIdentifier="webViewController" id="fzS-er-RWC" customClass="WebViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k6f-Sx-1aq"/>
-                        <viewControllerLayoutGuide type="bottom" id="Yde-wm-of9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LRm-VU-NZw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9U-gu-cmh">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem id="Xui-v9-OA0">
-                                        <barButtonItem key="leftBarButtonItem" image="clearButton" id="YZ4-Do-0LC">
-                                            <connections>
-                                                <action selector="backButtonPressed:" destination="fzS-er-RWC" id="c6c-Us-Rjs"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwF-5j-1Ij">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="backButton" destination="YZ4-Do-0LC" id="asB-Go-eJ3"/>
-                        <outlet property="navBar" destination="f9U-gu-cmh" id="wsq-3k-KC7"/>
-                        <outlet property="webView" destination="uwF-5j-1Ij" id="Pa9-E9-6mn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0L0-Jl-gj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1372" y="573"/>
-        </scene>
         <!--Script View Controller-->
         <scene sceneID="4lT-X1-W21">
             <objects>
@@ -425,7 +338,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clearButton" width="15" height="15"/>
         <image name="search icon.png" width="100" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

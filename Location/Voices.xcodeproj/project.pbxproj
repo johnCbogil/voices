@@ -173,36 +173,9 @@
 		7800F5C6186377C8005D4946 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				AA7A302F1A42550A0043910D /* FBShimmer */,
-				7800F5D2186377C8005D4946 /* Main.storyboard */,
-				AAFABC591A227AB90028214D /* CustomCell.xib */,
-				526B571B1AABC12200814CD3 /* MissingRepCell.xib */,
-				AA42F2EF1AE7194600F5B164 /* AboutViewController.h */,
-				AA42F2F01AE7194600F5B164 /* AboutViewController.m */,
-				AAE60F751A965E6900F4E5D8 /* APIRequests.h */,
-				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
-				7800F5CF186377C8005D4946 /* AppDelegate.h */,
-				7800F5D0186377C8005D4946 /* AppDelegate.m */,
-				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
-				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
-				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
-				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
-				AA108B771AE1BD750069EFC5 /* Keys.h */,
-				AA108B781AE1BD760069EFC5 /* Keys.m */,
-				AA889F591AE5B86D00D02954 /* LocPermissionViewController.h */,
-				AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */,
-				5269E84F1A99649B00357C58 /* MarqueeLabel.h */,
-				5269E8501A99649B00357C58 /* MarqueeLabel.m */,
-				5206EFDC1AB133D2000158EA /* MissingRepTableViewCell.h */,
-				5206EFDD1AB133D2000158EA /* MissingRepTableViewCell.m */,
-				529BB9441A720A6B0018B75A /* PageViewController.h */,
-				529BB9451A720A6B0018B75A /* PageViewController.m */,
-				7800F5D5186377C8005D4946 /* ViewController.h */,
-				7800F5D6186377C8005D4946 /* ViewController.m */,
-				AA42F2F21AE71D8300F5B164 /* ScriptViewController.h */,
-				AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */,
-				AA047AAC1AA7BD2B00B0056D /* WebViewController.h */,
-				AA047AAD1AA7BD2B00B0056D /* WebViewController.m */,
+				AA743AFB1AE93AE80014D540 /* Model */,
+				AA743AFA1AE93AC70014D540 /* View */,
+				AA743AF91AE93AB00014D540 /* Controller */,
 				7800F5D8186377C8005D4946 /* Images.xcassets */,
 				7800F5C7186377C8005D4946 /* Supporting Files */,
 			);
@@ -238,6 +211,57 @@
 				7800F5E8186377C9005D4946 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA743AF91AE93AB00014D540 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA42F2EF1AE7194600F5B164 /* AboutViewController.h */,
+				AA42F2F01AE7194600F5B164 /* AboutViewController.m */,
+				AA889F591AE5B86D00D02954 /* LocPermissionViewController.h */,
+				AA889F5A1AE5B86D00D02954 /* LocPermissionViewController.m */,
+				529BB9441A720A6B0018B75A /* PageViewController.h */,
+				529BB9451A720A6B0018B75A /* PageViewController.m */,
+				7800F5D5186377C8005D4946 /* ViewController.h */,
+				7800F5D6186377C8005D4946 /* ViewController.m */,
+				AA42F2F21AE71D8300F5B164 /* ScriptViewController.h */,
+				AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */,
+				AA047AAC1AA7BD2B00B0056D /* WebViewController.h */,
+				AA047AAD1AA7BD2B00B0056D /* WebViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		AA743AFA1AE93AC70014D540 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA7A302F1A42550A0043910D /* FBShimmer */,
+				7800F5D2186377C8005D4946 /* Main.storyboard */,
+				AAFABC591A227AB90028214D /* CustomCell.xib */,
+				526B571B1AABC12200814CD3 /* MissingRepCell.xib */,
+				AAFABC5B1A227C000028214D /* CustomTableViewCell.h */,
+				AAFABC5C1A227C000028214D /* CustomTableViewCell.m */,
+				5269E84F1A99649B00357C58 /* MarqueeLabel.h */,
+				5269E8501A99649B00357C58 /* MarqueeLabel.m */,
+				5206EFDC1AB133D2000158EA /* MissingRepTableViewCell.h */,
+				5206EFDD1AB133D2000158EA /* MissingRepTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AA743AFB1AE93AE80014D540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAE60F751A965E6900F4E5D8 /* APIRequests.h */,
+				AAE60F761A965E6900F4E5D8 /* APIRequests.m */,
+				7800F5CF186377C8005D4946 /* AppDelegate.h */,
+				7800F5D0186377C8005D4946 /* AppDelegate.m */,
+				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
+				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
+				AA108B771AE1BD750069EFC5 /* Keys.h */,
+				AA108B781AE1BD760069EFC5 /* Keys.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		AA7A302F1A42550A0043910D /* FBShimmer */ = {
@@ -455,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -487,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
