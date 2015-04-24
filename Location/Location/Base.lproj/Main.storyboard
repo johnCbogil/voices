@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="-920" y="-52"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="firstViewController" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstViewController" id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tSb-Kq-Znj"/>
                         <viewControllerLayoutGuide type="bottom" id="MKv-TY-PjY"/>

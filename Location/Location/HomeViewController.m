@@ -1,16 +1,14 @@
-#import "ViewController.h"
+#import "HomeViewController.h"
 
-@interface ViewController ()
+@interface HomeViewController ()
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
 
-    
-    
     
     self.APIRequestsClass = [[APIRequests alloc] init];
     self.APIRequestsClass.viewController = self;

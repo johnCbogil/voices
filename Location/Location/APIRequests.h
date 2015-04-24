@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Congressman.h"
-#import "ViewController.h"
+#import "HomeViewController.h"
 #import "Keys.h"
 
 @class ViewController;
