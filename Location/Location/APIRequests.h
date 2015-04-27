@@ -12,7 +12,7 @@
 #import "HomeViewController.h"
 #import "Keys.h"
 
-@class ViewController;
+@class HomeViewController;
 
 
 
@@ -55,14 +55,14 @@
 
 
 
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) HomeViewController *HomeViewController;
 
 
 
 
 
 
-- (void)googleMapsRequest:(NSString*)searchText;
+- (void)determineGPSCoordinates:(NSString*)searchText;
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude;
 - (void)googleCivRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude;
 

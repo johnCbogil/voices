@@ -12,30 +12,44 @@
 
 #pragma mark - Requests
 
-- (void)googleMapsRequest:(NSString*)searchText
+- (void)determineGPSCoordinates:(NSString*)searchText
 {
     
     
-    NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGKEY];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGKEY];
     
-    NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSURL *url = [[NSURL alloc] initWithString:cleanUrl];
-    NSLog(@"GoogleMapsURL: %@", url);
     
-    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURL *url = [NSURL URLWithString: [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [[session dataTaskWithURL:url
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+                
+                
+                NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                
+                NSMutableDictionary *coordinates = [decodedData valueForKey:@"results"];
+                
+                NSString *userSearchLat = [coordinates valueForKeyPath:@"geometry.location.lat"][0];
+                NSString *userSearchLng = [coordinates valueForKeyPath:@"geometry.location.lng"][0];
+                
+                
+                CLLocationDegrees latitude = [userSearchLat doubleValue];
+                CLLocationDegrees longitude = [userSearchLng doubleValue];
+                
+                NSLog(@"%f %f", latitude, longitude);
+                
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+                
+                [self sunlightFoundationRequest:latitude coordinates:longitude];
+                
+                [self googleCivRequest:latitude coordinates:longitude];
+                
+            }] resume];
 
-    getRequest.HTTPMethod = @"GET";
-    
-    [getRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [getRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-
-    
-    self.googleMapsConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    
 }
 
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude
@@ -108,12 +122,12 @@
 #pragma mark - Response/Data Handlers
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    if(connection == self.googleMapsConnection){
-        
-        self.googleMapsResponseData = [[NSMutableData alloc]init];
-    }
-    else if (connection == self.sfConnection){
-        
+//    if(connection == self.googleMapsConnection){
+//        
+//        self.googleMapsResponseData = [[NSMutableData alloc]init];
+//    }
+     if (connection == self.sfConnection){
+    
         self.sfResponseData = [[NSMutableData alloc]init];
     }
     else if (connection == self.googleCivConnection){
@@ -129,12 +143,12 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     
-    if(connection == self.googleMapsConnection){
-        
-        [self.googleMapsResponseData appendData:data];
-    }
-    else if (connection == self.sfConnection){
-        
+//    if(connection == self.googleMapsConnection){
+//        
+//        [self.googleMapsResponseData appendData:data];
+//    }
+     if (connection == self.sfConnection){
+    
         [self.sfResponseData appendData:data];
     }
     else if (connection == self.googleCivConnection){
@@ -159,31 +173,31 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     
-    if (connection == self.googleMapsConnection) {
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
-         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
-        
-        NSMutableDictionary *userSearchAddressData = [decodedData valueForKey:@"results"];
-        
-        NSString *userSearchLat = [userSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
-        NSString *userSearchLng = [userSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
-        
-        
-        CLLocationDegrees latitude = [userSearchLat doubleValue];
-        CLLocationDegrees longitude = [userSearchLng doubleValue];
-        
-        
-        [self sunlightFoundationRequest:latitude coordinates:longitude];
-        
-        [self googleCivRequest:latitude coordinates:longitude];
-
-    }
+//    if (connection == self.googleMapsConnection) {
+//        
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//
+//         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
+//        
+//        NSMutableDictionary *userSearchAddressData = [decodedData valueForKey:@"results"];
+//        
+//        NSString *userSearchLat = [userSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
+//        NSString *userSearchLng = [userSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
+//        
+//        
+//        CLLocationDegrees latitude = [userSearchLat doubleValue];
+//        CLLocationDegrees longitude = [userSearchLng doubleValue];
+//        
+//        
+//        [self sunlightFoundationRequest:latitude coordinates:longitude];
+//        
+//        [self googleCivRequest:latitude coordinates:longitude];
+//
+//    }
+//    
+//    
+     if (connection == self.sfConnection){
     
-    
-    else if (connection == self.sfConnection){
-        
         self.sfCongressmen = [[NSMutableArray alloc]init];
         
         [self.manager stopUpdatingLocation];

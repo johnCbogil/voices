@@ -11,7 +11,7 @@
 
     
     self.APIRequestsClass = [[APIRequests alloc] init];
-    self.APIRequestsClass.viewController = self;
+    self.APIRequestsClass.HomeViewController = self;
     
     self.tableView.alpha = 0.0;
     
@@ -317,7 +317,7 @@
         } else {
             
             [self.searchBar resignFirstResponder];
-            [self.APIRequestsClass googleMapsRequest:self.searchBar.text];
+            [self.APIRequestsClass determineGPSCoordinates:self.searchBar.text];
         }
     }
 }
@@ -543,7 +543,6 @@
         }
         // this is getting called 3 times at startup
         //[self hideActivityIndicator];
-        
         [self setDownloadShimmer:NO];
         return cell;
     }
