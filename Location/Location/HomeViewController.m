@@ -148,7 +148,7 @@
     
     self.whoRepsLabel.textAlignment = NSTextAlignmentCenter;
     
-    self.whoRepsLabel.text = NSLocalizedString(@"Who Represents You?", nil);
+    self.whoRepsLabel.text = NSLocalizedString(@"Your Community", nil);
     [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:20]];
     self.whoRepsLabel.textColor = [UIColor whiteColor];
     

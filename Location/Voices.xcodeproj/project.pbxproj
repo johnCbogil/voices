@@ -11,6 +11,7 @@
 		5269E8511A99649B00357C58 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269E8501A99649B00357C58 /* MarqueeLabel.m */; };
 		526B571C1AABC12200814CD3 /* MissingRepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526B571B1AABC12200814CD3 /* MissingRepCell.xib */; };
 		529BB9461A720A6B0018B75A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BB9451A720A6B0018B75A /* PageViewController.m */; };
+		529BF0D91AFC7A92002D94AA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BF0D81AFC7A92002D94AA /* DetailViewController.m */; };
 		52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC657619E0F0D7004BF6B3 /* Congressman.m */; };
 		52D5F2151A3E2808007EC83B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5F2141A3E2808007EC83B /* QuartzCore.framework */; };
 		7800F5C1186377C8005D4946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C0186377C8005D4946 /* Foundation.framework */; };
@@ -60,6 +61,8 @@
 		526B571B1AABC12200814CD3 /* MissingRepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MissingRepCell.xib; path = ../MissingRepCell.xib; sourceTree = "<group>"; };
 		529BB9441A720A6B0018B75A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		529BB9451A720A6B0018B75A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		529BF0D71AFC7A92002D94AA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		529BF0D81AFC7A92002D94AA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		52BC657519E0F0D7004BF6B3 /* Congressman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Congressman.h; path = ../Congressman.h; sourceTree = "<group>"; };
 		52BC657619E0F0D7004BF6B3 /* Congressman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Congressman.m; path = ../Congressman.m; sourceTree = "<group>"; };
 		52D5F2141A3E2808007EC83B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -228,6 +231,8 @@
 				AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */,
 				AA047AAC1AA7BD2B00B0056D /* WebViewController.h */,
 				AA047AAD1AA7BD2B00B0056D /* WebViewController.m */,
+				529BF0D71AFC7A92002D94AA /* DetailViewController.h */,
+				529BF0D81AFC7A92002D94AA /* DetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				AA9D46451A3F951300FC4815 /* FBShimmeringView.m in Sources */,
 				AA42F2F41AE71D8300F5B164 /* ScriptViewController.m in Sources */,
 				AA047AAE1AA7BD2B00B0056D /* WebViewController.m in Sources */,
+				529BF0D91AFC7A92002D94AA /* DetailViewController.m in Sources */,
 				AA42F2F11AE7194600F5B164 /* AboutViewController.m in Sources */,
 				AA108B791AE1BD760069EFC5 /* Keys.m in Sources */,
 				529BB9461A720A6B0018B75A /* PageViewController.m in Sources */,
