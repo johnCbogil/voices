@@ -19,23 +19,35 @@
     NSString *formattedString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&key=%@", searchText, GOOGKEY];
     
     NSString *cleanUrl = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSURL *url = [[NSURL alloc] initWithString:cleanUrl];
-    NSLog(@"GoogleMapsURL: %@", url);
-    
-    NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
-
-    getRequest.HTTPMethod = @"GET";
-    
-    [getRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [getRequest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-
-    
-    self.googleMapsConnection = [[NSURLConnection alloc] initWithRequest:getRequest delegate:self];
-    
+ 
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:[NSURL URLWithString:cleanUrl]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+
+                
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                
+                NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
+                
+                NSMutableDictionary *userSearchAddressData = [decodedData valueForKey:@"results"];
+                
+                NSString *userSearchLat = [userSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
+                NSString *userSearchLng = [userSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
+                
+                
+                CLLocationDegrees latitude = [userSearchLat doubleValue];
+                CLLocationDegrees longitude = [userSearchLng doubleValue];
+                
+                
+                [self sunlightFoundationRequest:latitude coordinates:longitude];
+                
+                [self googleCivRequest:latitude coordinates:longitude];
+                
+            }] resume];  
 }
 
 - (void)sunlightFoundationRequest:(CLLocationDegrees)latitude coordinates:(CLLocationDegrees)longitude

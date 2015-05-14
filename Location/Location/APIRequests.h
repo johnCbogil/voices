@@ -16,7 +16,7 @@
 
 
 
-@interface APIRequests : NSObject <NSURLConnectionDataDelegate>
+@interface APIRequests : NSObject <NSURLConnectionDataDelegate, NSURLSessionDataDelegate, NSURLSessionDelegate>
 
 
 // GoogleMaps API Properties
