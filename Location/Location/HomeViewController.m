@@ -149,7 +149,7 @@
     self.whoRepsLabel.textAlignment = NSTextAlignmentCenter;
     
     self.whoRepsLabel.text = NSLocalizedString(@"Your Community", nil);
-    [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:20]];
+    [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:24]];
     self.whoRepsLabel.textColor = [UIColor whiteColor];
     
     self.shimmeringView.contentView = self.whoRepsLabel;

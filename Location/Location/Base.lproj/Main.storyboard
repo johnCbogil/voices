@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="P5a-fZ-jKq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="P5a-fZ-jKq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -35,18 +35,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voices uses your location to help you participate in your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="712-gI-dEI">
-                                <rect key="frame" x="16" y="215" width="288" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voices uses your location to help you participate in your community" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="712-gI-dEI">
+                                <rect key="frame" x="16" y="233" width="288" height="100"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-Ez-tm4">
-                                <rect key="frame" x="45" y="322" width="90" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPJ-Ez-tm4">
+                                <rect key="frame" x="45" y="345" width="90" height="60"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.36862745099999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="mSp-Zb-7yj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                 <state key="normal" title="Later">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,21 +53,15 @@
                                     <action selector="laterButtonPressed:" destination="P5a-fZ-jKq" eventType="touchUpInside" id="2yl-cr-2V6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEv-tH-Lzp" userLabel="Voices label">
-                                <rect key="frame" x="45" y="140" width="230" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="NoV-bb-Ogr"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEv-tH-Lzp" userLabel="Voices label">
+                                <rect key="frame" x="45" y="163" width="230" height="67"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4L-sl-bmz">
-                                <rect key="frame" x="185" y="323" width="90" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4L-sl-bmz">
+                                <rect key="frame" x="185" y="346" width="90" height="59"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.36862745098039218" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="YaK-xE-06o"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                 <state key="normal" title="Allow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,21 +73,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="top" secondItem="h4f-Q4-pwp" secondAttribute="bottom" constant="120" id="3zX-dU-ci8"/>
-                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="leading" secondItem="7BG-oc-uMr" secondAttribute="leadingMargin" constant="29" id="5yR-kh-MsG"/>
-                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="centerY" secondItem="J4L-sl-bmz" secondAttribute="centerY" id="8lB-zl-KAd"/>
-                            <constraint firstItem="712-gI-dEI" firstAttribute="trailing" secondItem="7BG-oc-uMr" secondAttribute="trailingMargin" id="KQJ-fD-OQp"/>
-                            <constraint firstItem="c3Y-oc-ZAK" firstAttribute="top" secondItem="tPJ-Ez-tm4" secondAttribute="bottom" constant="186" id="LGl-mD-tsK"/>
-                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="bottom" secondItem="J4L-sl-bmz" secondAttribute="bottom" id="LRp-18-QAH"/>
-                            <constraint firstItem="712-gI-dEI" firstAttribute="top" secondItem="MEv-tH-Lzp" secondAttribute="bottom" constant="8" symbolic="YES" id="Qjv-mO-1YB"/>
-                            <constraint firstItem="712-gI-dEI" firstAttribute="leading" secondItem="7BG-oc-uMr" secondAttribute="leadingMargin" id="WAL-hP-YJQ"/>
-                            <constraint firstItem="712-gI-dEI" firstAttribute="centerX" secondItem="MEv-tH-Lzp" secondAttribute="centerX" id="aNd-QI-Vro"/>
-                            <constraint firstItem="MEv-tH-Lzp" firstAttribute="trailing" secondItem="J4L-sl-bmz" secondAttribute="trailing" id="oSw-9p-QTe"/>
-                            <constraint firstItem="tPJ-Ez-tm4" firstAttribute="leading" secondItem="MEv-tH-Lzp" secondAttribute="leading" id="tcl-LC-00L"/>
-                            <constraint firstItem="J4L-sl-bmz" firstAttribute="top" secondItem="712-gI-dEI" secondAttribute="bottom" constant="8" symbolic="YES" id="uuZ-kS-gHa"/>
-                            <constraint firstItem="J4L-sl-bmz" firstAttribute="leading" secondItem="tPJ-Ez-tm4" secondAttribute="trailing" constant="50" id="xgU-LB-gDe"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="allowButton" destination="J4L-sl-bmz" id="5IB-Ak-rDg"/>
