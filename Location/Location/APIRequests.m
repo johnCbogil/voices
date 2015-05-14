@@ -120,11 +120,7 @@
 #pragma mark - Response/Data Handlers
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    if(connection == self.googleMapsConnection){
-        
-        self.googleMapsResponseData = [[NSMutableData alloc]init];
-    }
-    else if (connection == self.sfConnection){
+ if (connection == self.sfConnection){
         
         self.sfResponseData = [[NSMutableData alloc]init];
     }
@@ -141,11 +137,7 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     
-    if(connection == self.googleMapsConnection){
-        
-        [self.googleMapsResponseData appendData:data];
-    }
-    else if (connection == self.sfConnection){
+if (connection == self.sfConnection){
         
         [self.sfResponseData appendData:data];
     }
@@ -171,30 +163,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     
-    if (connection == self.googleMapsConnection) {
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-
-         NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleMapsResponseData options:0 error:nil];
-        
-        NSMutableDictionary *userSearchAddressData = [decodedData valueForKey:@"results"];
-        
-        NSString *userSearchLat = [userSearchAddressData valueForKeyPath:@"geometry.location.lat"][0];
-        NSString *userSearchLng = [userSearchAddressData valueForKeyPath:@"geometry.location.lng"][0];
-        
-        
-        CLLocationDegrees latitude = [userSearchLat doubleValue];
-        CLLocationDegrees longitude = [userSearchLng doubleValue];
-        
-        
-        [self sunlightFoundationRequest:latitude coordinates:longitude];
-        
-        [self googleCivRequest:latitude coordinates:longitude];
-
-    }
-    
-    
-    else if (connection == self.sfConnection){
+ if (connection == self.sfConnection){
         
         self.sfCongressmen = [[NSMutableArray alloc]init];
         
