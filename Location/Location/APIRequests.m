@@ -103,14 +103,60 @@
         
         
         NSString *encodedString = [formattedString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithURL:[NSURL URLWithString:encodedString]
+                completionHandler:^(NSData *data,
+                                    NSURLResponse *response,
+                                    NSError *error) {
 
-        
-        NSURL *url = [NSURL URLWithString:encodedString];
-        NSLog(@"Google Civ URL: %@", url);
-        
-        NSMutableURLRequest *googleGetRequest = [NSMutableURLRequest requestWithURL:url];
-        googleGetRequest.HTTPMethod = @"GET";
-        self.googleCivConnection = [[NSURLConnection alloc] initWithRequest:googleGetRequest delegate:self];
+                    
+                    self.googCongressmen = [[NSMutableArray alloc]init];
+                    
+                    // Decode the json data
+                    NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                    
+                    // Extract only the officials from the dict
+                    NSMutableArray *officials = [decodedData valueForKey:@"officials"];
+                    
+                    // Iterate through the officials
+                    for (int i = 0; i < officials.count; i++) {
+                        
+                        // Extract the phone number for each official
+                        NSMutableArray *phones = [officials[i] valueForKey:@"phones"];
+                        
+                        // Create a new congressman object for each official
+                        Congressman * googDude = [[Congressman alloc]init];
+                        
+                        // Clean the phone number and assign it to the congressman
+                        googDude.phone = [self cleanPhoneNumber:phones[0]];
+                        
+                        // Iterate through each of the channels in congressman
+                        for (int j = 0; j < [[officials[i] valueForKey:@"channels"] count]; j++) {
+                            
+                            // We only want the twitter values
+                            if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Twitter"]) {
+                                
+                                // Assign the twitter handle
+                                googDude.twitterID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
+                            }
+                            
+                            // Repeat for facebook
+                            else if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Facebook"]) {
+                                googDude.facebookID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
+                            }
+                            
+                            // Add to array
+                            [self.googCongressmen addObject:googDude];
+                        }
+                    }
+                    
+                    // Match googCongressmen to sfCongressman
+                    [self matchData];
+                    
+                    
+
+                }] resume];
         
     }];
 
@@ -124,10 +170,7 @@
         
         self.sfResponseData = [[NSMutableData alloc]init];
     }
-    else if (connection == self.googleCivConnection){
-        
-        self.googleCivResponseData = [[NSMutableData alloc]init];
-    }
+
     else if (connection == self.photoConnection){
         
         self.photoResponseData = [[NSMutableData alloc]init];
@@ -141,10 +184,7 @@ if (connection == self.sfConnection){
         
         [self.sfResponseData appendData:data];
     }
-    else if (connection == self.googleCivConnection){
-        
-        [self.googleCivResponseData appendData:data];
-    }
+
     else if (connection == self.photoConnection){
         
         [self.photoResponseData appendData:data];
@@ -213,54 +253,7 @@ if (connection == self.sfConnection){
         [self photoRequest:self.bioGuides[0]];
         }
     }
-    else if (connection == self.googleCivConnection){
-        
-        self.googCongressmen = [[NSMutableArray alloc]init];
-        
-        // Decode the json data
-        NSMutableDictionary *decodedData = [NSJSONSerialization JSONObjectWithData:self.googleCivResponseData options:0 error:nil];
-        
-        // Extract only the officials from the dict
-        NSMutableArray *officials = [decodedData valueForKey:@"officials"];
-        
-        // Iterate through the officials
-        for (int i = 0; i < officials.count; i++) {
-            
-            // Extract the phone number for each official
-            NSMutableArray *phones = [officials[i] valueForKey:@"phones"];
-            
-            // Create a new congressman object for each official
-            Congressman * googDude = [[Congressman alloc]init];
-            
-            // Clean the phone number and assign it to the congressman
-            googDude.phone = [self cleanPhoneNumber:phones[0]];
-            
-            // Iterate through each of the channels in congressman
-            for (int j = 0; j < [[officials[i] valueForKey:@"channels"] count]; j++) {
-                
-                // We only want the twitter values
-                if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Twitter"]) {
-                    
-                    // Assign the twitter handle
-                    googDude.twitterID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
-                }
-                
-                // Repeat for facebook
-                else if ([[[officials[i] valueForKey:@"channels"][j] valueForKey:@"type"] isEqualToString:@"Facebook"]) {
-                    googDude.facebookID = [[officials[i] valueForKey:@"channels"][j] valueForKey:@"id"];
-                }
-                
-                // Add to array
-                [self.googCongressmen addObject:googDude];
-            }
-        }
-        
-        // Match googCongressmen to sfCongressman
-        [self matchData];
-
-        
-    }
-    else if (connection == self.photoConnection){
+       else if (connection == self.photoConnection){
         
         self.photoRequestCounter++;
         NSLog(@"PhotoRequestCounter is: %d", self.photoRequestCounter);
