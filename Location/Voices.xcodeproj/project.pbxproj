@@ -13,6 +13,7 @@
 		529BB9461A720A6B0018B75A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BB9451A720A6B0018B75A /* PageViewController.m */; };
 		529BF0D91AFC7A92002D94AA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529BF0D81AFC7A92002D94AA /* DetailViewController.m */; };
 		52BC657719E0F0D7004BF6B3 /* Congressman.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC657619E0F0D7004BF6B3 /* Congressman.m */; };
+		52D1ADA61B07D542007DDF31 /* Keys.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D1ADA51B07D542007DDF31 /* Keys.m */; };
 		52D5F2151A3E2808007EC83B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5F2141A3E2808007EC83B /* QuartzCore.framework */; };
 		7800F5C1186377C8005D4946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C0186377C8005D4946 /* Foundation.framework */; };
 		7800F5C5186377C8005D4946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5C4186377C8005D4946 /* UIKit.framework */; };
@@ -29,7 +30,6 @@
 		7800F5EC186377C9005D4946 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800F5EB186377C9005D4946 /* LocationTests.m */; };
 		7800F5F618637F25005D4946 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7800F5F518637F25005D4946 /* CoreLocation.framework */; };
 		AA047AAE1AA7BD2B00B0056D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA047AAD1AA7BD2B00B0056D /* WebViewController.m */; };
-		AA108B791AE1BD760069EFC5 /* Keys.m in Sources */ = {isa = PBXBuildFile; fileRef = AA108B781AE1BD760069EFC5 /* Keys.m */; };
 		AA42F2F11AE7194600F5B164 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA42F2F01AE7194600F5B164 /* AboutViewController.m */; };
 		AA42F2F41AE71D8300F5B164 /* ScriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA42F2F31AE71D8300F5B164 /* ScriptViewController.m */; };
 		AA7A30311A425CEE0043910D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7A30301A425CEE0043910D /* SystemConfiguration.framework */; };
@@ -65,6 +65,8 @@
 		529BF0D81AFC7A92002D94AA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		52BC657519E0F0D7004BF6B3 /* Congressman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Congressman.h; path = ../Congressman.h; sourceTree = "<group>"; };
 		52BC657619E0F0D7004BF6B3 /* Congressman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Congressman.m; path = ../Congressman.m; sourceTree = "<group>"; };
+		52D1ADA41B07D542007DDF31 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
+		52D1ADA51B07D542007DDF31 /* Keys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keys.m; sourceTree = "<group>"; };
 		52D5F2141A3E2808007EC83B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7800F5BD186377C8005D4946 /* Voices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voices.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7800F5C0186377C8005D4946 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,8 +90,6 @@
 		7800F5F518637F25005D4946 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA047AAC1AA7BD2B00B0056D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		AA047AAD1AA7BD2B00B0056D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		AA108B771AE1BD750069EFC5 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
-		AA108B781AE1BD760069EFC5 /* Keys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keys.m; sourceTree = "<group>"; };
 		AA42F2EF1AE7194600F5B164 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		AA42F2F01AE7194600F5B164 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		AA42F2F21AE71D8300F5B164 /* ScriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptViewController.h; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 				7800F5D0186377C8005D4946 /* AppDelegate.m */,
 				52BC657519E0F0D7004BF6B3 /* Congressman.h */,
 				52BC657619E0F0D7004BF6B3 /* Congressman.m */,
-				AA108B771AE1BD750069EFC5 /* Keys.h */,
-				AA108B781AE1BD760069EFC5 /* Keys.m */,
+				52D1ADA41B07D542007DDF31 /* Keys.h */,
+				52D1ADA51B07D542007DDF31 /* Keys.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -399,11 +399,11 @@
 				AA047AAE1AA7BD2B00B0056D /* WebViewController.m in Sources */,
 				529BF0D91AFC7A92002D94AA /* DetailViewController.m in Sources */,
 				AA42F2F11AE7194600F5B164 /* AboutViewController.m in Sources */,
-				AA108B791AE1BD760069EFC5 /* Keys.m in Sources */,
 				529BB9461A720A6B0018B75A /* PageViewController.m in Sources */,
 				7800F5D1186377C8005D4946 /* AppDelegate.m in Sources */,
 				AAFABC5D1A227C000028214D /* CustomTableViewCell.m in Sources */,
 				7800F5CD186377C8005D4946 /* main.m in Sources */,
+				52D1ADA61B07D542007DDF31 /* Keys.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

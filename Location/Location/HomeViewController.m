@@ -39,13 +39,6 @@
     
     [self checkForLocationServices];
 }
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -53,12 +46,9 @@
 - (void)viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
 - (void)dismissKeyboard {
     [self.searchBar resignFirstResponder];
 }
-
 - (UIMotionEffectGroup *)createMotionEffect {
     
     UIInterpolatingMotionEffect *verticalMotionEffect =
@@ -152,6 +142,7 @@
     [self.whoRepsLabel setFont:[UIFont fontWithName:@"Avenir" size:24]];
     self.whoRepsLabel.textColor = [UIColor whiteColor];
     
+    
     self.shimmeringView.contentView = self.whoRepsLabel;
 
     
@@ -176,7 +167,7 @@
 
 - (void)createSearchBar {
     
-    self.blueView.layer.cornerRadius = 5;
+    self.blueView.layer.cornerRadius = 23;
     self.blueView.backgroundColor = [UIColor colorWithRed:(255.0 / 255.0)
                                                     green:(128.0 / 255.0)
                                                      blue:(5.0 / 255.0)
@@ -185,6 +176,7 @@
     self.searchBar.alpha = 0.0;
     self.searchBar.userInteractionEnabled = NO;
     self.searchBar.delegate = self;
+
     
     // Set cancel button to white color
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
@@ -225,6 +217,11 @@
     [self.searchBar setImage:[UIImage imageNamed:@"clearButton"]
             forSearchBarIcon:UISearchBarIconClear
                        state:UIControlStateNormal];
+    
+    
+    UITextField *txfSearchField = [self.searchBar valueForKey:@"_searchField"];
+    txfSearchField.layer.cornerRadius = 13;
+
 }
 
 - (IBAction)searchButtonPressed:(id)sender {

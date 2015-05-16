@@ -153,9 +153,6 @@
                     
                     // Match googCongressmen to sfCongressman
                     [self matchData];
-                    
-                    
-
                 }] resume];
         
     }];
