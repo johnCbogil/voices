@@ -8,15 +8,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
-    
     self.APIRequestsClass = [[APIRequests alloc] init];
     self.APIRequestsClass.HomeViewController = self;
-    
     self.tableView.alpha = 0.0;
-    
     self.geocoder = [[CLGeocoder alloc] init];
-    
     self.swipeLeftLabel.textColor = [UIColor colorWithRed:83.0 / 255
                                                 green:95.0 / 255.0
                                                  blue:107.0 / 255.0
@@ -155,7 +150,7 @@
 }
 
 - (void)createButtonSeparator {
-    self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(247, 55, 1, 28)];
+    self.buttonSeparator = [[UIView alloc] initWithFrame:CGRectMake(242, 55, 1, 28)];
     self.buttonSeparator.backgroundColor =
     [UIColor colorWithRed:133 green:133. blue:133 alpha:.5];
     
@@ -231,8 +226,7 @@
     [self.searchBar becomeFirstResponder];
     self.whoRepsButton.enabled = NO;
     self.searchButton.hidden = YES;
-    [UIView animateWithDuration:0.2
-                     animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
                          self.whoRepsLabel.alpha = 0.0;
                      }
                      completion:^(BOOL finished) {
@@ -264,8 +258,7 @@
     [self setDownloadShimmer:NO];
     self.buttonSeparator.hidden = NO;
     self.whoRepsButton.enabled = YES;
-    [UIView animateWithDuration:.2
-                     animations:^{
+    [UIView animateWithDuration:.2 animations:^{
                          self.searchBar.alpha = 0.0;
                      }
                      completion:^(BOOL finished) {
@@ -279,10 +272,8 @@
                                           animations:^{
                                               self.buttonSeparator.alpha = 1.0;
                                           }];
-                         
                      }];
 }
-
 #pragma mark - Execute Request Methods
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -346,7 +337,6 @@
     }
     
     else {
-        
         self.locationAuthorization = NO;
         [self locationServicesUnavailableAlert];
     }
